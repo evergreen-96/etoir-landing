@@ -1,6 +1,7 @@
 """
 db.py — SQLite-слой для хранения заявок с лендинга.
 """
+import contextlib
 import os
 import sqlite3
 from datetime import datetime, timezone
@@ -15,7 +16,7 @@ def _conn():
 
 
 def init_db():
-    with _conn() as conn:
+    with contextlib.closing(_conn()) as conn:
         conn.execute("""
             CREATE TABLE IF NOT EXISTS responses (
                 id         INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,10 +29,11 @@ def init_db():
                 created_at TEXT NOT NULL
             )
         """)
+        conn.commit()
 
 
 def save_response(data: dict):
-    with _conn() as conn:
+    with contextlib.closing(_conn()) as conn:
         conn.execute(
             """
             INSERT INTO responses
@@ -48,10 +50,11 @@ def save_response(data: dict):
                 datetime.now(timezone.utc).isoformat(),
             ),
         )
+        conn.commit()
 
 
 def get_all_responses() -> list[dict]:
-    with _conn() as conn:
+    with contextlib.closing(_conn()) as conn:
         rows = conn.execute(
             "SELECT * FROM responses ORDER BY id DESC"
         ).fetchall()
