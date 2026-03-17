@@ -58,6 +58,13 @@ class ResponseIn(BaseModel):
     comment:  str | None = None
 
 
+# ── Вспомогательные функции ───────────────────────────────────────────────────
+
+def _esc(s: str) -> str:
+    return (s.replace("&", "&amp;").replace("<", "&lt;")
+             .replace(">", "&gt;").replace('"', "&quot;"))
+
+
 # ── Эндпоинты ─────────────────────────────────────────────────────────────────
 
 @app.post("/api/responses/")
@@ -127,8 +134,3 @@ def export_csv(_: str = Depends(require_admin)):
         media_type="text/csv; charset=utf-8",
         headers={"Content-Disposition": "attachment; filename=responses.csv"},
     )
-
-
-def _esc(s: str) -> str:
-    return (s.replace("&", "&amp;").replace("<", "&lt;")
-             .replace(">", "&gt;").replace('"', "&quot;"))
