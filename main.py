@@ -6,7 +6,7 @@ import io
 import os
 import secrets
 
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
@@ -62,8 +62,15 @@ class ResponseIn(BaseModel):
 # ── Эндпоинты ─────────────────────────────────────────────────────────────────
 
 @app.post("/api/responses/")
-def create_response(data: ResponseIn):
-    db.save_response(data.model_dump())
+def create_response(data: ResponseIn, request: Request):
+    payload = data.model_dump()
+    # Берём реальный IP: сначала X-Real-IP от nginx, иначе прямой клиент
+    payload["ip_address"] = (
+        request.headers.get("X-Real-IP") or
+        request.headers.get("X-Forwarded-For", "").split(",")[0].strip() or
+        (request.client.host if request.client else None)
+    )
+    db.save_response(payload)
     return {"ok": True}
 
 
@@ -73,10 +80,13 @@ def admin_page(_: str = Depends(require_admin)):
     rows_html = ""
     for r in rows:
         marketing_mark = "✓" if r["marketing"] else "—"
+        consent_at = (r.get("consent_at") or r["created_at"])[:16].replace("T", " ")
         rows_html += (
             f"<tr>"
             f"<td>{r['id']}</td>"
             f"<td>{r['created_at'][:16].replace('T', ' ')}</td>"
+            f"<td>{consent_at}</td>"
+            f"<td>{_esc(r.get('ip_address') or '')}</td>"
             f"<td>{_esc(r['name'])}</td>"
             f"<td>{_esc(r['company'])}</td>"
             f"<td>{_esc(r['email'])}</td>"
@@ -91,9 +101,9 @@ def admin_page(_: str = Depends(require_admin)):
 <title>Заявки — etoir.ru</title>
 <style>
   body {{ font-family: sans-serif; padding: 2rem; }}
-  table {{ border-collapse: collapse; width: 100%; font-size: 14px; }}
-  th, td {{ border: 1px solid #ddd; padding: 8px 12px; text-align: left; }}
-  th {{ background: #f5f5f5; }}
+  table {{ border-collapse: collapse; width: 100%; font-size: 13px; }}
+  th, td {{ border: 1px solid #ddd; padding: 7px 10px; text-align: left; vertical-align: top; }}
+  th {{ background: #f5f5f5; white-space: nowrap; }}
   tr:hover {{ background: #fafafa; }}
   .export {{ margin-bottom: 1rem; }}
   a.btn {{ background: #2563eb; color: #fff; padding: 6px 14px;
@@ -104,8 +114,9 @@ def admin_page(_: str = Depends(require_admin)):
 <p class="export"><a class="btn" href="/admin/export.csv">Скачать CSV</a></p>
 <table>
 <thead><tr>
-  <th>#</th><th>Дата</th><th>Имя</th><th>Компания</th>
-  <th>Email</th><th>Телефон</th><th>Должность</th><th>Комментарий</th><th>Рассылка</th>
+  <th>#</th><th>Получено</th><th>Согласие (дата)</th><th>IP</th>
+  <th>Имя</th><th>Компания</th><th>Email</th><th>Телефон</th>
+  <th>Должность</th><th>Комментарий</th><th>Рассылка</th>
 </tr></thead>
 <tbody>{rows_html}</tbody>
 </table>
@@ -118,8 +129,9 @@ def export_csv(_: str = Depends(require_admin)):
     buf = io.StringIO()
     writer = csv.DictWriter(
         buf,
-        fieldnames=["id", "created_at", "name", "company", "email",
-                    "phone", "position", "comment", "marketing"],
+        fieldnames=["id", "created_at", "consent_at", "ip_address",
+                    "name", "company", "email", "phone",
+                    "position", "comment", "marketing"],
         extrasaction="ignore",
     )
     writer.writeheader()

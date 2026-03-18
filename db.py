@@ -18,26 +18,42 @@ def init_db():
     with _conn() as conn:
         conn.execute("""
             CREATE TABLE IF NOT EXISTS responses (
-                id         INTEGER PRIMARY KEY AUTOINCREMENT,
-                name       TEXT NOT NULL,
-                company    TEXT NOT NULL,
-                email      TEXT NOT NULL,
-                phone      TEXT NOT NULL,
-                position   TEXT,
-                comment    TEXT,
-                marketing  INTEGER NOT NULL DEFAULT 1,
-                created_at TEXT NOT NULL
+                id           INTEGER PRIMARY KEY AUTOINCREMENT,
+                name         TEXT NOT NULL,
+                company      TEXT NOT NULL,
+                email        TEXT NOT NULL,
+                phone        TEXT NOT NULL,
+                position     TEXT,
+                comment      TEXT,
+                marketing    INTEGER NOT NULL DEFAULT 1,
+                ip_address   TEXT,
+                consent_at   TEXT NOT NULL,
+                created_at   TEXT NOT NULL
             )
         """)
+        # Миграция: добавить колонки если их нет (для существующих БД)
+        existing = {
+            row[1]
+            for row in conn.execute("PRAGMA table_info(responses)").fetchall()
+        }
+        for col, definition in [
+            ("marketing",  "INTEGER NOT NULL DEFAULT 1"),
+            ("ip_address", "TEXT"),
+            ("consent_at", "TEXT NOT NULL DEFAULT ''"),
+        ]:
+            if col not in existing:
+                conn.execute(f"ALTER TABLE responses ADD COLUMN {col} {definition}")
 
 
 def save_response(data: dict):
+    now = datetime.now(timezone.utc).isoformat()
     with _conn() as conn:
         conn.execute(
             """
             INSERT INTO responses
-                (name, company, email, phone, position, comment, marketing, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                (name, company, email, phone, position, comment,
+                 marketing, ip_address, consent_at, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 data["name"],
@@ -47,7 +63,9 @@ def save_response(data: dict):
                 data.get("position"),
                 data.get("comment"),
                 1 if data.get("marketing", True) else 0,
-                datetime.now(timezone.utc).isoformat(),
+                data.get("ip_address"),
+                now,
+                now,
             ),
         )
 
