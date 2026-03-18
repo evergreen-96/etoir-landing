@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    container_name: etoir-landing-api
+    env_file: .env
+    volumes:
+      - responses-data:/data
+    expose:
+      - "8000"
+    restart: unless-stopped
+    networks:
+      - landing-net
+
+volumes:
+  responses-data:
+
+networks:
+  landing-net:
+    external: true
