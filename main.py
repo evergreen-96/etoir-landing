@@ -13,6 +13,7 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from pydantic import BaseModel
 
 import db
+import notify
 
 # ── Инициализация ─────────────────────────────────────────────────────────────
 
@@ -71,6 +72,7 @@ def create_response(data: ResponseIn, request: Request):
         (request.client.host if request.client else None)
     )
     db.save_response(payload)
+    notify.send_telegram(notify.build_message(payload))
     return {"ok": True}
 
 

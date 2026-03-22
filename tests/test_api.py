@@ -1,6 +1,7 @@
 import os
 import pytest
 from fastapi.testclient import TestClient
+import notify
 
 os.environ.setdefault("ADMIN_USER", "testadmin")
 os.environ.setdefault("ADMIN_PASSWORD", "testpass")
@@ -14,6 +15,11 @@ def isolated_db(tmp_path, monkeypatch):
     importlib.reload(m)
     db.init_db()
     return m
+
+
+@pytest.fixture(autouse=True)
+def no_telegram(monkeypatch):
+    monkeypatch.setattr(notify, "send_telegram", lambda text: None)
 
 
 @pytest.fixture
