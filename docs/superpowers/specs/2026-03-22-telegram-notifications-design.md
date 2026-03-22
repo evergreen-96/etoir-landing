@@ -28,18 +28,27 @@ def send_telegram(text: str) -> None
 
 - Reads `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` from environment variables.
 - If either variable is missing, logs a warning and returns silently (allows running without TG configured).
-- Makes a synchronous POST to `https://api.telegram.org/bot{token}/sendMessage` using `urllib` (stdlib, no new dependencies).
+- Makes a synchronous POST to `https://api.telegram.org/bot{token}/sendMessage` using `urllib.request` (stdlib, no new dependencies).
+- Request body is JSON-encoded via `json.dumps({"chat_id": ..., "text": ...})`, sent with `Content-Type: application/json`.
+- **`parse_mode` must NOT be set** — plain text only. This avoids Telegram parse errors when user-supplied fields contain Markdown/HTML special characters.
+- **Timeout: 5 seconds** — `urlopen(req, timeout=5)` to prevent blocking the FastAPI worker thread indefinitely.
 - Wraps the call in `try/except Exception` — any error is logged via `logging.error` and swallowed.
+
+Also exports a helper used by `main.py`:
+
+```python
+def build_message(data: dict) -> str
+```
+
+Accepts the `payload` dict (same shape as `ResponseIn.model_dump()` + `ip_address`). Returns a formatted string. Optional fields (`position`, `comment`) are appended only when non-empty/non-None — never the literal string `"None"`.
 
 ### Change: `main.py`
 
 In `create_response`, after `db.save_response(payload)`, call:
 
 ```python
-notify.send_telegram(build_message(data))
+notify.send_telegram(notify.build_message(payload))
 ```
-
-where `build_message` formats the notification text (see below).
 
 ### Change: `.env.example`
 
@@ -82,6 +91,13 @@ The HTTP response from `db.save_response` is always `{"ok": True}` regardless of
 ## No New Dependencies
 
 Uses `urllib.request` from the Python standard library. `requirements.txt` is unchanged.
+
+---
+
+## Testing
+
+- In tests, monkeypatch `notify.send_telegram` to a no-op so existing `test_api.py` tests continue passing without a TG token configured and without making real network calls.
+- `notify.build_message` can be unit-tested directly with a sample dict.
 
 ---
 
