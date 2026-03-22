@@ -18,7 +18,7 @@ def isolated_db(tmp_path, monkeypatch):
 
 
 @pytest.fixture(autouse=True)
-def no_telegram(monkeypatch):
+def no_telegram(isolated_db, monkeypatch):
     monkeypatch.setattr(notify, "send_telegram", lambda text: None)
 
 
