@@ -1,3 +1,5 @@
+import logging
+
 import notify
 
 SAMPLE = {
@@ -35,9 +37,6 @@ def test_build_message_optional_fields_absent_when_none():
     msg = notify.build_message(SAMPLE)
     assert "Должность" not in msg
     assert "Комментарий" not in msg
-
-
-import logging
 
 
 def test_send_telegram_skips_if_no_token(monkeypatch, caplog):
