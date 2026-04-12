@@ -1,6 +1,29 @@
 services:
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: etoir-landing-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/etoir.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./landing:/app/landing:ro
+      - certbot-conf:/etc/letsencrypt
+      - certbot-www:/var/www/certbot
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - landing-net
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot-conf:/etc/letsencrypt
+      - certbot-www:/var/www/certbot
+
   api:
-    build: .
+    build: ./api
     container_name: etoir-landing-api
     env_file: .env
     volumes:
@@ -12,8 +35,9 @@ services:
       - landing-net
 
 volumes:
+  certbot-conf:
+  certbot-www:
   responses-data:
 
 networks:
   landing-net:
-    external: true
