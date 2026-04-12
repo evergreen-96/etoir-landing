@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 32" role="img" aria-label="эТОИР">
+  <title>эТОИР</title>
+  <text
+    font-family="Inter, Arial, sans-serif"
+    font-size="24"
+    font-weight="800"
+    dominant-baseline="alphabetic"
+    y="26"
+    x="2"
+  >
+    <tspan fill="#2563EB">э</tspan><tspan fill="#1E293B" dx="4">ТОИР</tspan>
+  </text>
+</svg>
