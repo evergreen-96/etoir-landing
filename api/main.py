@@ -2,16 +2,25 @@ import csv
 import io
 import os
 import secrets
+from contextlib import asynccontextmanager
+from html import escape
 
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 import db
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    db.init_db()
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,18 +35,13 @@ ADMIN_USER = os.environ["ADMIN_USER"]
 ADMIN_PASSWORD = os.environ["ADMIN_PASSWORD"]
 
 
-@app.on_event("startup")
-def startup():
-    db.init_db()
-
-
 class ResponseIn(BaseModel):
-    name: str
-    company: str
-    email: str
-    phone: str
-    position: str | None = None
-    comment: str | None = None
+    name: str = Field(max_length=200)
+    company: str = Field(max_length=200)
+    email: str = Field(max_length=254)
+    phone: str = Field(max_length=30)
+    position: str | None = Field(default=None, max_length=200)
+    comment: str | None = Field(default=None, max_length=2000)
 
 
 def _verify_admin(credentials: HTTPBasicCredentials = Depends(security)):
@@ -63,9 +67,9 @@ def create_response(data: ResponseIn):
 def admin(_=Depends(_verify_admin)):
     rows = db.get_all_responses()
     rows_html = "".join(
-        f"<tr><td>{r['id']}</td><td>{r['created_at']}</td><td>{r['name']}</td>"
-        f"<td>{r['company']}</td><td>{r['email']}</td><td>{r['phone']}</td>"
-        f"<td>{r.get('position') or ''}</td><td>{r.get('comment') or ''}</td></tr>"
+        f"<tr><td>{r['id']}</td><td>{r['created_at']}</td><td>{escape(r['name'])}</td>"
+        f"<td>{escape(r['company'])}</td><td>{escape(r['email'])}</td><td>{escape(r['phone'])}</td>"
+        f"<td>{escape(r.get('position') or '')}</td><td>{escape(r.get('comment') or '')}</td></tr>"
         for r in rows
     )
     return f"""<!doctype html>
@@ -93,6 +97,6 @@ def export_csv(_=Depends(_verify_admin)):
     output.seek(0)
     return StreamingResponse(
         iter([output.getvalue()]),
-        media_type="text/csv",
+        media_type="text/csv; charset=utf-8-sig",
         headers={"Content-Disposition": "attachment; filename=responses.csv"},
     )
