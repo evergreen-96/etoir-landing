@@ -26,7 +26,7 @@ ssl:
 	docker run --rm \
 		-v etoir-landing_certbot-conf:/etc/letsencrypt \
 		-v etoir-landing_certbot-www:/var/www/certbot \
-		certbot/certbot certonly --webroot \
+		certbot/certbot certonly --webroot --expand \
 		--webroot-path /var/www/certbot \
 		-d etoir.ru -d www.etoir.ru -d e-toir.ru -d www.e-toir.ru \
 		--email admin@e-toir.ru \
