@@ -36,25 +36,23 @@ ssl:
 	$(COMPOSE) up -d
 
 ssl-demo:
-	@echo "Получаем сертификат для demo.e-toir.ru..."
-	docker run --rm \
+	@echo "Получаем сертификат для demo.e-toir.ru (standalone)..."
+	$(COMPOSE) stop nginx
+	docker run --rm -p 80:80 \
 		-v etoir-landing_certbot-conf:/etc/letsencrypt \
-		-v etoir-landing_certbot-www:/var/www/certbot \
-		certbot/certbot certonly --webroot \
-		--webroot-path /var/www/certbot \
+		certbot/certbot certonly --standalone \
 		-d demo.e-toir.ru \
 		--email admin@e-toir.ru \
 		--agree-tos --no-eff-email
-	$(COMPOSE) exec nginx nginx -s reload
+	$(COMPOSE) up -d nginx
 
 ssl-preprod:
-	@echo "Получаем сертификат для preprod.e-toir.ru..."
-	docker run --rm \
+	@echo "Получаем сертификат для preprod.e-toir.ru (standalone)..."
+	$(COMPOSE) stop nginx
+	docker run --rm -p 80:80 \
 		-v etoir-landing_certbot-conf:/etc/letsencrypt \
-		-v etoir-landing_certbot-www:/var/www/certbot \
-		certbot/certbot certonly --webroot \
-		--webroot-path /var/www/certbot \
+		certbot/certbot certonly --standalone \
 		-d preprod.e-toir.ru \
 		--email admin@e-toir.ru \
 		--agree-tos --no-eff-email
-	$(COMPOSE) exec nginx nginx -s reload
+	$(COMPOSE) up -d nginx
