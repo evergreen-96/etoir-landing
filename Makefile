@@ -1,6 +1,6 @@
 COMPOSE = docker compose
 
-.PHONY: up down build logs ssl
+.PHONY: up down build logs ssl ssl-demo ssl-preprod
 
 up:
 	$(COMPOSE) up -d
@@ -34,3 +34,27 @@ ssl:
 	docker stop etoir-landing-init
 	@echo "Запускаем nginx с SSL..."
 	$(COMPOSE) up -d
+
+ssl-demo:
+	@echo "Получаем сертификат для demo.e-toir.ru..."
+	docker run --rm \
+		-v etoir-landing_certbot-conf:/etc/letsencrypt \
+		-v etoir-landing_certbot-www:/var/www/certbot \
+		certbot/certbot certonly --webroot \
+		--webroot-path /var/www/certbot \
+		-d demo.e-toir.ru \
+		--email admin@e-toir.ru \
+		--agree-tos --no-eff-email
+	$(COMPOSE) exec nginx nginx -s reload
+
+ssl-preprod:
+	@echo "Получаем сертификат для preprod.e-toir.ru..."
+	docker run --rm \
+		-v etoir-landing_certbot-conf:/etc/letsencrypt \
+		-v etoir-landing_certbot-www:/var/www/certbot \
+		certbot/certbot certonly --webroot \
+		--webroot-path /var/www/certbot \
+		-d preprod.e-toir.ru \
+		--email admin@e-toir.ru \
+		--agree-tos --no-eff-email
+	$(COMPOSE) exec nginx nginx -s reload
