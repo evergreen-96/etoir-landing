@@ -4563,7 +4563,8 @@
                     phone:     form.querySelector('#phone').value.trim(),
                     position:  form.querySelector('#position').value.trim() || null,
                     comment:   form.querySelector('#comment').value.trim() || null,
-                    marketing: form.querySelector('#marketingCheck').checked,
+                    consent_privacy:   true,
+                    consent_marketing: form.querySelector('#marketingCheck').checked,
                 }),
             })
             .then(r => r.ok ? Promise.resolve() : Promise.reject())
