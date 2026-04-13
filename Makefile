@@ -28,7 +28,7 @@ ssl:
 		-v etoir-landing_certbot-www:/var/www/certbot \
 		certbot/certbot certonly --webroot \
 		--webroot-path /var/www/certbot \
-		-d etoir.ru -d www.etoir.ru \
+		-d etoir.ru -d www.etoir.ru -d e-toir.ru -d www.e-toir.ru \
 		--email admin@e-toir.ru \
 		--agree-tos --no-eff-email
 	docker stop etoir-landing-init
