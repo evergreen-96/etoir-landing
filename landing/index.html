@@ -2879,102 +2879,180 @@
   padding: 80px 0;
   background: #f8fafc;
 }
+/* ── Floor Map ────────────────────────────────────────────────────────────── */
 .fmap-illustration {
-  max-width: 720px;
+  max-width: 740px;
   margin: 48px auto 0;
   padding: 0 20px;
   position: relative;
 }
+
+/* Blueprint-style canvas */
 .fmap-canvas {
-  background: #fff;
-  border: 2px solid #334155;
-  border-radius: 16px;
-  padding: 28px 28px 24px;
+  background-color: #eef2fa;
+  background-image:
+    linear-gradient(rgba(148,163,184,0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,0.22) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border: 3px solid #1e293b;
+  border-radius: 6px;
+  padding: 14px 14px 10px;
   position: relative;
-  box-shadow: 0 8px 40px rgba(15,23,42,0.07);
+  box-shadow: 0 8px 40px rgba(15,23,42,0.10);
 }
+
+.fmap-canvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
 .fmap-canvas-label {
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.fmap-canvas-meta {
+  font-size: 10px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.04em;
+}
+
+/* 2×2 room grid — gap = interior walls */
+.fmap-floor {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 1.1fr 0.9fr;
+  gap: 3px;
+  background: #1e293b;
+  border: 3px solid #1e293b;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.fmap-zone {
+  background: #fff;
+  padding: 9px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 110px;
+}
+
+.fmap-zone-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #94a3b8;
-  margin-bottom: 16px;
-  display: block;
+  user-select: none;
 }
-.fmap-row {
+
+.fmap-zone-machines {
   display: flex;
-  gap: 12px;
-  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1;
 }
-.fmap-divider {
-  height: 1px;
-  background: #e2e8f0;
-  margin: 16px 0;
-  position: relative;
-}
-.fmap-divider::after {
-  content: 'ЗОНА B';
-  position: absolute;
-  right: 0;
-  top: -9px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #cbd5e1;
-}
+
+/* Machine cards */
 .fmap-machine {
-  width: 94px;
-  height: 78px;
+  width: 84px;
+  height: 74px;
   border: 1.5px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #f8fafc;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   position: relative;
   transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   flex-shrink: 0;
 }
+
 .fmap-machine--alarm {
   box-shadow: 0 0 0 2px #ef4444, 0 4px 16px rgba(239,68,68,0.18);
   border-color: #ef4444;
   background: #fff5f5;
 }
+
 .fmap-machine--maint {
   box-shadow: 0 0 0 2px #f59e0b, 0 4px 16px rgba(245,158,11,0.14);
   border-color: #f59e0b;
   background: #fffbeb;
 }
+
 .fmap-machine-icon { color: #64748b; }
+
 .fmap-machine-label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: #334155;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   font-family: monospace;
 }
+
 .fmap-machine-dot {
   position: absolute;
-  top: 7px;
-  right: 7px;
-  width: 9px;
-  height: 9px;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #10b981;
   transition: background 0.3s ease;
 }
+
 .fmap-machine--alarm .fmap-machine-dot {
   background: #ef4444;
   animation: fmap-pulse-dot 1.3s ease-in-out infinite;
 }
+
 .fmap-machine--maint .fmap-machine-dot { background: #f59e0b; }
 
 @keyframes fmap-pulse-dot {
   0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.5); }
   60%       { box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+}
+
+/* Scale bar */
+.fmap-scale {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  justify-content: flex-end;
+}
+.fmap-scale-line {
+  display: inline-block;
+  width: 44px;
+  height: 2px;
+  background: #94a3b8;
+  position: relative;
+}
+.fmap-scale-line::before,
+.fmap-scale-line::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 8px;
+  background: #94a3b8;
+}
+.fmap-scale-line::before { left: 0; }
+.fmap-scale-line::after  { right: 0; }
+.fmap-scale-text {
+  font-size: 10px;
+  color: #94a3b8;
+  font-weight: 600;
 }
 
 /* Floating alert card */
@@ -2994,7 +3072,7 @@
   transform: translateY(8px);
   transition: opacity 0.35s ease, transform 0.35s ease;
   pointer-events: none;
-  min-width: 210px;
+  min-width: 220px;
   z-index: 10;
 }
 .fmap-alert-card--visible {
@@ -3067,12 +3145,61 @@
 .fmap-fact-title { font-size: 18px; font-weight: 700; color: #0f172a; }
 .fmap-fact-desc  { font-size: 15px; color: #64748b; line-height: 1.6; }
 
+/* LIVE badge */
+.fmap-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.fmap-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: fmap-pulse-live 2s ease-in-out infinite;
+}
+@keyframes fmap-pulse-live {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* Status chips */
+.fmap-status-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.fmap-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+  transition: background 0.3s ease;
+}
+.fmap-status-chip--ok    { background: #ecfdf5; color: #059669; }
+.fmap-status-chip--maint { background: #fffbeb; color: #d97706; }
+.fmap-status-chip--alarm { background: #fef2f2; color: #dc2626; }
+.fmap-status-chip .fmap-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .fmap-machine-dot     { animation: none; }
   .fmap-alert-dot       { animation: none; }
+  .fmap-live-dot        { animation: none; }
   .fmap-machine         { transition: none; }
   .fmap-alert-card      { transition: none; }
+  .fmap-status-chip     { transition: none; }
 }
 
 /* Responsive */
@@ -3710,7 +3837,12 @@
 
                     <!-- Floor plan canvas -->
                     <div class="fmap-canvas">
-                        <span class="fmap-canvas-label">ЦЕХ №1 &mdash; МЕТАЛЛООБРАБОТКА &nbsp;&nbsp; ЗОНА A</span>
+                        <div class="fmap-canvas-header">
+                            <span class="fmap-canvas-label">ЦЕХ №1 &mdash; МЕТАЛЛООБРАБОТКА</span>
+                            <span class="fmap-canvas-meta fmap-live-badge">
+                                <span class="fmap-live-dot"></span>LIVE
+                            </span>
+                        </div>
 
                         <!-- Floating alert card -->
                         <div class="fmap-alert-card" id="fmap-alert-card">
@@ -3721,44 +3853,88 @@
                             </div>
                         </div>
 
-                        <!-- Zone A — row 1 -->
-                        <div class="fmap-row">
-                            <div class="fmap-machine" id="fmap-m0">
-                                <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-                                <span class="fmap-machine-label">ТВ-1</span>
-                                <span class="fmap-machine-dot"></span>
-                            </div>
-                            <div class="fmap-machine" id="fmap-m1">
-                                <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-                                <span class="fmap-machine-label">ФР-2</span>
-                                <span class="fmap-machine-dot"></span>
-                            </div>
-                            <div class="fmap-machine" id="fmap-m2">
-                                <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-                                <span class="fmap-machine-label">КЛ-3</span>
-                                <span class="fmap-machine-dot"></span>
-                            </div>
-                        </div>
+                        <!-- 2×2 zone grid -->
+                        <div class="fmap-floor">
 
-                        <div class="fmap-divider"></div>
+                            <!-- Zone A: Токарная (top-left, 1.5fr) -->
+                            <div class="fmap-zone">
+                                <span class="fmap-zone-label">Зона А · Токарная</span>
+                                <div class="fmap-zone-machines">
+                                    <div class="fmap-machine" id="fmap-m0">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                                        <span class="fmap-machine-label">ТВ-1</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                    <div class="fmap-machine" id="fmap-m1">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                                        <span class="fmap-machine-label">ФР-2</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                    <div class="fmap-machine" id="fmap-m2">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><circle cx="18" cy="12.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                        <span class="fmap-machine-label">КЛ-3</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <!-- Zone B — row 2 -->
-                        <div class="fmap-row">
-                            <div class="fmap-machine" id="fmap-m3">
-                                <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-                                <span class="fmap-machine-label">НМ-1</span>
-                                <span class="fmap-machine-dot"></span>
+                            <!-- Zone B: Сварка (top-right, 1fr) -->
+                            <div class="fmap-zone">
+                                <span class="fmap-zone-label">Зона Б · Сварка</span>
+                                <div class="fmap-zone-machines">
+                                    <div class="fmap-machine" id="fmap-m3">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                        <span class="fmap-machine-label">СВ-1</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                    <div class="fmap-machine" id="fmap-m4">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                        <span class="fmap-machine-label">СВ-2</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="fmap-machine" id="fmap-m4">
-                                <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-                                <span class="fmap-machine-label">СВ-2</span>
-                                <span class="fmap-machine-dot"></span>
+
+                            <!-- Zone C: Фрезерная (bottom-left, 1.5fr) -->
+                            <div class="fmap-zone">
+                                <span class="fmap-zone-label">Зона В · Фрезерная</span>
+                                <div class="fmap-zone-machines">
+                                    <div class="fmap-machine" id="fmap-m5">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="16" x2="12" y2="21"/></svg>
+                                        <span class="fmap-machine-label">НМ-1</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                    <div class="fmap-machine" id="fmap-m6">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="16" width="18" height="5" rx="1"/><line x1="12" y1="4" x2="12" y2="16"/><polyline points="8 12 12 16 16 12"/><line x1="6" y1="4" x2="18" y2="4"/></svg>
+                                        <span class="fmap-machine-label">ПР-1</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                    <div class="fmap-machine" id="fmap-m7">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                                        <span class="fmap-machine-label">ТВ-2</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="fmap-machine" id="fmap-m5">
-                                <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="9" rx="2"/><line x1="6" y1="8" x2="6" y2="17"/><line x1="12" y1="8" x2="12" y2="17"/><path d="M5 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-                                <span class="fmap-machine-label">ТВ-2</span>
-                                <span class="fmap-machine-dot"></span>
+
+                            <!-- Zone D: Инструментальный склад (bottom-right, 1fr) -->
+                            <div class="fmap-zone">
+                                <span class="fmap-zone-label">Зона Г · Инструмент</span>
+                                <div class="fmap-zone-machines">
+                                    <div class="fmap-machine" id="fmap-m8">
+                                        <svg class="fmap-machine-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                        <span class="fmap-machine-label">ОЦ-1</span>
+                                        <span class="fmap-machine-dot"></span>
+                                    </div>
+                                </div>
                             </div>
+
+                        </div><!-- /.fmap-floor -->
+
+                        <!-- Scale bar -->
+                        <div class="fmap-scale">
+                            <span class="fmap-scale-line"></span>
+                            <span class="fmap-scale-text">10 м</span>
                         </div>
                     </div><!-- /.fmap-canvas -->
 
@@ -4899,10 +5075,11 @@
       const fmapSection = document.getElementById('floormap-section');
       if (fmapSection) {
         const FMAP_SCENARIOS = [
-          { machineIdx: 1, state: 'alarm', title: 'Авария',      sub: 'ФР-2 · Аварийный останов',    dotColor: '#ef4444', borderColor: '#fecaca' },
-          { machineIdx: 4, state: 'maint', title: 'Плановое ТО', sub: 'СВ-2 · Техническое обслуживание', dotColor: '#f59e0b', borderColor: '#fde68a' },
-          { machineIdx: 0, state: 'alarm', title: 'Авария',      sub: 'ТВ-1 · Перегрев двигателя',   dotColor: '#ef4444', borderColor: '#fecaca' },
-          { machineIdx: 3, state: 'maint', title: 'Плановое ТО', sub: 'НМ-1 · Замена расходников',   dotColor: '#f59e0b', borderColor: '#fde68a' },
+          { machineIdx: 1, state: 'alarm', title: 'Авария',      sub: 'ФР-2 · Аварийный останов',         dotColor: '#ef4444', borderColor: '#fecaca' },
+          { machineIdx: 4, state: 'maint', title: 'Плановое ТО', sub: 'СВ-2 · Техническое обслуживание',  dotColor: '#f59e0b', borderColor: '#fde68a' },
+          { machineIdx: 6, state: 'alarm', title: 'Авария',      sub: 'ПР-1 · Превышение нагрузки',       dotColor: '#ef4444', borderColor: '#fecaca' },
+          { machineIdx: 3, state: 'maint', title: 'Плановое ТО', sub: 'СВ-1 · Замена электродов',         dotColor: '#f59e0b', borderColor: '#fde68a' },
+          { machineIdx: 0, state: 'alarm', title: 'Авария',      sub: 'ТВ-1 · Перегрев двигателя',        dotColor: '#ef4444', borderColor: '#fecaca' },
         ];
 
         const fmapMachines   = Array.from(fmapSection.querySelectorAll('.fmap-machine'));
@@ -4915,6 +5092,21 @@
 
         function fmapResetMachine(idx) {
           fmapMachines[idx].classList.remove('fmap-machine--alarm', 'fmap-machine--maint');
+        }
+
+        function fmapUpdateStatus() {
+          let alarm = 0, maint = 0;
+          fmapMachines.forEach(m => {
+            if (m.classList.contains('fmap-machine--alarm')) alarm++;
+            if (m.classList.contains('fmap-machine--maint')) maint++;
+          });
+          const ok = fmapMachines.length - alarm - maint;
+          const elOk    = document.getElementById('fmap-s-ok');
+          const elMaint = document.getElementById('fmap-s-maint');
+          const elAlarm = document.getElementById('fmap-s-alarm');
+          if (elOk)    elOk.textContent    = ok;
+          if (elMaint) elMaint.textContent = maint;
+          if (elAlarm) elAlarm.textContent = alarm;
         }
 
         function fmapRunCycle() {
@@ -4932,11 +5124,12 @@
             fmapMachines[s.machineIdx].classList.add(
               s.state === 'alarm' ? 'fmap-machine--alarm' : 'fmap-machine--maint'
             );
+            fmapUpdateStatus();
 
             // Update card
-            fmapAlertTitle.textContent   = s.title;
-            fmapAlertSub.textContent     = s.sub;
-            fmapAlertDot.style.background = s.dotColor;
+            fmapAlertTitle.textContent      = s.title;
+            fmapAlertSub.textContent        = s.sub;
+            fmapAlertDot.style.background   = s.dotColor;
             fmapAlertCard.style.borderColor = s.borderColor;
 
             // Show card
@@ -4953,6 +5146,7 @@
           fmapAlertTitle.textContent = 'Авария';
           fmapAlertSub.textContent   = 'ФР-2 · Аварийный останов';
           fmapAlertCard.classList.add('fmap-alert-card--visible');
+          fmapUpdateStatus();
         } else {
           new IntersectionObserver((entries, obs) => {
             if (entries[0].isIntersecting) {
