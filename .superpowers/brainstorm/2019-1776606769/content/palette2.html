@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Палитра</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f5f5f7; color: #1d1d1f; padding: 2rem; }
+h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem; }
+.sub { color: #86868b; margin-bottom: 1.5rem; font-size: 0.9rem; }
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.card {
+  background: #fff; border: 2px solid #d1d1d6; border-radius: 14px;
+  overflow: hidden; cursor: pointer; transition: all 0.15s;
+}
+.card:hover { border-color: #0071e3; transform: translateY(-2px); }
+.card.selected { border-color: #0071e3; box-shadow: 0 0 0 3px rgba(0,113,227,0.15); }
+.strip { display: flex; height: 64px; }
+.strip span { flex: 1; display: block; }
+.body { padding: 14px 16px; }
+.name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+.tags { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.tag { font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 20px; }
+.desc { font-size: 13px; color: #555; line-height: 1.55; }
+.indicator { text-align: center; margin-top: 1.5rem; font-size: 13px; color: #86868b; }
+.indicator b { color: #0071e3; }
+</style>
+</head>
+<body>
+<h2>Направление цвета</h2>
+<p class="sub">Сейчас всё #2563EB — выбери куда идём. Кликни карточку.</p>
+
+<div class="cards" id="cards">
+
+  <div class="card" data-choice="indigo-slate" onclick="select(this)">
+    <div class="strip">
+      <span style="background:#4338ca"></span>
+      <span style="background:#6366f1"></span>
+      <span style="background:#818cf8"></span>
+      <span style="background:#1e293b"></span>
+      <span style="background:#f8fafc"></span>
+    </div>
+    <div class="body">
+      <div class="name">Indigo + Slate</div>
+      <div class="tags">
+        <span class="tag" style="background:#ede9fe;color:#4338ca">Технично</span>
+        <span class="tag" style="background:#f1f5f9;color:#475569">Серьёзно</span>
+      </div>
+      <div class="desc">Синий смягчается в индиго, фон уходит в холодный серый. Как Linear или Vercel. Убирает «корпоративность» без смены характера.</div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="blue-amber" onclick="select(this)">
+    <div class="strip">
+      <span style="background:#1e40af"></span>
+      <span style="background:#2563eb"></span>
+      <span style="background:#f59e0b"></span>
+      <span style="background:#fbbf24"></span>
+      <span style="background:#0f172a"></span>
+    </div>
+    <div class="body">
+      <div class="name">Blue + Amber</div>
+      <div class="tags">
+        <span class="tag" style="background:#fef3c7;color:#b45309">Энергично</span>
+        <span class="tag" style="background:#dbeafe;color:#1d4ed8">Производство</span>
+      </div>
+      <div class="desc">Синий остаётся основным, добавляется тёплый янтарный акцент для CTA. Ассоциируется с промышленностью и техникой.</div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="slate-green" onclick="select(this)">
+    <div class="strip">
+      <span style="background:#0f172a"></span>
+      <span style="background:#1e293b"></span>
+      <span style="background:#334155"></span>
+      <span style="background:#10b981"></span>
+      <span style="background:#d1fae5"></span>
+    </div>
+    <div class="body">
+      <div class="name">Dark Slate + Emerald</div>
+      <div class="tags">
+        <span class="tag" style="background:#d1fae5;color:#065f46">Надёжно</span>
+        <span class="tag" style="background:#f1f5f9;color:#334155">Зрелость</span>
+      </div>
+      <div class="desc">Тёмный нейтральный фон + зелёный акцент. Читается как «промышленная надёжность». Сильно отличается от конкурентов на рынке ТОиР.</div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="zinc-orange" onclick="select(this)">
+    <div class="strip">
+      <span style="background:#18181b"></span>
+      <span style="background:#27272a"></span>
+      <span style="background:#52525b"></span>
+      <span style="background:#ea580c"></span>
+      <span style="background:#fafaf9"></span>
+    </div>
+    <div class="body">
+      <div class="name">Zinc + Orange</div>
+      <div class="tags">
+        <span class="tag" style="background:#ffedd5;color:#9a3412">Дерзко</span>
+        <span class="tag" style="background:#f4f4f5;color:#3f3f46">Современно</span>
+      </div>
+      <div class="desc">Нейтральный цинковый фон + оранжевый акцент. Максимальный разрыв с текущим дизайном. Выглядит как продукт, а не SaaS-шаблон.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="indicator" id="indicator">Кликни карточку, затем ответь в терминале</div>
+
+<script>
+let selected = null;
+function select(el) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selected = el.dataset.choice;
+  document.getElementById('indicator').innerHTML = 'Выбрано: <b>' + el.querySelector('.name').textContent + '</b> — напиши в терминале';
+  // notify server if helper available
+  if (window.__brainstorm_select) window.__brainstorm_select(el);
+}
+</script>
+</body>
+</html>

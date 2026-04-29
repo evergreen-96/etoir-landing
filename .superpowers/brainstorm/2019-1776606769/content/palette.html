@@ -1,0 +1,123 @@
+<style>
+.palette-card {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.palette-strip {
+  display: flex;
+  height: 56px;
+}
+.palette-strip span {
+  flex: 1;
+}
+.palette-meta {
+  padding: 12px 16px 4px;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+}
+.palette-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+</style>
+
+<h2>Направление цвета</h2>
+<p class="subtitle">Сейчас всё #2563EB — выбери куда идём</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="indigo-slate" onclick="toggleSelect(this)">
+    <div class="card-image palette-card">
+      <div class="palette-strip">
+        <span style="background:#4338ca"></span>
+        <span style="background:#6366f1"></span>
+        <span style="background:#1e293b"></span>
+        <span style="background:#f8fafc"></span>
+        <span style="background:#e2e8f0"></span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="palette-meta">
+        <div class="palette-name">Indigo + Slate</div>
+        <span class="tag" style="background:#ede9fe;color:#4338ca">Технично</span>
+        <span class="tag" style="background:#f1f5f9;color:#475569;margin-left:4px">Серьёзно</span>
+        <p>Синий смягчается в индиго, фон уходит в холодный серый. Как Linear или Vercel. Убирает "корпоративность" без смены характера.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="blue-amber" onclick="toggleSelect(this)">
+    <div class="card-image palette-card">
+      <div class="palette-strip">
+        <span style="background:#2563eb"></span>
+        <span style="background:#1e40af"></span>
+        <span style="background:#f59e0b"></span>
+        <span style="background:#fffbeb"></span>
+        <span style="background:#0f172a"></span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="palette-meta">
+        <div class="palette-name">Blue + Amber</div>
+        <span class="tag" style="background:#fef3c7;color:#b45309">Энергично</span>
+        <span class="tag" style="background:#dbeafe;color:#1d4ed8;margin-left:4px">Производство</span>
+        <p>Синий остаётся основным — к нему добавляется тёплый янтарный акцент для CTA. Ассоциируется с промышленностью и техникой.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="slate-green" onclick="toggleSelect(this)">
+    <div class="card-image palette-card">
+      <div class="palette-strip">
+        <span style="background:#0f172a"></span>
+        <span style="background:#1e293b"></span>
+        <span style="background:#10b981"></span>
+        <span style="background:#d1fae5"></span>
+        <span style="background:#f8fafc"></span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="palette-meta">
+        <div class="palette-name">Dark Slate + Emerald</div>
+        <span class="tag" style="background:#d1fae5;color:#065f46">Надёжно</span>
+        <span class="tag" style="background:#f1f5f9;color:#334155;margin-left:4px">Зрелость</span>
+        <p>Тёмный нейтральный фон + зелёный акцент. Читается как "промышленная надёжность". Сильно отличается от конкурентов на рынке ТОиР.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="neutral-orange" onclick="toggleSelect(this)">
+    <div class="card-image palette-card">
+      <div class="palette-strip">
+        <span style="background:#18181b"></span>
+        <span style="background:#27272a"></span>
+        <span style="background:#ea580c"></span>
+        <span style="background:#fff7ed"></span>
+        <span style="background:#fafaf9"></span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="palette-meta">
+        <div class="palette-name">Zinc + Orange</div>
+        <span class="tag" style="background:#ffedd5;color:#9a3412">Дерзко</span>
+        <span class="tag" style="background:#f4f4f5;color:#3f3f46;margin-left:4px">Современно</span>
+        <p>Нейтральный цинковый фон + оранжевый акцент. Максимальный разрыв с текущим дизайном. Выглядит как продукт, а не как SaaS-шаблон.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px;">Рекомендую <strong>Indigo + Slate</strong> — минимальный риск, максимальный отрыв от "AI-feel". Но Blue + Amber хорошо работает для промышленной аудитории.</p>

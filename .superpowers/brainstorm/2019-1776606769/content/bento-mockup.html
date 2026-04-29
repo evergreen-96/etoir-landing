@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Bento mockup</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f5f5f7; color: #1d1d1f; padding: 2rem; }
+h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
+.sub { color: #86868b; margin-bottom: 1.5rem; font-size: 0.875rem; }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+/* BEFORE */
+.before {
+  background: #fff;
+  border: 2px solid #fca5a5;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.before-label, .after-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; padding: 8px 14px;
+}
+.before-label { background: #fef2f2; color: #b91c1c; border-bottom: 1px solid #fca5a5; }
+.before-inner { padding: 14px; background: #f9fafb; }
+.b-badge { display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
+.b-title { font-size: 14px; font-weight: 700; text-align: center; margin-bottom: 12px; color: #111; }
+.b-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+.b-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; text-align: center; }
+.b-icon { width: 28px; height: 28px; background: #dbeafe; border-radius: 50%; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.b-card-title { font-size: 10px; font-weight: 600; color: #374151; margin-bottom: 2px; }
+.b-card-text { font-size: 9px; color: #9ca3af; }
+
+/* AFTER */
+.after {
+  background: #0f172a;
+  border: 2px solid #10b981;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.after-label { background: #064e3b; color: #34d399; border-bottom: 1px solid #065f46; }
+.after-inner { padding: 14px; }
+.a-eyebrow { font-size: 10px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+.a-title { font-size: 16px; font-weight: 800; color: #f8fafc; margin-bottom: 14px; line-height: 1.25; }
+.a-title span { color: #10b981; }
+
+/* Bento grid */
+.bento { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto; gap: 7px; }
+.b { border-radius: 10px; padding: 11px 12px; }
+.b1 { background: #1e293b; grid-column: 1 / 3; grid-row: 1; }
+.b2 { background: #065f46; grid-column: 3; grid-row: 1 / 3; display: flex; flex-direction: column; justify-content: flex-end; }
+.b3 { background: #1e293b; grid-column: 1; grid-row: 2; }
+.b4 { background: #14532d; grid-column: 2; grid-row: 2; }
+
+.b-h { font-size: 11px; font-weight: 700; color: #e2e8f0; margin-bottom: 3px; }
+.b-p { font-size: 9.5px; color: #64748b; line-height: 1.4; }
+.b2 .b-h { color: #d1fae5; }
+.b2 .b-p { color: #6ee7b7; }
+.b4 .b-h { color: #bbf7d0; }
+.em-num { font-size: 22px; font-weight: 800; color: #10b981; margin-bottom: 2px; }
+
+/* Labels */
+.compare-note { font-size: 12px; color: #64748b; margin-top: 12px; line-height: 1.6; }
+.compare-note li { margin-left: 16px; margin-bottom: 3px; }
+.pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+.bad { background: #fef2f2; color: #b91c1c; }
+.good { background: #d1fae5; color: #065f46; }
+
+.indicator { text-align: center; margin-top: 1.5rem; font-size: 13px; color: #86868b; }
+</style>
+</head>
+<body>
+<h2>До и после: секция «Возможности»</h2>
+<p class="sub">Слева — текущий AI-шаблон. Справа — bento-сетка + новая палитра.</p>
+
+<div class="split">
+
+  <!-- BEFORE -->
+  <div class="before">
+    <div class="before-label">✗ Сейчас</div>
+    <div class="before-inner">
+      <div style="text-align:center;margin-bottom:10px">
+        <div class="b-badge">Возможности</div>
+        <div class="b-title">Всё что нужно для ТОиР</div>
+      </div>
+      <div class="b-grid">
+        <div class="b-card">
+          <div class="b-icon">📋</div>
+          <div class="b-card-title">Наряды</div>
+          <div class="b-card-text">Создавайте и отслеживайте</div>
+        </div>
+        <div class="b-card">
+          <div class="b-icon">⚙️</div>
+          <div class="b-card-title">Оборудование</div>
+          <div class="b-card-text">Реестр активов</div>
+        </div>
+        <div class="b-card">
+          <div class="b-icon">📊</div>
+          <div class="b-card-title">Аналитика</div>
+          <div class="b-card-text">Отчёты и графики</div>
+        </div>
+        <div class="b-card">
+          <div class="b-icon">🤖</div>
+          <div class="b-card-title">ИИ</div>
+          <div class="b-card-text">Умные подсказки</div>
+        </div>
+        <div class="b-card">
+          <div class="b-icon">📱</div>
+          <div class="b-card-title">Мобайл</div>
+          <div class="b-card-text">Доступ с телефона</div>
+        </div>
+        <div class="b-card">
+          <div class="b-icon">🔔</div>
+          <div class="b-card-title">Уведомления</div>
+          <div class="b-card-text">Telegram и MAX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="after">
+    <div class="after-label">✓ Bento + Dark Slate + Emerald</div>
+    <div class="after-inner">
+      <div class="a-eyebrow">Для производственных команд</div>
+      <div class="a-title">Меньше простоев.<br><span>Больше контроля.</span></div>
+      <div class="bento">
+        <div class="b b1">
+          <div class="b-h">Наряды и плановое ТО</div>
+          <div class="b-p">Создавайте, назначайте и закрывайте заявки — прямо со смартфона, без бумаг и Excel.</div>
+        </div>
+        <div class="b b2">
+          <div class="em-num">−47%</div>
+          <div class="b-h">среднее снижение простоев у клиентов</div>
+        </div>
+        <div class="b b3">
+          <div class="b-h">Карта цеха</div>
+          <div class="b-p">Всё оборудование с историей ремонтов.</div>
+        </div>
+        <div class="b b4">
+          <div class="b-h">ИИ-диагностика</div>
+          <div class="b-p">Предсказывает отказ до аварии.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ul class="compare-note">
+  <li><span class="pill bad">Убрано</span>: синий бейдж «Возможности», иконки-кружки, 6 одинаковых карточек</li>
+  <li><span class="pill good">Добавлено</span>: блок с реальной цифрой (-47%), разный размер ячеек, конкретный заголовок вместо шаблонного</li>
+</ul>
+
+<div class="indicator">Это выглядит в нужном направлении? Ответь в терминале →</div>
+</body>
+</html>

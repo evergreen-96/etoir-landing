@@ -999,47 +999,26 @@
 
         .advantages-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
         }
 
         .advantage-item {
-            display: flex;
-            gap: 20px;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 28px;
-            border: 1px solid var(--border);
-            transition: all var(--transition);
+            padding: 32px 28px 32px 0;
+            border-top: 1px solid var(--border);
         }
 
-        .advantage-item:hover {
-            transform: translateX(4px);
-            box-shadow: var(--card-shadow);
-            border-color: var(--primary-light);
-        }
-
-        .advantage-check {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--success);
-        }
-
-        .advantage-check svg {
-            width: 22px;
-            height: 22px;
+        .advantage-item:nth-child(3n+2),
+        .advantage-item:nth-child(3n+3) {
+            padding-left: 28px;
+            border-left: 1px solid var(--border);
         }
 
         .advantage-item h3 {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
 
         .advantage-item p {
@@ -1502,6 +1481,12 @@
 
             .advantages-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .advantage-item:nth-child(3n+2),
+            .advantage-item:nth-child(3n+3) {
+                padding-left: 0;
+                border-left: none;
             }
 
             .form-row {
@@ -3858,63 +3843,33 @@
 
                 <div class="advantages-grid">
                     <div class="advantage-item fade-up">
-                        <div class="advantage-check">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </div>
-                        <div>
-                            <h3>Подробный отчет от искусственного интеллекта</h3>
-                            <p>Система  анализирует данные о ремонтах, простоях и работах и автоматически формирует понятные отчёты. Руководитель сразу видит причины отказов, ключевые проблемы и точки для оптимизации обслуживания.</p>
-                        </div>
+                        <h3>Отчёты от ИИ</h3>
+                        <p>Система анализирует ремонты, простои и работы — и формирует понятные отчёты. Причины отказов и точки оптимизации видны сразу.</p>
                     </div>
 
                     <div class="advantage-item fade-up">
-                        <div class="advantage-check">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </div>
-                        <div>
-                            <h3>Автоматическое создание задач</h3>
-                            <p>Система сама создает запланированные задачи по расписанию. Ни одно ТО не будет пропущено — даже если ответственный в отпуске</p>
-                        </div>
+                        <h3>Автоматическое создание задач</h3>
+                        <p>Система сама создаёт плановые задачи по расписанию. Ни одно ТО не будет пропущено — даже если ответственный в отпуске.</p>
                     </div>
 
                     <div class="advantage-item fade-up">
-                        <div class="advantage-check">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </div>
-                        <div>
-                            <h3>Календарь плановых работ</h3>
-                            <p>Все запланированные задачи и обслуживания отображаются в едином календаре. Команда видит, какие работы и когда должны быть выполнены, что помогает  не пропустить их</p>
-                        </div>
+                        <h3>Календарь плановых работ</h3>
+                        <p>Все задачи и обслуживания в едином календаре. Команда видит, что и когда нужно сделать.</p>
                     </div>
 
                     <div class="advantage-item fade-up">
-                        <div class="advantage-check">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </div>
-                        <div>
-                            <h3>История обслуживания</h3>
-                            <p>Вся история ремонтов и обслуживания хранится в одном месте и всегда доступна для анализа</p>
-                        </div>
+                        <h3>История обслуживания</h3>
+                        <p>Вся история ремонтов хранится в одном месте и всегда доступна для анализа.</p>
                     </div>
 
                     <div class="advantage-item fade-up">
-                        <div class="advantage-check">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </div>
-                        <div>
-                            <h3>Простота и удобство использования</h3>
-                            <p>Интерфейс системы интуитивно понятен и не перегружен лишними функциями. Освоить работу можно быстро, без длительного обучения — в отличие от сложных систем учета</p>
-                        </div>
+                        <h3>Простой интерфейс</h3>
+                        <p>Без перегруза функциями. Освоить работу можно за день — в отличие от тяжёлых ERP-систем.</p>
                     </div>
 
                     <div class="advantage-item fade-up">
-                        <div class="advantage-check">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </div>
-                        <div>
-                            <h3>Печатные формы</h3>
-                            <p>Формирование печатных заданий для исполнителей работ. Для тех кому важен бумажный докуметооборот</p>
-                        </div>
+                        <h3>Печатные формы</h3>
+                        <p>Печатные задания для исполнителей — для тех, кому важен бумажный документооборот.</p>
                     </div>
                 </div>
             </div>

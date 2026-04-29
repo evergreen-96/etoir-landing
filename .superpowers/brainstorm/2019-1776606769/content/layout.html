@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Вёрстка секций</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f5f5f7; color: #1d1d1f; padding: 2rem; }
+h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem; }
+.sub { color: #86868b; margin-bottom: 1.5rem; font-size: 0.9rem; }
+
+.options { display: flex; flex-direction: column; gap: 1.25rem; }
+.option {
+  background: #fff; border: 2px solid #d1d1d6; border-radius: 14px;
+  cursor: pointer; transition: all 0.15s; overflow: hidden;
+}
+.option:hover { border-color: #10b981; }
+.option.selected { border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.15); }
+.opt-header { display: flex; align-items: center; gap: 12px; padding: 14px 18px 10px; }
+.letter {
+  background: #f1f5f9; color: #64748b; width: 28px; height: 28px;
+  border-radius: 7px; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; flex-shrink: 0;
+}
+.option.selected .letter { background: #10b981; color: #fff; }
+.opt-title { font-weight: 700; font-size: 0.95rem; }
+.opt-desc { font-size: 12.5px; color: #64748b; margin-top: 1px; }
+
+/* Mockup styles */
+.mock { margin: 0 18px 16px; border-radius: 10px; overflow: hidden; border: 1px solid #e2e8f0; background: #0f172a; }
+
+/* A: text-left / text-right alternating */
+.mock-a { display: grid; grid-template-columns: 1fr 1fr; min-height: 90px; }
+.mock-a-text { padding: 14px 16px; }
+.mock-a-line { height: 8px; border-radius: 4px; background: #1e293b; margin-bottom: 6px; }
+.mock-a-line.w60 { width: 60%; }
+.mock-a-line.w80 { width: 80%; }
+.mock-a-line.w40 { width: 40%; background: #10b981; }
+.mock-a-img { background: #1e3a5f; display: flex; align-items: center; justify-content: center; }
+.mock-a-img span { font-size: 28px; opacity: 0.5; }
+
+/* B: spotlight + small grid */
+.mock-b { padding: 14px 16px; }
+.mock-b-big { background: #1e293b; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; }
+.mock-b-big .line { height: 8px; border-radius: 4px; background: #334155; margin-bottom: 5px; }
+.mock-b-big .line.accent { background: #10b981; width: 40%; }
+.mock-b-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+.mock-b-card { background: #1e293b; border-radius: 6px; height: 36px; }
+
+/* C: editorial/varied */
+.mock-c { padding: 14px 16px; }
+.mock-c-row1 { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-bottom: 8px; }
+.mock-c-row2 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; }
+.mock-c-block { background: #1e293b; border-radius: 7px; }
+.mock-c-block.tall { height: 60px; }
+.mock-c-block.short { height: 32px; }
+.mock-c-block.accent { background: #065f46; }
+
+.indicator { text-align: center; margin-top: 1.5rem; font-size: 13px; color: #86868b; }
+.indicator b { color: #10b981; }
+</style>
+</head>
+<body>
+<h2>Как разбить монотонный ритм секций</h2>
+<p class="sub">Сейчас каждая секция: центр → 3 колонки. Выбери другую структуру.</p>
+
+<div class="options" id="opts">
+
+  <div class="option" data-choice="alternating" onclick="sel(this)">
+    <div class="opt-header">
+      <div class="letter">A</div>
+      <div>
+        <div class="opt-title">Чередование текст-лево / текст-право</div>
+        <div class="opt-desc">Каждая feature-секция: текст с одной стороны, скриншот с другой. Чередуются. Как Linear, Notion, Loom.</div>
+      </div>
+    </div>
+    <div class="mock">
+      <div class="mock-a">
+        <div class="mock-a-text">
+          <div class="mock-a-line w60"></div>
+          <div class="mock-a-line w80"></div>
+          <div class="mock-a-line w40"></div>
+        </div>
+        <div class="mock-a-img"><span>📊</span></div>
+      </div>
+      <div style="height:1px;background:#1e293b"></div>
+      <div class="mock-a" style="direction:rtl">
+        <div class="mock-a-text" style="direction:ltr">
+          <div class="mock-a-line w60"></div>
+          <div class="mock-a-line w80"></div>
+          <div class="mock-a-line w40"></div>
+        </div>
+        <div class="mock-a-img"><span>⚙️</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="spotlight" onclick="sel(this)">
+    <div class="opt-header">
+      <div class="letter">B</div>
+      <div>
+        <div class="opt-title">Spotlight + мелкая сетка</div>
+        <div class="opt-desc">Главная фича — большой блок на всю ширину. Остальные — компактная 3-колонная сетка под ним. Разная плотность.</div>
+      </div>
+    </div>
+    <div class="mock">
+      <div class="mock-b">
+        <div class="mock-b-big">
+          <div class="line" style="height:8px;border-radius:4px;background:#334155;width:55%;margin-bottom:5px"></div>
+          <div class="line" style="height:8px;border-radius:4px;background:#10b981;width:35%;margin-bottom:5px"></div>
+          <div class="line" style="height:8px;border-radius:4px;background:#1e3a5f;width:70%"></div>
+        </div>
+        <div class="mock-b-grid">
+          <div class="mock-b-card"></div>
+          <div class="mock-b-card"></div>
+          <div class="mock-b-card"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="editorial" onclick="sel(this)">
+    <div class="opt-header">
+      <div class="letter">C</div>
+      <div>
+        <div class="opt-title">Редакционная сетка (bento)</div>
+        <div class="opt-desc">Блоки разного размера, как в Raycast или Arc. Нет двух одинаковых рядов. Самый нестандартный вид.</div>
+      </div>
+    </div>
+    <div class="mock">
+      <div class="mock-c">
+        <div class="mock-c-row1">
+          <div class="mock-c-block tall accent"></div>
+          <div class="mock-c-block tall"></div>
+        </div>
+        <div class="mock-c-row2">
+          <div class="mock-c-block short"></div>
+          <div class="mock-c-block short accent" style="opacity:0.6"></div>
+          <div class="mock-c-block short"></div>
+          <div class="mock-c-block short"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="indicator" id="ind">Кликни вариант, затем ответь в терминале</div>
+
+<script>
+function sel(el) {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('ind').innerHTML = 'Выбрано: <b>' + el.querySelector('.opt-title').textContent + '</b> — напиши в терминале';
+  if (window.__brainstorm_select) window.__brainstorm_select(el);
+}
+</script>
+</body>
+</html>
