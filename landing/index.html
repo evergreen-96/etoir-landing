@@ -3186,6 +3186,28 @@
   .industries-grid { grid-template-columns: 1fr; gap: 16px; }
   .industry-card { padding: 24px; }
 }
+
+/* ROI calculator */
+.roi-section{background:linear-gradient(135deg,var(--bg) 0%,var(--primary-light) 100%);padding:80px 0}
+.roi-section .section-subtitle{text-align:center;color:var(--text-secondary);max-width:720px;margin:12px auto 0}
+.roi-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin:48px auto 0;align-items:start;max-width:1100px}
+.roi-field{display:block;margin-bottom:28px}
+.roi-label{display:block;font-weight:500;color:var(--text);margin-bottom:8px}
+.roi-field input[type="range"]{width:100%;height:6px;background:#cbd5e1;border-radius:3px;outline:none;-webkit-appearance:none;appearance:none}
+.roi-field input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;background:var(--primary);border-radius:50%;cursor:pointer;box-shadow:0 2px 6px rgba(37,99,235,.4)}
+.roi-field input[type="range"]::-moz-range-thumb{width:20px;height:20px;background:var(--primary);border:none;border-radius:50%;cursor:pointer}
+.roi-output{display:inline-block;margin-top:8px;font-weight:600;color:var(--primary)}
+.roi-result{background:var(--card-bg);border-radius:20px;padding:40px;box-shadow:var(--card-shadow);border:1px solid var(--border)}
+.roi-result-label{font-size:.875rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.roi-result-total{font-size:2.75rem;font-weight:700;color:var(--primary);margin-bottom:24px;line-height:1.1;font-feature-settings:"tnum"}
+.roi-breakdown{list-style:none;padding:0;margin:0 0 24px}
+.roi-breakdown li{padding:6px 0;color:var(--text-secondary)}
+.roi-payback{padding:16px;background:#f0fdf4;border-radius:12px;color:#166534;margin-bottom:24px}
+.roi-payback strong{color:#15803d}
+.roi-cta{display:inline-block;margin-bottom:16px;background:var(--primary);color:#fff;padding:14px 28px;border-radius:var(--radius-sm);font-weight:600;text-decoration:none;transition:background .2s}
+.roi-cta:hover{background:var(--primary-dark)}
+.roi-methodology-link{background:none;border:none;color:var(--primary);cursor:pointer;text-decoration:underline;font-size:.875rem;padding:0;display:block}
+@media (max-width:768px){.roi-grid{grid-template-columns:1fr;gap:32px}.roi-result{padding:28px}.roi-result-total{font-size:2rem}}
     </style>
 </head>
 <body>
@@ -3419,6 +3441,45 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ROI CALCULATOR ===== -->
+        <section id="roi-calculator" class="roi-section" aria-label="ROI-калькулятор">
+            <div class="container">
+                <h2 class="section-title">Посчитайте, сколько эТОИР сэкономит вашему заводу</h2>
+                <p class="section-subtitle">Калькулятор на основе средних показателей внедрений в РФ</p>
+                <div class="roi-grid">
+                    <div class="roi-inputs">
+                        <label class="roi-field">
+                            <span class="roi-label">Часов простоев в месяц по парку</span>
+                            <input type="range" id="roi-hours" min="0" max="500" value="40" step="5">
+                            <output class="roi-output" data-for="roi-hours">40 ч</output>
+                        </label>
+                        <label class="roi-field">
+                            <span class="roi-label">Средняя стоимость часа простоя, ₽</span>
+                            <input type="range" id="roi-cost" min="5000" max="500000" value="50000" step="5000">
+                            <output class="roi-output" data-for="roi-cost">50 000 ₽</output>
+                        </label>
+                        <label class="roi-field">
+                            <span class="roi-label">Единиц критичного оборудования</span>
+                            <input type="range" id="roi-units" min="1" max="500" value="30" step="1">
+                            <output class="roi-output" data-for="roi-units">30 шт</output>
+                        </label>
+                    </div>
+                    <div class="roi-result">
+                        <div class="roi-result-label">Годовая экономия</div>
+                        <div class="roi-result-total" id="roi-total">— ₽</div>
+                        <ul class="roi-breakdown">
+                            <li>− <span id="roi-downtime">—</span> ₽ на простоях</li>
+                            <li>− <span id="roi-spares">—</span> ₽ на запчастях</li>
+                            <li>− <span id="roi-labor">—</span> ₽ на трудозатратах</li>
+                        </ul>
+                        <div class="roi-payback">Окупаемость эТОИР: <strong id="roi-payback">—</strong> месяцев</div>
+                        <a href="#contact" class="roi-cta">Узнать точные цифры для вашего завода</a>
+                        <button type="button" class="roi-methodology-link" aria-controls="roi-methodology">Откуда эти цифры?</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -5246,6 +5307,48 @@
         }
       }
 
+    })();
+    </script>
+
+    <!-- ===== ROI calculator JS ===== -->
+    <script>
+    (function(){
+      const ROI_CONFIG={downtimeReductionPct:.38,sparesAvgCostPerUnit:80000,sparesReductionPct:.05,laborHourlyRate:1500,laborWasteRatio:.25,etoirAnnualCost:1080000};
+      function formatRub(n){return new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0}).format(n)}
+      function calculateRoi(){
+        const h=parseInt(document.getElementById('roi-hours').value,10),
+              c=parseInt(document.getElementById('roi-cost').value,10),
+              u=parseInt(document.getElementById('roi-units').value,10);
+        const d=h*12*c*ROI_CONFIG.downtimeReductionPct,
+              s=u*ROI_CONFIG.sparesAvgCostPerUnit*ROI_CONFIG.sparesReductionPct,
+              l=h*12*ROI_CONFIG.laborHourlyRate*ROI_CONFIG.laborWasteRatio,
+              t=d+s+l,
+              p=t>0?Math.max(1,Math.round(ROI_CONFIG.etoirAnnualCost/t*12)):'∞';
+        document.getElementById('roi-total').textContent=formatRub(t)+' ₽';
+        document.getElementById('roi-downtime').textContent=formatRub(d);
+        document.getElementById('roi-spares').textContent=formatRub(s);
+        document.getElementById('roi-labor').textContent=formatRub(l);
+        document.getElementById('roi-payback').textContent=p;
+        document.querySelector('output[data-for="roi-hours"]').textContent=h+' ч';
+        document.querySelector('output[data-for="roi-cost"]').textContent=formatRub(c)+' ₽';
+        document.querySelector('output[data-for="roi-units"]').textContent=u+' шт';
+      }
+      let roiDebounceTimer;
+      function initRoi(){
+        ['roi-hours','roi-cost','roi-units'].forEach(id=>{
+          const el=document.getElementById(id); if(!el)return;
+          el.addEventListener('input',()=>{
+            calculateRoi();
+            clearTimeout(roiDebounceTimer);
+            roiDebounceTimer=setTimeout(()=>{
+              if(window.ym)ym(107942912,'reachGoal','roi_calculated');
+              if(window.gtag)gtag('event','roi_calculated');
+            },500);
+          });
+        });
+        calculateRoi();
+      }
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initRoi);else initRoi();
     })();
     </script>
 </body>
