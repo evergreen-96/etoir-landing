@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как внедрить ТОиР-систему: пошаговый план за 7 шагов</title>
+    <meta name="description" content="Пошаговый план внедрения CMMS на промышленном предприятии: от аудита оборудования до KPI и обучения слесарей. 7 этапов, 6-8 недель, проверенная методология.">
+    <link rel="canonical" href="https://e-toir.ru/blog/kak-vnedrit-toir-sistemu/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Как внедрить ТОиР-систему: пошаговый план за 7 шагов">
+    <meta property="og:description" content="Пошаговый план внедрения CMMS на промышленном предприятии: от аудита оборудования до KPI и обучения слесарей. 7 этапов, 6-8 недель, проверенная методология.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://e-toir.ru/blog/kak-vnedrit-toir-sistemu/">
+    <meta property="og:image" content="../../og-image.png">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="article:published_time" content="2026-05-19T10:00:00+03:00">
+    <meta property="article:section" content="Внедрение">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DS3D1SLNHD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DS3D1SLNHD');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107942912', 'ym');
+        ym(107942912, 'init', {
+            ssr: true, webvisor: true, clickmap: true,
+            ecommerce: 'dataLayer', referrer: document.referrer,
+            url: location.href, accurateTrackBounce: true, trackLinks: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107942912" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563EB;
+            --accent: #F59E0B;
+            --text: #1E293B;
+            --text-secondary: #64748B;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+            --bg: #FAFBFF;
+            --bg-alt: #F1F5F9;
+            --radius: 16px;
+            --card-shadow-hover: 0 12px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        .header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 0; gap: 24px;
+        }
+        .brand {
+            font-weight: 800; font-size: 1.25rem; color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        .brand span { color: var(--primary); }
+        .nav { display: flex; gap: 28px; align-items: center; }
+        .nav a {
+            color: var(--text); font-weight: 500; font-size: 0.9375rem;
+            transition: color 0.2s;
+        }
+        .nav a:hover { color: var(--primary); text-decoration: none; }
+        .nav a.active { color: var(--primary); font-weight: 600; }
+        .header-cta {
+            display: inline-block; padding: 10px 18px;
+            background: var(--primary); color: #fff;
+            border-radius: 10px; font-weight: 600; font-size: 0.9375rem;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+        .header-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25); text-decoration: none; }
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .header-cta { display: none; }
+        }
+
+        /* Article layout */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 48px;
+            margin: 40px 0 96px;
+            align-items: start;
+        }
+        @media (max-width: 960px) {
+            .article-layout { grid-template-columns: 1fr; gap: 0; }
+            .article-toc { display: none; }
+        }
+
+        /* Desktop TOC */
+        .article-toc {
+            position: sticky;
+            top: 96px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+        .article-toc h3 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .article-toc ol {
+            list-style: none;
+            counter-reset: toc;
+        }
+        .article-toc li {
+            counter-increment: toc;
+            margin-bottom: 10px;
+            font-size: 0.9375rem;
+            line-height: 1.4;
+        }
+        .article-toc li::before {
+            content: counter(toc) ". ";
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .article-toc a { color: var(--text); }
+        .article-toc a:hover { color: var(--primary); text-decoration: none; }
+        .article-toc a.is-active { color: var(--primary); font-weight: 600; }
+
+        /* Article content */
+        .article-content {
+            max-width: 760px;
+            font-size: 1.0625rem;
+            line-height: 1.75;
+            color: #334155;
+        }
+        .breadcrumb {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+        }
+        .breadcrumb a { color: var(--text-secondary); }
+        .breadcrumb a:hover { color: var(--primary); text-decoration: none; }
+        .article-content h1 {
+            font-size: clamp(1.875rem, 4vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-bottom: 32px;
+        }
+        .article-lead {
+            font-size: 1.1875rem;
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 32px;
+        }
+        .article-content h2 {
+            font-size: clamp(1.375rem, 2.5vw, 1.625rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text);
+            margin: 48px 0 16px;
+            letter-spacing: -0.01em;
+            scroll-margin-top: 96px;
+        }
+        .article-content h3 {
+            font-size: 1.1875rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 28px 0 12px;
+        }
+        .article-content p { margin-bottom: 18px; }
+        .article-content ul, .article-content ol {
+            margin: 0 0 24px 24px;
+        }
+        .article-content li { margin-bottom: 8px; }
+        .article-content strong { color: var(--text); font-weight: 700; }
+        .step-meta {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 8px;
+        }
+        .callout {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(245, 158, 11, 0.04));
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+        .callout h3 { margin-top: 0; }
+
+        /* Mobile TOC */
+        .mobile-toc {
+            display: none;
+            margin: 0 0 32px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--card-bg);
+            padding: 16px 20px;
+        }
+        .mobile-toc summary {
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            color: var(--text);
+        }
+        .mobile-toc summary::-webkit-details-marker { display: none; }
+        .mobile-toc summary::after {
+            content: '▼';
+            float: right;
+            font-size: 0.75rem;
+            transition: transform 0.2s;
+        }
+        .mobile-toc[open] summary::after { transform: rotate(180deg); }
+        .mobile-toc ol { margin: 16px 0 0 24px; }
+        .mobile-toc li { margin-bottom: 8px; font-size: 0.9375rem; }
+        @media (max-width: 960px) {
+            .mobile-toc { display: block; }
+        }
+
+        /* Inline CTA block */
+        .cta-block {
+            margin: 48px 0;
+            background: linear-gradient(135deg, var(--primary), #1D4ED8);
+            color: #fff;
+            padding: 32px;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        .cta-block h3 { color: #fff; font-size: 1.375rem; margin-bottom: 12px; }
+        .cta-block p { color: #DBEAFE; margin-bottom: 20px; }
+        .cta-block a {
+            display: inline-block;
+            background: var(--accent);
+            color: #1E293B;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+        .cta-block a:hover { transform: translateY(-1px); text-decoration: none; }
+
+        /* Related */
+        .related-list {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .related-list h3 { font-size: 1.125rem; margin-bottom: 16px; color: var(--text); }
+        .related-list ul { list-style: none; margin: 0; }
+        .related-list li { margin-bottom: 8px; }
+
+        /* Sticky mobile CTA */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            z-index: 90;
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
+            transition: opacity 0.25s, transform 0.25s;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+        .sticky-cta.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        @media (max-width: 768px) {
+            .sticky-cta { display: block; }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            padding: 48px 0 32px;
+        }
+        .footer-inner {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 20px; text-align: center;
+        }
+        .footer-logo { font-weight: 800; font-size: 1.25rem; color: var(--text); }
+        .footer-logo span { color: var(--primary); }
+        .footer-links {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+        .footer-links a:hover { color: var(--primary); text-decoration: none; }
+        .footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Как внедрить ТОиР-систему: пошаговый план за 7 шагов",
+        "description": "Пошаговый план внедрения CMMS на промышленном предприятии: от аудита оборудования до KPI и обучения слесарей. 7 этапов, 6-8 недель, проверенная методология.",
+        "image": "https://e-toir.ru/og-image.png",
+        "author": { "@type": "Organization", "name": "эТОИР", "url": "https://e-toir.ru" },
+        "publisher": {
+            "@type": "Organization",
+            "name": "эТОИР",
+            "logo": { "@type": "ImageObject", "url": "https://e-toir.ru/favicon.svg" }
+        },
+        "datePublished": "2026-05-19",
+        "dateModified": "2026-05-19",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://e-toir.ru/blog/kak-vnedrit-toir-sistemu/" },
+        "inLanguage": "ru"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://e-toir.ru/" },
+            { "@type": "ListItem", "position": 2, "name": "Блог", "item": "https://e-toir.ru/blog/" },
+            { "@type": "ListItem", "position": 3, "name": "Как внедрить ТОиР-систему", "item": "https://e-toir.ru/blog/kak-vnedrit-toir-sistemu/" }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../" class="brand"><span>э</span>ТОИР</a>
+                <nav class="nav" role="navigation" aria-label="Основная навигация">
+                    <a href="../../#features-section">Возможности</a>
+                    <a href="../../#how-it-works">Как это работает</a>
+                    <a href="../../#advantages">Преимущества</a>
+                    <a href="../" class="active" aria-current="page">Блог</a>
+                    <a href="../../#faq">FAQ</a>
+                </nav>
+                <a href="../../#contact" class="header-cta">Записаться</a>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+        <div class="container">
+            <div class="article-layout">
+                <aside class="article-toc" aria-label="Содержание статьи">
+                    <h3>Содержание</h3>
+                    <ol>
+                        <li><a href="#step-1">Подготовка: цели, команда, KPI</a></li>
+                        <li><a href="#step-2">Выбор системы и формат развёртывания</a></li>
+                        <li><a href="#step-3">Подготовка данных: минимум для старта</a></li>
+                        <li><a href="#step-4">Пилот на одном участке</a></li>
+                        <li><a href="#step-5">Обучение исполнителей</a></li>
+                        <li><a href="#step-6">Тиражирование на остальные подразделения</a></li>
+                        <li><a href="#step-7">Промышленная эксплуатация и развитие</a></li>
+                    </ol>
+                </aside>
+
+                <article class="article-content">
+                    <nav class="breadcrumb" aria-label="Хлебные крошки">
+                        <a href="../../">Главная</a> / <a href="../">Блог</a> / <span>Как внедрить ТОиР-систему</span>
+                    </nav>
+
+                    <h1>Как внедрить ТОиР-систему: пошаговый план за 7 шагов</h1>
+                    <p class="article-meta">19 мая 2026 · 9 мин чтения</p>
+
+                    <p class="article-lead">
+                        Внедрение CMMS-системы — это не «поставили программу и начали работать». Это <strong>проект организационных изменений</strong>, в котором технология составляет максимум 30% успеха. Остальные 70% — это качество данных, дисциплина исполнителей и вовлечённость руководства. По опыту внедрений на десятках производств мы выделили семь этапов: их прохождение даёт прогнозируемый результат за 6–8 недель на одном участке и защищает от «второй попытки» через два года. Если хотите сразу увидеть, какие задачи закрывает платформа, посмотрите <a href="../../#features-section">все возможности эТОИР</a>.
+                    </p>
+
+                    <details class="mobile-toc">
+                        <summary>Содержание статьи</summary>
+                        <ol>
+                            <li><a href="#step-1">Подготовка: цели, команда, KPI</a></li>
+                            <li><a href="#step-2">Выбор системы и формат развёртывания</a></li>
+                            <li><a href="#step-3">Подготовка данных: минимум для старта</a></li>
+                            <li><a href="#step-4">Пилот на одном участке</a></li>
+                            <li><a href="#step-5">Обучение исполнителей</a></li>
+                            <li><a href="#step-6">Тиражирование на остальные подразделения</a></li>
+                            <li><a href="#step-7">Промышленная эксплуатация и развитие</a></li>
+                        </ol>
+                    </details>
+
+                    <h2 id="step-1">Шаг 1. Подготовка: цели, команда, KPI</h2>
+                    <p>
+                        <span class="step-meta">Этап 1 · 2–4 недели</span>
+                    </p>
+                    <p>
+                        До того как пилотить систему, нужно ответить на три вопроса. <strong>Зачем</strong>: какие конкретные проблемы решаем — снижение аварийных простоев, прозрачность ремонтных бюджетов, импортозамещение, требование головного офиса? <strong>Кто отвечает</strong>: владелец проекта со стороны бизнеса (обычно главный механик или директор по производству), технический руководитель, RACI-матрица для участников. <strong>Как измерим</strong>: 3–5 ключевых KPI, фиксируем текущие значения как baseline.
+                    </p>
+                    <p>
+                        Типичный набор baseline-метрик: количество аварийных простоев за квартал, средняя длительность простоя, доля выполненного планового ТО, оборачиваемость склада запчастей, время от заявки до закрытия наряда. Без этих цифр любой результат внедрения будет восприниматься как «вроде стало лучше» — что в корпоративной среде эквивалентно провалу.
+                    </p>
+
+                    <h2 id="step-2">Шаг 2. Выбор системы и формат развёртывания</h2>
+                    <p>
+                        <span class="step-meta">Этап 2 · 2–3 недели</span>
+                    </p>
+                    <p>
+                        На этом этапе нужно понять, что важнее: <strong>скорость старта</strong> или <strong>максимальная кастомизация</strong>. Облачные CMMS-системы (включая эТОИР в cloud-варианте) запускаются за недели и покрывают 80–90% типового функционала из коробки. Решения на 1С:Предприятие или собственная разработка дают неограниченную гибкость, но цена — 4–9 месяцев на внедрение и значительные операционные затраты на поддержку.
+                    </p>
+                    <p>
+                        Для предприятий с требованиями по импортозамещению (госконтракты, регулируемые отрасли) дополнительный критерий — наличие в Едином реестре российских программ Минцифры. Это юридическое требование для ряда заказчиков. Подробнее о том, какие задачи закрывают современные платформы, — в материале <a href="../zachem-avtomatizirovat-toir/">зачем автоматизировать ТОиР</a>.
+                    </p>
+                    <p>
+                        Развёртывание: <strong>облако</strong> подходит большинству, <strong>on-premise</strong> нужен при требованиях ИБ высокой категории, работе с гостайной или при отсутствии стабильной связи. Гибридный вариант (облако + локальный gateway на объектах) часто решает компромисс.
+                    </p>
+
+                    <h2 id="step-3">Шаг 3. Подготовка данных: минимум, достаточный для старта</h2>
+                    <p>
+                        <span class="step-meta">Этап 3 · 3–6 недель</span>
+                    </p>
+                    <p>
+                        Это этап, на котором тонет больше всего проектов. Соблазн «сначала всё идеально опишем» убивает темп. Работающее правило: <strong>начинаем с того, что есть, и уточняем в процессе</strong>. Если сейчас вы ведёте учёт в таблицах, прочитайте отдельный разбор <a href="../cmms-vs-excel/">эТОИР vs Excel</a> — он показывает, какие данные стоит переносить в первую очередь, а какие можно отложить.
+                    </p>
+                    <p>Минимально необходимые данные для старта:</p>
+                    <ul>
+                        <li>Список оборудования с инвентарными номерами, типом, расположением (достаточно Excel).</li>
+                        <li>Структура локаций: цеха, участки, единицы оборудования (трёхуровневая иерархия покрывает 90% случаев).</li>
+                        <li>Список исполнителей с ролями.</li>
+                        <li>Графики ТО для ключевых единиц (можно начать с 10–20 критичных позиций).</li>
+                        <li>Базовый каталог запчастей: 50–100 наиболее ходовых SKU.</li>
+                    </ul>
+                    <p>
+                        Паспорта оборудования, полные регламенты, история ремонтов за 3 года — это всё можно (и нужно) добавлять <strong>после</strong> запуска. Иначе вы никогда не запуститесь.
+                    </p>
+
+                    <h2 id="step-4">Шаг 4. Пилот на одном участке</h2>
+                    <p>
+                        <span class="step-meta">Этап 4 · 3–4 недели</span>
+                    </p>
+                    <p>
+                        Никогда не запускайте систему сразу на всём предприятии. Возьмите <strong>один цех или участок</strong>: средняя сложность, лояльный начальник, 30–60 единиц оборудования. На этом контуре нужно прожить полный цикл: создание наряд-заказа → исполнение в мобильном приложении → закрытие → отчёт.
+                    </p>
+                    <p>Цели пилота:</p>
+                    <ul>
+                        <li>Найти расхождения между процессом «на бумаге» и реальной работой исполнителей.</li>
+                        <li>Отработать сценарии «что делать, если…» (запчасти нет на складе, исполнитель в отпуске, оборудование переехало).</li>
+                        <li>Получить первые правки в настройках и справочниках.</li>
+                        <li>Накопить 2–3 истории успеха для «продажи» системы в другие цеха.</li>
+                    </ul>
+
+                    <div class="cta-block">
+                        <h3>Готовы пройти эти шаги вместе с нами?</h3>
+                        <p>На демо разберём ваши процессы и покажем, как этапы плана выглядят именно для вашего производства.</p>
+                        <a href="../../#contact">Записаться на демо</a>
+                    </div>
+
+                    <h2 id="step-5">Шаг 5. Обучение исполнителей</h2>
+                    <p>
+                        <span class="step-meta">Этап 5 · 4–8 недель</span>
+                    </p>
+                    <p>
+                        Системой ежедневно пользуются <strong>не инженеры, а слесари</strong>. И это, пожалуй, главный фактор успеха или провала. Если мобильное приложение неудобно или требует 12 кликов на закрытие наряда, исполнители вернутся к бумажным бегункам через две недели. Чтобы оценить эргономику конкретной платформы, имеет смысл заранее изучить <a href="../../#advantages">преимущества платформы</a> и проверить интерфейс на тестовом устройстве.
+                    </p>
+                    <p>Что работает:</p>
+                    <ul>
+                        <li>Обучение в формате «один на один», на рабочем месте, 30–40 минут на человека.</li>
+                        <li>Видеоинструкции на 1–2 минуты для типовых операций (выложить во внутренний чат).</li>
+                        <li>QR-коды на оборудовании — снижают порог входа: открыл камеру, отсканировал, заполнил карточку.</li>
+                        <li>Чек-листы «что должно быть в закрытом наряде» — снижают вариативность качества данных.</li>
+                    </ul>
+                    <p>
+                        Что не работает: групповые лекции на 100 человек, многостраничные регламенты «как пользоваться», ставка на то, что «они разберутся».
+                    </p>
+
+                    <h2 id="step-6">Шаг 6. Тиражирование на остальные подразделения</h2>
+                    <p>
+                        <span class="step-meta">Этап 6 · 6–12 недель</span>
+                    </p>
+                    <p>
+                        После успешного пилота тираж идёт быстрее: процессы отработаны, типовые ошибки известны, есть «амбассадоры» из первой волны. Разумный темп — один новый цех в 2–3 недели. Быстрее обычно означает поверхностное внедрение, медленнее — потерю темпа и интереса.
+                    </p>
+                    <p>
+                        На этом этапе подключают <strong>интеграции</strong>: с 1С (списания запчастей, проводки), SCADA/MES (автоматический съём наработки), кадровой системой (актуализация списка исполнителей). Подключать всё сразу — рискованно: если интеграция падает, в системе появляются мусорные данные, и доверие к ней рушится.
+                    </p>
+
+                    <h2 id="step-7">Шаг 7. Промышленная эксплуатация и развитие</h2>
+                    <p>
+                        <span class="step-meta">Этап 7 · непрерывно</span>
+                    </p>
+                    <p>
+                        Через 4–6 месяцев после старта система должна перейти из режима «проекта» в режим <strong>операционной деятельности</strong>. Это означает:
+                    </p>
+                    <ul>
+                        <li>Регулярный пересмотр KPI (ежемесячный комитет ТОиР, 30–45 минут).</li>
+                        <li>Накопление аналитики по MTBF/MTTR — на этих данных становится возможен переход к <strong>предиктивному обслуживанию</strong>.</li>
+                        <li>Постепенная замена реактивных ремонтов плановыми (целевая структура: 70% плановых, 30% реактивных).</li>
+                        <li>Расширение функций: интеграция с вибромониторингом, тепловизорами, IIoT-датчиками.</li>
+                    </ul>
+
+                    <div class="callout">
+                        <h3>Сколько занимает реальное внедрение</h3>
+                        <p>
+                            Для типового предприятия 100–300 единиц оборудования и 1–3 цеха: <strong>3–4 месяца</strong> до промышленной эксплуатации первого участка, <strong>6–9 месяцев</strong> до полного покрытия. Для холдингов 5+ площадок и 1000+ единиц: <strong>12–18 месяцев</strong>.
+                        </p>
+                    </div>
+
+                    <div class="related-list">
+                        <h3>Читайте также</h3>
+                        <ul>
+                            <li><a href="../cmms-vs-excel/">эТОИР vs Excel: почему таблицы больше не работают</a></li>
+                            <li><a href="../zachem-avtomatizirovat-toir/">Зачем автоматизировать ТОиР: 6 причин перейти на эТОИР</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <a href="../../#contact" class="sticky-cta" id="stickyCta" aria-label="Записаться на демо">Записаться на демо</a>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo"><span>э</span>ТОИР</div>
+                <div class="footer-links">
+                    <a href="../../#features-section">Возможности</a>
+                    <a href="../../#advantages">Преимущества</a>
+                    <a href="../../#faq">FAQ</a>
+                    <a href="../">Блог</a>
+                    <a href="../../#contact">Контакт</a>
+                    <a href="../../privacy">Политика конфиденциальности</a>
+                </div>
+                <div class="footer-copy">
+                    &copy; 2026 эТОИР. Все права защищены.
+                    <br>Информация на сайте является справочной, не является публичной офертой.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function initToc() {
+            var links = document.querySelectorAll('.article-toc a[href^="#"]');
+            if (!links.length || !('IntersectionObserver' in window)) return;
+            var map = {};
+            links.forEach(function(a){
+                var id = a.getAttribute('href').slice(1);
+                var el = document.getElementById(id);
+                if (el) map[id] = a;
+            });
+            var observer = new IntersectionObserver(function(entries){
+                entries.forEach(function(entry){
+                    var id = entry.target.id;
+                    if (!map[id]) return;
+                    if (entry.isIntersecting) {
+                        links.forEach(function(l){ l.classList.remove('is-active'); });
+                        map[id].classList.add('is-active');
+                    }
+                });
+            }, { rootMargin: '-96px 0px -70% 0px', threshold: 0 });
+            Object.keys(map).forEach(function(id){
+                var el = document.getElementById(id);
+                if (el) observer.observe(el);
+            });
+        }
+
+        function initStickyCta() {
+            var cta = document.getElementById('stickyCta');
+            if (!cta) return;
+            var threshold = 600;
+            var onScroll = function(){
+                if (window.scrollY > threshold) {
+                    cta.classList.add('is-visible');
+                } else {
+                    cta.classList.remove('is-visible');
+                }
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function(){ initToc(); initStickyCta(); });
+        } else {
+            initToc();
+            initStickyCta();
+        }
+    </script>
+</body>
+</html>
