@@ -3131,6 +3131,30 @@
   .fmap-row     { flex-wrap: wrap; justify-content: center; }
   .fmap-machine { width: 88px; }
 }
+
+/* ===== Industries ===== */
+.industries-section { padding: 80px 0; background: var(--bg-alt); }
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.industry-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.industry-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
+.industry-card .industry-icon { font-size: 40px; margin-bottom: 16px; }
+.industry-card h3 { font-size: 1.25rem; margin: 0 0 12px; color: var(--text); }
+.industry-card p { color: var(--text-secondary); line-height: 1.6; margin: 0; }
+@media (max-width: 768px) {
+  .industries-grid { grid-template-columns: 1fr; gap: 16px; }
+  .industry-card { padding: 24px; }
+}
     </style>
 </head>
 <body>
@@ -3926,6 +3950,68 @@
                     <div class="advantage-item fade-up">
                         <h3>Печатные формы</h3>
                         <p>Печатные задания для исполнителей — для тех, кому важен бумажный документооборот.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== INDUSTRIES ===== -->
+        <section id="industries" class="industries-section" aria-label="Отрасли применения">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Для каких отраслей подходит эТОИР</h2>
+                    <p class="section-subtitle">
+                        Система ТОиР адаптируется под специфику оборудования и&nbsp;регламентов вашей отрасли — от&nbsp;дискретного производства до&nbsp;непрерывных процессов.
+                    </p>
+                </div>
+
+                <div class="industries-grid">
+                    <div class="industry-card fade-up">
+                        <div class="industry-icon" aria-hidden="true">🔩</div>
+                        <h3>Машиностроение и&nbsp;металлообработка</h3>
+                        <p>
+                            Учёт станков с&nbsp;ЧПУ, прессов, обрабатывающих центров. Планирование ТО&nbsp;по&nbsp;наработке (часы шпинделя), отслеживание ресурса режущего инструмента, журнал ремонтов с&nbsp;фиксацией причин отказов. Интеграция с&nbsp;MES для автоматического съёма наработки.
+                        </p>
+                    </div>
+
+                    <div class="industry-card fade-up">
+                        <div class="industry-icon" aria-hidden="true">🥫</div>
+                        <h3>Пищевая промышленность</h3>
+                        <p>
+                            ТОиР линий розлива, упаковки, термической обработки. Контроль соблюдения санитарных регламентов CIP/SIP, учёт критичных запчастей (уплотнения, фильтры), плановые остановы на&nbsp;санобработку. Поддержка требований HACCP и&nbsp;ТР&nbsp;ТС.
+                        </p>
+                    </div>
+
+                    <div class="industry-card fade-up">
+                        <div class="industry-icon" aria-hidden="true">🏗️</div>
+                        <h3>Металлургия и&nbsp;прокат</h3>
+                        <p>
+                            Управление обслуживанием прокатных станов, печей, кранового хозяйства. Учёт ресурса валков, футеровки, электродов. Аналитика причин аварийных простоев и&nbsp;расчёт MTBF по&nbsp;каждому переделу. Поддержка многосменного графика и&nbsp;круглосуточного производства.
+                        </p>
+                    </div>
+
+                    <div class="industry-card fade-up">
+                        <div class="industry-icon" aria-hidden="true">⚗️</div>
+                        <h3>Химия и&nbsp;нефтехимия</h3>
+                        <p>
+                            ТОиР реакторов, насосного и&nbsp;компрессорного оборудования, теплообменников. Учёт регламентных ревизий сосудов под давлением, графики капремонтов, наряд-допуски на&nbsp;опасные работы. Интеграция со&nbsp;SCADA для предиктивного обслуживания по&nbsp;вибрации и&nbsp;температуре.
+                        </p>
+                    </div>
+
+                    <div class="industry-card fade-up">
+                        <div class="industry-icon" aria-hidden="true">⚡</div>
+                        <h3>Энергетика и&nbsp;ЖКХ</h3>
+                        <p>
+                            Управление обслуживанием котельных, ЦТП, насосных станций, трансформаторных подстанций. Планирование сезонных ТО, учёт нормативного ресурса оборудования, журнал нарядов на&nbsp;работы под напряжением. Поддержка территориально-распределённой инфраструктуры.
+                        </p>
+                    </div>
+
+                    <div class="industry-card fade-up">
+                        <div class="industry-icon" aria-hidden="true">⛏️</div>
+                        <h3>Добыча и&nbsp;горно-обогатительные комбинаты</h3>
+                        <p>
+                            ТОиР карьерной техники, дробильно-сортировочного и&nbsp;конвейерного оборудования. Мобильное приложение для исполнителей в&nbsp;условиях слабой связи, офлайн-режим, привязка работ к&nbsp;геолокации участка. Учёт расходных материалов и&nbsp;запчастей с&nbsp;длинным сроком поставки.
+                        </p>
                     </div>
                 </div>
             </div>
