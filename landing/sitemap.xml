@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://e-toir.ru/</loc>
+    <loc>https://etoir.ru/</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://e-toir.ru/blog/</loc>
+    <loc>https://etoir.ru/blog/</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://e-toir.ru/blog/cmms-vs-excel/</loc>
+    <loc>https://etoir.ru/blog/cmms-vs-excel/</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://e-toir.ru/blog/kak-vnedrit-toir-sistemu/</loc>
+    <loc>https://etoir.ru/blog/kak-vnedrit-toir-sistemu/</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://e-toir.ru/blog/zachem-avtomatizirovat-toir/</loc>
+    <loc>https://etoir.ru/blog/zachem-avtomatizirovat-toir/</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://etoir.ru/rss.xml</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

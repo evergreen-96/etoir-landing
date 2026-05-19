@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Блог о ТОиР — эТОИР</title>
     <meta name="description" content="Практические статьи о внедрении CMMS, расчёте эффективности и автоматизации ремонтов на промышленных предприятиях.">
-    <link rel="canonical" href="https://e-toir.ru/blog/">
+    <link rel="canonical" href="https://etoir.ru/blog/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Блог о ТОиР — эТОИР">
     <meta property="og:description" content="Практические статьи о внедрении CMMS, расчёте эффективности и автоматизации ремонтов на промышленных предприятиях.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://e-toir.ru/blog/">
-    <meta property="og:image" content="../og-image.png">
+    <meta property="og:url" content="https://etoir.ru/blog/">
+    <meta property="og:image" content="https://etoir.ru/images/og-image.png">
     <meta property="og:locale" content="ru_RU">
 
     <!-- Google tag (gtag.js) -->
@@ -154,6 +154,20 @@
         .blog-card h2 { font-size: 1.375rem; margin: 0 0 12px; color: var(--text); line-height: 1.3; }
         .blog-card .blog-excerpt { color: var(--text-secondary); line-height: 1.6; margin: 0 0 16px; flex: 1; }
         .blog-card .blog-read-more { color: var(--primary); font-weight: 600; }
+        .blog-topics {
+            max-width: 760px;
+            margin: 0 auto 96px;
+            padding: 32px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+        .blog-topics h2 { font-size: 1.5rem; margin: 0 0 16px; color: var(--text); }
+        .blog-topics p { color: var(--text-secondary); line-height: 1.7; margin: 0 0 16px; }
+        .blog-topics-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+        .blog-topics-list li { color: var(--text-secondary); }
+        .blog-topics-list a { color: var(--primary); font-weight: 600; }
+        .blog-topics-list a:hover { text-decoration: underline; }
         @media (max-width: 640px) { .blog-hero h1 { font-size: 1.875rem; } }
 
         /* Footer */
@@ -199,13 +213,13 @@
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Главная",
-                "item": "https://e-toir.ru/"
+                "item": "https://etoir.ru/"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Блог",
-                "item": "https://e-toir.ru/blog/"
+                "item": "https://etoir.ru/blog/"
             }
         ]
     }
@@ -219,19 +233,19 @@
             {
                 "@type": "ListItem",
                 "position": 1,
-                "url": "https://e-toir.ru/blog/cmms-vs-excel/",
+                "url": "https://etoir.ru/blog/cmms-vs-excel/",
                 "name": "эТОИР vs Excel: почему таблицы больше не работают"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
-                "url": "https://e-toir.ru/blog/kak-vnedrit-toir-sistemu/",
+                "url": "https://etoir.ru/blog/kak-vnedrit-toir-sistemu/",
                 "name": "Как внедрить ТОиР-систему: пошаговый план за 7 шагов"
             },
             {
                 "@type": "ListItem",
                 "position": 3,
-                "url": "https://e-toir.ru/blog/zachem-avtomatizirovat-toir/",
+                "url": "https://etoir.ru/blog/zachem-avtomatizirovat-toir/",
                 "name": "Зачем автоматизировать ТОиР: 6 причин перейти на эТОИР"
             }
         ]
@@ -258,32 +272,43 @@
     <main role="main">
         <div class="container">
             <section class="blog-hero">
-                <h1>Блог о ТОиР</h1>
-                <p class="lead">Практические статьи о внедрении CMMS, расчёте эффективности и автоматизации ремонтов.</p>
+                <h1>Блог о ТОиР и CMMS-системах</h1>
+                <p class="lead">Практические материалы для руководителей служб ТОиР, главных механиков и IT-директоров промышленных предприятий: внедрение CMMS, расчёт окупаемости автоматизации ремонтов, методика учёта оборудования, KPI обслуживания (MTBF, MTTR, OEE) и опыт перехода с Excel и 1С на специализированную систему управления техническим обслуживанием.</p>
             </section>
 
             <div class="blog-grid">
                 <a class="blog-card" href="cmms-vs-excel/">
-                    <div class="blog-meta">19 мая 2026 · 7 мин чтения</div>
+                    <div class="blog-meta">19 мая 2026 · 7 мин чтения · Сравнение</div>
                     <h2>эТОИР vs Excel: почему таблицы больше не работают</h2>
-                    <p class="blog-excerpt">Сравниваем Excel-таблицы и специализированную CMMS на 8 параметрах: учёт, MTBF/MTTR, мобильность, аналитика. Когда таблицы перестают тянуть.</p>
+                    <p class="blog-excerpt">Сравнение Excel-таблиц и специализированной CMMS на 8 параметрах: учёт оборудования, расчёт MTBF и MTTR, мобильность для слесарей, аналитика простоев, история ремонтов, контроль запчастей. На каком масштабе парка таблицы перестают тянуть промышленный завод и какие конкретные потери это создаёт.</p>
                     <span class="blog-read-more">Читать статью →</span>
                 </a>
 
                 <a class="blog-card" href="kak-vnedrit-toir-sistemu/">
-                    <div class="blog-meta">19 мая 2026 · 9 мин чтения</div>
+                    <div class="blog-meta">19 мая 2026 · 9 мин чтения · Внедрение</div>
                     <h2>Как внедрить ТОиР-систему: пошаговый план за 7 шагов</h2>
-                    <p class="blog-excerpt">От аудита оборудования до постановки KPI — практический гайд, как запустить CMMS на промышленном предприятии за 6–8 недель.</p>
+                    <p class="blog-excerpt">Практический гайд по внедрению CMMS на промышленном предприятии: от инвентаризации и кодирования оборудования до настройки графиков планового ТО, постановки KPI службе механиков и обучения слесарей мобильному приложению. 7 этапов, 6–8 недель, проверенная методология с типовыми ошибками и чек-листом готовности.</p>
                     <span class="blog-read-more">Читать статью →</span>
                 </a>
 
                 <a class="blog-card" href="zachem-avtomatizirovat-toir/">
-                    <div class="blog-meta">19 мая 2026 · 6 мин чтения</div>
+                    <div class="blog-meta">19 мая 2026 · 6 мин чтения · Бизнес-кейс</div>
                     <h2>Зачем автоматизировать ТОиР: 6 причин перейти на эТОИР</h2>
-                    <p class="blog-excerpt">Простои, аварийные ремонты, потерянные запчасти, выгорание слесарей — шесть причин, почему ручной учёт обходится дороже системы.</p>
+                    <p class="blog-excerpt">Шесть причин, по которым ручной учёт ТОиР обходится производству дороже специализированной системы: незапланированные простои, аварийные ремонты, потери запчастей со склада, выгорание ремонтного персонала, отсутствие аналитики надёжности и невозможность защитить ремонтный бюджет перед финансистами.</p>
                     <span class="blog-read-more">Читать статью →</span>
                 </a>
             </div>
+
+            <section class="blog-topics">
+                <h2>О чём мы пишем</h2>
+                <p>Блог эТОИР — это знания и практика автоматизации технического обслуживания и ремонта для предприятий машиностроения, металлургии, пищевой промышленности, нефтехимии и энергетики. Мы разбираем реальные кейсы перехода с бумажного и Excel-учёта на CMMS, методики расчёта эффективности службы ТОиР и устройство современных систем управления активами (EAM).</p>
+                <ul class="blog-topics-list">
+                    <li><a href="../#features-section">Возможности CMMS эТОИР</a> — что входит в платформу</li>
+                    <li><a href="../#how-it-works">Как это работает</a> — три шага до результата</li>
+                    <li><a href="../#faq">Часто задаваемые вопросы</a> о внедрении ТОиР-системы</li>
+                    <li><a href="../#contact">Записаться на бесплатное демо</a> эТОИР</li>
+                </ul>
+            </section>
         </div>
     </main>
 

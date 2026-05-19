@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:yandex="http://news.yandex.ru"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:turbo="http://turbo.yandex.ru"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Блог эТОИР — управление ТОиР и CMMS</title>
+    <link>https://etoir.ru/blog/</link>
+    <description>Практические материалы о внедрении CMMS, расчёте эффективности службы ТОиР и автоматизации ремонтов на промышленных предприятиях.</description>
+    <language>ru</language>
+    <atom:link href="https://etoir.ru/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://etoir.ru/images/logo.png</url>
+      <title>эТОИР</title>
+      <link>https://etoir.ru/</link>
+    </image>
+
+    <item>
+      <title>Как внедрить ТОиР-систему: пошаговый план за 7 шагов</title>
+      <link>https://etoir.ru/blog/kak-vnedrit-toir-sistemu/</link>
+      <guid isPermaLink="true">https://etoir.ru/blog/kak-vnedrit-toir-sistemu/</guid>
+      <pubDate>Tue, 19 May 2026 10:00:00 +0300</pubDate>
+      <category>Внедрение</category>
+      <author>noreply@etoir.ru (эТОИР)</author>
+      <description><![CDATA[Пошаговый план внедрения CMMS на промышленном предприятии: от аудита оборудования до KPI и обучения слесарей. 7 этапов, 6–8 недель, проверенная методология.]]></description>
+      <enclosure url="https://etoir.ru/images/og-image.png" type="image/png" length="112761"/>
+    </item>
+
+    <item>
+      <title>эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР</title>
+      <link>https://etoir.ru/blog/cmms-vs-excel/</link>
+      <guid isPermaLink="true">https://etoir.ru/blog/cmms-vs-excel/</guid>
+      <pubDate>Tue, 19 May 2026 10:00:00 +0300</pubDate>
+      <category>Сравнение</category>
+      <author>noreply@etoir.ru (эТОИР)</author>
+      <description><![CDATA[Сравниваем Excel-таблицы и специализированную CMMS на 8 параметрах: учёт оборудования, MTBF/MTTR, мобильность, аналитика. Когда таблицы перестают тянуть промышленный завод.]]></description>
+      <enclosure url="https://etoir.ru/images/og-image.png" type="image/png" length="112761"/>
+    </item>
+
+    <item>
+      <title>Зачем автоматизировать ТОиР: 6 причин перейти на эТОИР</title>
+      <link>https://etoir.ru/blog/zachem-avtomatizirovat-toir/</link>
+      <guid isPermaLink="true">https://etoir.ru/blog/zachem-avtomatizirovat-toir/</guid>
+      <pubDate>Tue, 19 May 2026 10:00:00 +0300</pubDate>
+      <category>Бизнес-кейс</category>
+      <author>noreply@etoir.ru (эТОИР)</author>
+      <description><![CDATA[Простои, аварийные ремонты, потерянные запчасти, выгорание слесарей — шесть причин, почему ручной учёт ТОиР обходится дороже, чем специализированная CMMS.]]></description>
+      <enclosure url="https://etoir.ru/images/og-image.png" type="image/png" length="112761"/>
+    </item>
+
+  </channel>
+</rss>
