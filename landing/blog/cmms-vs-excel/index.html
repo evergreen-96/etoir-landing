@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР</title>
+    <meta name="description" content="Сравниваем Excel-таблицы и специализированную CMMS на 8 параметрах: учёт оборудования, MTBF/MTTR, мобильность, аналитика. Когда таблицы перестают тянуть промышленный завод.">
+    <link rel="canonical" href="https://e-toir.ru/blog/cmms-vs-excel/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР">
+    <meta property="og:description" content="Сравниваем Excel-таблицы и специализированную CMMS на 8 параметрах: учёт оборудования, MTBF/MTTR, мобильность, аналитика. Когда таблицы перестают тянуть промышленный завод.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://e-toir.ru/blog/cmms-vs-excel/">
+    <meta property="og:image" content="https://e-toir.ru/og-image.png">
+    <meta property="og:locale" content="ru_RU">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DS3D1SLNHD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DS3D1SLNHD');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107942912', 'ym');
+        ym(107942912, 'init', {
+            ssr: true, webvisor: true, clickmap: true,
+            ecommerce: 'dataLayer', referrer: document.referrer,
+            url: location.href, accurateTrackBounce: true, trackLinks: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107942912" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563EB;
+            --accent: #F59E0B;
+            --text: #1E293B;
+            --text-secondary: #64748B;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+            --bg: #FAFBFF;
+            --bg-alt: #F1F5F9;
+            --radius: 16px;
+            --card-shadow-hover: 0 12px 32px rgba(37, 99, 235, 0.12);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            gap: 24px;
+        }
+        .brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        .brand span { color: var(--primary); }
+        .nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav a {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: color 0.2s;
+        }
+        .nav a:hover { color: var(--primary); }
+        .nav a.active { color: var(--primary); font-weight: 600; }
+        .header-cta {
+            display: inline-block;
+            padding: 10px 18px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+        .header-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25); }
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .header-cta { display: none; }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            padding: 48px 0 32px;
+        }
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .footer-logo { font-weight: 800; font-size: 1.25rem; color: var(--text); }
+        .footer-logo span { color: var(--primary); }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Article layout */
+        .article-layout{max-width:1200px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:280px 1fr;gap:48px}
+        .article-toc{position:sticky;top:100px;align-self:start;max-height:calc(100vh - 120px);overflow-y:auto;font-size:.9rem}
+        .article-toc-title{font-weight:700;margin-bottom:12px;color:var(--text)}
+        .article-toc-list{list-style:none;padding:0;margin:0;border-left:2px solid var(--border)}
+        .article-toc-list li{padding:6px 0 6px 16px}
+        .article-toc-list a{color:var(--text-secondary);text-decoration:none;display:block;transition:color .2s}
+        .article-toc-list a:hover{color:var(--primary)}
+        .article-toc-list li.active{border-left:2px solid var(--primary);margin-left:-2px}
+        .article-toc-list li.active a{color:var(--primary);font-weight:600}
+        .article-toc-mobile{display:none;margin:24px 0;padding:16px;background:var(--bg-alt);border-radius:12px}
+        .article-toc-mobile summary{cursor:pointer;font-weight:600;color:var(--text)}
+        .article-toc-mobile ul{list-style:none;padding:12px 0 0;margin:0}
+        .article-toc-mobile li{padding:6px 0}
+        .article-toc-mobile a{color:var(--primary);text-decoration:none}
+        .breadcrumb{font-size:.875rem;color:var(--text-secondary);margin-bottom:16px}
+        .breadcrumb a{color:var(--primary);text-decoration:none}
+        .article-content h1{font-size:2.25rem;line-height:1.2;margin:8px 0 12px;color:var(--text)}
+        .article-meta{color:var(--text-secondary);font-size:.9rem;margin:0 0 24px}
+        .article-lead{font-size:1.125rem;line-height:1.6;color:var(--text);margin-bottom:24px}
+        .article-content h2{margin-top:48px;scroll-margin-top:100px;color:var(--text)}
+        .article-content h3{margin-top:28px;color:var(--text);font-size:1.125rem}
+        .article-content p,.article-content li{line-height:1.7;color:var(--text)}
+        .article-content p{margin-bottom:16px}
+        .article-content ul,.article-content ol{margin:0 0 20px 24px}
+        .article-content li{margin-bottom:8px}
+        .article-content a{color:var(--primary)}
+        .article-content table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.95rem;background:var(--card-bg);border-radius:8px;overflow:hidden}
+        .article-content th,.article-content td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
+        .article-content th{background:var(--bg-alt);font-weight:700}
+        .sticky-cta-mobile{display:none;position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--primary);color:#fff;align-items:center;justify-content:space-between;padding:0 16px;z-index:100;transform:translateY(100%);transition:transform .3s ease;box-shadow:0 -4px 12px rgba(0,0,0,.12)}
+        .sticky-cta-mobile.visible{transform:translateY(0)}
+        .sticky-cta-text{font-size:.875rem;font-weight:500;flex:1;padding-right:12px}
+        .sticky-cta-btn{background:var(--accent);color:var(--text);padding:8px 16px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.875rem;white-space:nowrap}
+        .sticky-cta-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;padding:0 8px;cursor:pointer}
+        @media (max-width:768px){.sticky-cta-mobile{display:flex}}
+        @media (max-width:1024px){.article-layout{grid-template-columns:1fr;gap:24px}.article-toc{display:none}.article-toc-mobile{display:block}}
+    </style>
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР","datePublished":"2026-05-19","dateModified":"2026-05-19","author":{"@type":"Organization","name":"эТОИР"},"publisher":{"@type":"Organization","name":"эТОИР","logo":{"@type":"ImageObject","url":"https://e-toir.ru/logo.png"}},"image":"https://e-toir.ru/og-image.png","mainEntityOfPage":"https://e-toir.ru/blog/cmms-vs-excel/"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://e-toir.ru/"},{"@type":"ListItem","position":2,"name":"Блог","item":"https://e-toir.ru/blog/"},{"@type":"ListItem","position":3,"name":"эТОИР vs Excel"}]}</script>
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../" class="brand"><span>э</span>ТОИР</a>
+                <nav class="nav" role="navigation" aria-label="Основная навигация">
+                    <a href="../../#features-section">Возможности</a>
+                    <a href="../../#how-it-works">Как это работает</a>
+                    <a href="../../#advantages">Преимущества</a>
+                    <a href="../" class="active" aria-current="page">Блог</a>
+                    <a href="../../#faq">FAQ</a>
+                </nav>
+                <a href="../../#contact" class="header-cta">Записаться</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-layout" role="main">
+        <aside class="article-toc" aria-label="Содержание статьи">
+            <div class="article-toc-title">Содержание</div>
+            <ul class="article-toc-list"></ul>
+        </aside>
+        <article class="article-content">
+            <nav class="breadcrumb" aria-label="Хлебные крошки">
+                <a href="../../">Главная</a> →
+                <a href="../">Блог</a> →
+                <span>эТОИР vs Excel</span>
+            </nav>
+            <h1>эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР</h1>
+            <p class="article-meta">19 мая 2026 · 7 мин чтения</p>
+            <p class="article-lead">Почти любое производство, которое всерьёз задумывается об управлении техническим обслуживанием, начинает с Excel. И это нормально: таблицы доступны, не требуют бюджета, понятны главному инженеру с первого взгляда. Проблема в том, что Excel незаметно перестаёт работать ещё до того, как кто-то соберётся это признать. Разбираем восемь параметров сравнения и точку, в которой пора смотреть на <a href="../../#features-section">возможности эТОИР</a>.</p>
+
+            <details class="article-toc-mobile"><summary>📋 Содержание статьи</summary><ul></ul></details>
+
+            <h2 id="why-excel">Почему Excel вообще используют для ТОиР</h2>
+            <p>На старте у Excel есть три неоспоримых преимущества: <strong>нулевая цена входа</strong>, <strong>нулевое обучение</strong> и <strong>максимальная гибкость</strong>. Можно за вечер сверстать таблицу оборудования с колонками «дата ТО», «исполнитель», «комментарий» — и уже завтра показывать её на утренней планёрке. На участке с 15–20 единицами оборудования и двумя слесарями этого хватает.</p>
+            <p>Сложности начинаются в момент, когда таблица перестаёт быть «памяткой одного человека» и превращается в <strong>контур ответственности нескольких подразделений</strong>: главного механика, начальника смены, отдела снабжения, бухгалтерии. Excel был спроектирован как калькулятор для аналитика, а не как многопользовательская транзакционная система — и на этой границе он ломается.</p>
+
+            <h2 id="signs-excel-broken">7 признаков, что Excel перестал справляться</h2>
+            <h3>1. Файл «правильной версии» уже неизвестен</h3>
+            <p>На диске лежат <code>ТОиР_2026_v3.xlsx</code>, <code>ТОиР_2026_v3_правки_Иванов.xlsx</code> и <code>ТОиР_финал_окончательный.xlsx</code>. Половина смен правит локальную копию, в конце недели начальник вручную сводит их в общую. На этом этапе вы уже потеряли как минимум одну заявку на ремонт.</p>
+            <h3>2. История изменений потеряна</h3>
+            <p>Кто и когда поменял «выполнено» на «отменено»? Почему вчера в ячейке стоял срок 14 мая, а сегодня — 24 мая? Excel не ведёт журнал изменений: когда происходит инцидент, разобраться невозможно.</p>
+            <h3>3. Нет связи между сущностями</h3>
+            <p>В Excel «оборудование» — это строка с текстом, а не объект. Если поменять название «Компрессор К-2» на «Компрессор К-02», все формулы, ВПР и сводные перестают находить связи. На листе «Запчасти» лежит склад, на листе «Ремонты» — журнал, на листе «Оборудование» — справочник, и каждая сводная — это отдельная боль.</p>
+            <h3>4. Невозможен мобильный доступ для исполнителей</h3>
+            <p>Слесарь у станка не откроет общий xlsx-файл. Бумажные бегунки, которые потом «забивает в таблицу» начальник смены, — это <strong>двойная работа</strong> и окно для потерь данных. По нашим наблюдениям, до 15% работ, выполненных на цеху, не попадают в учёт вовсе.</p>
+            <h3>5. KPI обслуживания не считаются автоматически</h3>
+            <p>Чтобы посчитать MTBF (Mean Time Between Failures) или MTTR (Mean Time To Repair), нужно построить десяток сводных, чистить даты, разносить плановое и аварийное ТО. На нерегулярных данных это обычно занимает 1–2 дня и делается раз в квартал — для операционных решений бесполезно.</p>
+            <h3>6. Уведомлений и эскалаций нет</h3>
+            <p>Excel не напомнит, что 18 мая истекает межсервисный интервал у компрессора К-2. Эта функция держится в голове у конкретного человека — пока он на месте. После его отпуска или увольнения регламентное ТО «внезапно» начинает пропускаться, и через полгода вы получаете аварийную остановку.</p>
+            <h3>7. Интеграции с другими системами невозможны</h3>
+            <p>Когда у вас появляется 1С, SCADA, MES или ERP — Excel становится «чёрной дырой» в контуре управления. Списания со склада запчастей в 1С делаются вручную, проводки расходятся, наработка из SCADA не используется для планирования. Этот разрыв стоит реальных денег.</p>
+
+            <h2 id="cmms-difference">Чем CMMS принципиально отличается</h2>
+            <p>CMMS (Computerized Maintenance Management System) — это не «удобный Excel». Это <strong>другая модель данных и другая модель работы</strong>. Разница в четырёх вещах:</p>
+            <ul>
+                <li><strong>Реляционная модель.</strong> Оборудование, наряд-заказы, исполнители, запчасти — это связанные объекты. Переименование одного не ломает связи. История изменений каждого объекта хранится автоматически.</li>
+                <li><strong>Многопользовательский транзакционный режим.</strong> Одновременная работа десятков человек, контроль конфликтов, журнал действий каждого пользователя.</li>
+                <li><strong>Мобильное приложение для исполнителей.</strong> Слесарь получает наряд-заказ, отмечает выполнение, прикладывает фото, сканирует QR-код оборудования — прямо с цеха, без бумаги.</li>
+                <li><strong>Автоматизация регламентов и аналитики.</strong> Плановое ТО генерируется по календарю и наработке, KPI считаются в реальном времени, уведомления приходят без участия человека. Подробнее — на странице <a href="../../#features-section">возможности эТОИР</a> и в разрезе <a href="../../#industries">для разных отраслей</a>.</li>
+            </ul>
+
+            <h2 id="comparison-table">Сравнение по 8 параметрам</h2>
+            <p>Ниже — наглядная <a href="../../#comparison">таблица сравнения</a> по ключевым функциям, на которые опирается реальное управление ремонтами:</p>
+            <table>
+                <thead>
+                    <tr><th>Функция</th><th>Excel</th><th>эТОИР (CMMS)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Учёт оборудования</td><td>Список без истории</td><td>Карточка + QR + журнал изменений</td></tr>
+                    <tr><td>Плановое ТО</td><td>Ручной календарь</td><td>Авто по дате и наработке</td></tr>
+                    <tr><td>Наряд-заказы</td><td>Текст в ячейке</td><td>Объект с жизненным циклом</td></tr>
+                    <tr><td>Мобильный доступ</td><td>Нет</td><td>Приложение + офлайн</td></tr>
+                    <tr><td>Расчёт MTBF/MTTR</td><td>Ручные сводные</td><td>Из коробки</td></tr>
+                    <tr><td>Уведомления</td><td>Нет</td><td>Email, мессенджеры</td></tr>
+                    <tr><td>Интеграции с 1С/SCADA</td><td>Нет</td><td>API, готовые коннекторы</td></tr>
+                    <tr><td>Аудит изменений</td><td>Нет</td><td>Полный, по каждой записи</td></tr>
+                </tbody>
+            </table>
+
+            <h2 id="tco">А что насчёт стоимости</h2>
+            <p>Главный аргумент за Excel — «он бесплатный». Это правда только в части лицензии. Если посчитать совокупную стоимость владения (TCO) на горизонте 2–3 лет, картина меняется. На производстве с 100 единицами оборудования и 5 исполнителями типичные скрытые издержки Excel-учёта:</p>
+            <ul>
+                <li>Начальник смены тратит 30–60 мин в день на ручное сведение данных — это <strong>~150 часов в год</strong> на одного человека.</li>
+                <li>Пропуск регламентного ТО из-за отсутствия уведомлений приводит к 1–2 аварийным остановкам в год. При средней стоимости часа простоя 50 000 рублей это <strong>200 000–800 000 рублей</strong> прямых потерь.</li>
+                <li>Замороженный складской запас «на всякий случай» — без аналитики расхода запчастей запасы обычно избыточны на 15–25%. На складе в 3 млн рублей это <strong>~600 000 рублей</strong> замороженного оборотного капитала.</li>
+            </ul>
+            <p>Подписка на CMMS-систему сопоставимого функционала для такого предприятия — порядка 30–80 тысяч рублей в месяц. Точка безубыточности достигается обычно за 4–9 месяцев — даже без учёта неочевидных эффектов вроде роста MTBF. Чтобы спланировать переход без сбоев, посмотрите наш <a href="../kak-vnedrit-toir-sistemu/">пошаговый план внедрения</a>.</p>
+
+            <h2 id="when-excel-ok">Когда Excel ещё допустим</h2>
+            <p>Это сравнение не означает, что Excel должен быть выкинут немедленно. Он остаётся разумным выбором, если:</p>
+            <ul>
+                <li>у вас меньше 30 единиц оборудования и один-два исполнителя;</li>
+                <li>парк оборудования стабилен, новые единицы появляются раз в год;</li>
+                <li>аварии редки, простои некритичны для выручки;</li>
+                <li>нет требований внешнего аудита (ISO 55000, госконтракты);</li>
+                <li>бухгалтерия и учёт ТМЦ ведутся отдельно и их синхронизация не нужна.</li>
+            </ul>
+            <p>В этих условиях стоимость внедрения CMMS превысит выгоду. Но как только производство переходит этот порог — а это происходит быстрее, чем кажется, — каждый месяц без CMMS стоит реальных денег. Если хочется углубиться в экономику решения, отдельно разобрали <a href="../zachem-avtomatizirovat-toir/">6 причин автоматизировать ТОиР</a>.</p>
+
+            <h2 id="what-to-do">Что делать прямо сейчас</h2>
+            <p>Если из семи признаков вы узнали хотя бы три — пора смотреть на CMMS. Не обязательно сразу внедрять: начните с демо-презентации, на которой можно увидеть, как ваши собственные процессы выглядели бы в системе эТОИР. Это часто меняет картину быстрее, чем сравнительные таблицы и расчёты ROI на бумаге.</p>
+        </article>
+    </main>
+
+    <div class="sticky-cta-mobile" aria-hidden="true">
+        <span class="sticky-cta-text">Бесплатное демо за 30 минут</span>
+        <a href="../../#contact" class="sticky-cta-btn">Получить демо</a>
+        <button class="sticky-cta-close" aria-label="Закрыть">✕</button>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo"><span>э</span>ТОИР</div>
+                <div class="footer-links">
+                    <a href="../../#features-section">Возможности</a>
+                    <a href="../../#advantages">Преимущества</a>
+                    <a href="../../#faq">FAQ</a>
+                    <a href="../">Блог</a>
+                    <a href="../../#contact">Контакт</a>
+                    <a href="../../privacy">Политика конфиденциальности</a>
+                </div>
+                <div class="footer-copy">
+                    &copy; 2026 эТОИР. Все права защищены.
+                    <br>Информация на сайте является справочной, не является публичной офертой.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    function initToc(){const a=document.querySelector('.article-content');if(!a)return;const hs=a.querySelectorAll('h2');if(!hs.length)return;const dl=document.querySelector('.article-toc-list'),ml=document.querySelector('.article-toc-mobile ul'),ms=document.querySelector('.article-toc-mobile summary');hs.forEach((h,i)=>{if(!h.id)h.id='h2-'+(i+1);const t=h.textContent.trim(),l=`<li data-target="${h.id}"><a href="#${h.id}">${t}</a></li>`;dl&&dl.insertAdjacentHTML('beforeend',l);ml&&ml.insertAdjacentHTML('beforeend',l)});ms&&(ms.textContent=`📋 Содержание (${hs.length} ${hs.length===1?'раздел':'разделов'})`);const ti=document.querySelectorAll('.article-toc-list li'),io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;ti.forEach(li=>li.classList.toggle('active',li.dataset.target===id))}}),{rootMargin:'-80px 0px -70% 0px',threshold:0});hs.forEach(h=>io.observe(h))}
+    function initStickyCta(){const c=document.querySelector('.sticky-cta-mobile');if(!c)return;if(sessionStorage.getItem('sticky-cta-dismissed'))return;const a=document.querySelector('.article-content');if(!a)return;const sa=a.offsetTop+a.offsetHeight*.4;let s=!1;window.addEventListener('scroll',()=>{if(s)return;if(window.scrollY+window.innerHeight>=sa){c.classList.add('visible');c.setAttribute('aria-hidden','false');s=!0}},{passive:!0});c.querySelector('.sticky-cta-close').addEventListener('click',()=>{c.classList.remove('visible');c.setAttribute('aria-hidden','true');sessionStorage.setItem('sticky-cta-dismissed','1')});c.querySelector('.sticky-cta-btn').addEventListener('click',()=>{window.ym&&ym(107942912,'reachGoal','sticky_cta_click');window.gtag&&gtag('event','sticky_cta_click')})}
+    document.addEventListener('DOMContentLoaded',()=>{initToc();initStickyCta()});
+    </script>
+</body>
+</html>
