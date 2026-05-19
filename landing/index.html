@@ -3132,6 +3132,21 @@
   .fmap-machine { width: 88px; }
 }
 
+/* ===== Comparison ===== */
+.comparison-section { padding: 80px 0; background: var(--bg); }
+.comparison-table-wrapper { overflow-x: auto; margin-top: 32px; }
+.comparison-table { width: 100%; border-collapse: collapse; min-width: 720px; }
+.comparison-table th, .comparison-table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); }
+.comparison-table thead th { background: var(--bg-alt); font-weight: 600; color: var(--text); }
+.comparison-table .col-etoir { background: var(--primary-light); }
+.comparison-table tbody tr:hover { background: var(--bg-alt); }
+.comparison-table .etoir-mark { display: block; font-weight: 700; color: var(--primary); font-size: 1.1rem; line-height: 1; margin-bottom: 4px; }
+.comparison-table .etoir-sub { display: block; font-size: 0.875rem; color: var(--text-secondary); }
+@media (max-width: 768px) {
+  .comparison-table { font-size: 0.9rem; min-width: 600px; }
+  .comparison-table th, .comparison-table td { padding: 12px 14px; }
+}
+
 /* ===== Industries ===== */
 .industries-section { padding: 80px 0; background: var(--bg-alt); }
 .industries-grid {
@@ -3314,6 +3329,81 @@
               </div>
             </div>
           </div>
+        </section>
+
+        <!-- ===== COMPARISON ===== -->
+        <section id="comparison" class="comparison-section" aria-label="Сравнение с альтернативами">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">эТОИР vs Excel vs&nbsp;1С:ТОИР</h2>
+                    <p class="section-subtitle">
+                        Как меняется управление ТОиР при&nbsp;переходе с&nbsp;Excel или коробочной 1С на&nbsp;современную CMMS-систему.
+                    </p>
+                </div>
+
+                <div class="comparison-table-wrapper fade-up">
+                    <table class="comparison-table" aria-label="Сравнительная таблица решений для управления ТОиР">
+                        <thead>
+                            <tr>
+                                <th scope="col">Функция</th>
+                                <th scope="col">Excel</th>
+                                <th scope="col">1С:ТОИР</th>
+                                <th scope="col" class="col-etoir">эТОИР</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Учёт оборудования</th>
+                                <td>Ручной, без&nbsp;истории</td>
+                                <td>Есть</td>
+                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Карточки + QR-коды + история изменений</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Планирование ТО</th>
+                                <td>—</td>
+                                <td>По&nbsp;календарю</td>
+                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">По&nbsp;календарю + наработке + состоянию</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Мобильное приложение для слесарей</th>
+                                <td>—</td>
+                                <td>Ограничено</td>
+                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Полноценное приложение + офлайн-режим</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Аналитика MTBF/MTTR</th>
+                                <td>—</td>
+                                <td>Требует доработок</td>
+                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Из&nbsp;коробки + дашборды</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Интеграция с&nbsp;1С / ERP</th>
+                                <td>—</td>
+                                <td>Только 1С</td>
+                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">REST&nbsp;API + готовые коннекторы 1С / SCADA / MES</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Стоимость владения</th>
+                                <td>«Бесплатно», но&nbsp;дорого в&nbsp;поддержке</td>
+                                <td>Высокая (лицензии&nbsp;1С + услуги)</td>
+                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Подписка по&nbsp;числу единиц оборудования</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Скорость внедрения</th>
+                                <td>Дни на&nbsp;шаблоны</td>
+                                <td>3–6&nbsp;месяцев</td>
+                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Первые наряд-заказы в&nbsp;день&nbsp;внедрения</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Поддержка из Реестра Минцифры</th>
+                                <td>—</td>
+                                <td>Да</td>
+                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Российское ПО, соответствие ПП&nbsp;РФ&nbsp;№1236</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
 
         <!-- ===== FEATURES SCROLL ===== -->
