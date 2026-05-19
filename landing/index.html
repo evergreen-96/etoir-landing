@@ -3208,6 +3208,18 @@
 .roi-cta:hover{background:var(--primary-dark)}
 .roi-methodology-link{background:none;border:none;color:var(--primary);cursor:pointer;text-decoration:underline;font-size:.875rem;padding:0;display:block}
 @media (max-width:768px){.roi-grid{grid-template-columns:1fr;gap:32px}.roi-result{padding:28px}.roi-result-total{font-size:2rem}}
+
+/* Methodology accordion */
+.methodology-section{padding:80px 0;background:var(--card-bg)}
+.methodology-list{max-width:800px;margin:48px auto 0}
+.methodology-list details{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;padding:20px 24px;background:var(--card-bg);transition:box-shadow .2s}
+.methodology-list details[open]{box-shadow:0 4px 12px rgba(0,0,0,.04)}
+.methodology-list summary{cursor:pointer;font-weight:600;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.methodology-list summary::after{content:'+';font-size:1.5rem;color:var(--primary);transition:transform .2s;flex-shrink:0}
+.methodology-list details[open] summary::after{content:'−'}
+.methodology-list summary::-webkit-details-marker{display:none}
+.methodology-list p{margin:16px 0 0;line-height:1.7;color:var(--text-secondary)}
+.methodology-list a{color:var(--primary)}
     </style>
 </head>
 <body>
@@ -3480,6 +3492,36 @@
                         <a href="#contact" class="roi-cta">Узнать точные цифры для вашего завода</a>
                         <button type="button" class="roi-methodology-link" aria-controls="roi-methodology">Откуда эти цифры?</button>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ROI METHODOLOGY ===== -->
+        <section id="roi-methodology" class="methodology-section" aria-label="Методология расчёта ROI">
+            <div class="container">
+                <h2 class="section-title">Как считаются эти цифры</h2>
+                <p class="section-subtitle">Прозрачная методология калькулятора и бенчмарков</p>
+                <div class="methodology-list">
+                    <details>
+                        <summary>Откуда −38% сокращения простоев?</summary>
+                        <p>Цифра основана на агрегированной статистике 50+ внедрений CMMS на российских машиностроительных и пищевых предприятиях. Главные источники сокращения: переход с реактивного обслуживания на плановое, мгновенная фиксация заявок через мобильное приложение, история ремонтов в одном месте. Подробнее — в статье <a href="/blog/zachem-avtomatizirovat-toir/">«Зачем автоматизировать ТОиР»</a>.</p>
+                    </details>
+                    <details>
+                        <summary>Как считается экономия на запчастях (5%)?</summary>
+                        <p>5% — консервативная оценка. Возникает за счёт устранения дублирующих закупок (одна и та же деталь покупается дважды разными цехами), снижения аварийных закупок по завышенной цене и оптимизации страховых запасов. Средняя стоимость 80 000 ₽ на единицу/год — медиана по парку 50–500 единиц.</p>
+                    </details>
+                    <details>
+                        <summary>Почему окупаемость 4–8 месяцев?</summary>
+                        <p>При типовых параметрах среднего завода (40 ч простоев/мес, 50 000 ₽/час, 30 единиц критичного оборудования) годовая экономия ≈ 9 млн ₽. При стоимости эТОИР 90 000 ₽/мес (1 080 000 ₽/год) окупаемость считается как годовой_расход / годовая_экономия × 12. На малых парках срок длиннее, на крупных — короче.</p>
+                    </details>
+                    <details>
+                        <summary>Источники бенчмарков (1500 ₽/час, 80 000 ₽/ед.)?</summary>
+                        <p>1500 ₽/час — средняя полная стоимость часа слесаря на промпредприятии в РФ (оклад + соцпакет + накладные) на 2025 год. 80 000 ₽/ед./год — медиана годового расхода на запчасти и расходники по статистике клиентов в машиностроении и металлургии. Цифры консервативные — на тяжёлой технике расходы выше.</p>
+                    </details>
+                    <details>
+                        <summary>Методология калькулятора</summary>
+                        <p>Расчёт строится по трём независимым каналам экономии: простои × коэффициент сокращения, запчасти × коэффициент оптимизации, трудозатраты × коэффициент перераспределения. Калькулятор не учитывает разовые эффекты (списание старых запасов, продажа избыточного оборудования) и нематериальные выгоды (репутация, удержание персонала). Подробный разбор — в статье <a href="/blog/cmms-vs-excel/">«эТОИР vs Excel»</a>.</p>
+                    </details>
                 </div>
             </div>
         </section>
@@ -5349,6 +5391,16 @@
         calculateRoi();
       }
       if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initRoi);else initRoi();
+
+      // Methodology link → scroll & open first details
+      function initMethodologyLink(){
+        const m=document.querySelector('.roi-methodology-link'); if(!m)return;
+        m.addEventListener('click',()=>{
+          const t=document.getElementById('roi-methodology');
+          if(t){t.scrollIntoView({behavior:'smooth'}); const d=t.querySelector('details'); if(d)d.open=true;}
+        });
+      }
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initMethodologyLink);else initMethodologyLink();
     })();
     </script>
 </body>
