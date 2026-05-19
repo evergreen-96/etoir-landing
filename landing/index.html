@@ -3236,6 +3236,14 @@
 .slideshow-dot{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.5);cursor:pointer;transition:background .2s,transform .2s;padding:0}
 .slideshow-dot.active{background:#fff;transform:scale(1.3)}
 @media (max-width:768px){.slideshow{border-radius:12px}.slideshow-nav{width:36px;height:36px;font-size:18px}}
+
+/* Sticky mobile CTA */
+.sticky-cta-mobile{display:none;position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--primary);color:#fff;align-items:center;justify-content:space-between;padding:0 16px;z-index:100;transform:translateY(100%);transition:transform .3s ease;box-shadow:0 -4px 12px rgba(0,0,0,.12)}
+.sticky-cta-mobile.visible{transform:translateY(0)}
+.sticky-cta-text{font-size:.875rem;font-weight:500;flex:1;padding-right:12px}
+.sticky-cta-btn{background:var(--accent);color:var(--text);padding:8px 16px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.875rem;white-space:nowrap}
+.sticky-cta-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;padding:0 8px;cursor:pointer}
+@media (max-width:768px){.sticky-cta-mobile{display:flex}}
     </style>
 </head>
 <body>
@@ -4714,6 +4722,13 @@
 
     </main>
 
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="sticky-cta-mobile" aria-hidden="true">
+        <span class="sticky-cta-text">Бесплатное демо за 30 минут</span>
+        <a href="#contact" class="sticky-cta-btn">Записаться</a>
+        <button class="sticky-cta-close" aria-label="Закрыть">✕</button>
+    </div>
+
     <!-- ===== FOOTER ===== -->
     <footer class="footer" role="contentinfo">
         <div class="container">
@@ -5481,6 +5496,33 @@
         st();
       }
       if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initSlideshow);else initSlideshow();
+
+      // Sticky mobile CTA — appears after hero on scroll, dismiss persists per session
+      function initStickyCtaMain(){
+        const c=document.querySelector('.sticky-cta-mobile'); if(!c)return;
+        if(sessionStorage.getItem('sticky-cta-dismissed'))return;
+        const h=document.querySelector('.hero'); if(!h)return;
+        const hb=h.offsetTop+h.offsetHeight;
+        let shown=false;
+        window.addEventListener('scroll',()=>{
+          if(shown)return;
+          if(window.scrollY>hb){
+            c.classList.add('visible');
+            c.setAttribute('aria-hidden','false');
+            shown=true;
+          }
+        },{passive:true});
+        c.querySelector('.sticky-cta-close').addEventListener('click',()=>{
+          c.classList.remove('visible');
+          c.setAttribute('aria-hidden','true');
+          sessionStorage.setItem('sticky-cta-dismissed','1');
+        });
+        c.querySelector('.sticky-cta-btn').addEventListener('click',()=>{
+          if(window.ym)ym(107942912,'reachGoal','sticky_cta_click');
+          if(window.gtag)gtag('event','sticky_cta_click');
+        });
+      }
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initStickyCtaMain);else initStickyCtaMain();
     })();
     </script>
 </body>
