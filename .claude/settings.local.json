@@ -24,7 +24,13 @@
       "Bash(npm install *)",
       "Bash(git -C \"D:/prod_projects/etoir-landing\" add .gitignore landing/blog/cmms-vs-excel/index.html landing/blog/index.html landing/blog/kak-vnedrit-toir-sistemu/index.html landing/blog/zachem-avtomatizirovat-toir/index.html landing/index.html landing/sitemap.xml nginx/etoir.conf docs/SEO-TODO.md landing/images/AI.webp landing/images/assets.webp landing/images/dash.webp landing/images/og-image.webp landing/images/orders.webp landing/images/top-dash.webp landing/rss.xml landing/styles.css)",
       "Bash(git diff *)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "mcp__plugin_context-mode_context-mode__ctx_search",
+      "WebSearch",
+      "mcp__plugin_context-mode_context-mode__ctx_fetch_and_index",
+      "PowerShell(py *)",
+      "PowerShell($base = 'C:\\\\Users\\\\rnovi\\\\.claude\\\\plugins\\\\cache\\\\agricidaniel-seo\\\\claude-seo\\\\1.9.9\\\\scripts\\\\fetch_page.py'; py $base --help 2>&1 | Select-Object -First 30)",
+      "PowerShell($urls = @\\('https://etoir.ru/blog/cmms-vs-excel/','https://etoir.ru/blog/cmms-vs-excel/index.html','https://etoir.ru/blog/','https://etoir.ru/sitemap.xml'\\); foreach \\($u in $urls\\) { try { $r = Invoke-WebRequest -Uri $u -MaximumRedirection 5 -UseBasicParsing -ErrorAction Stop; \"$u -> $\\($r.StatusCode\\), $\\($r.RawContentLength\\) bytes, ct=$\\($r.Headers['Content-Type']\\)\" } catch { \"$u -> ERR $\\($_.Exception.Message\\)\" } })"
     ]
   }
 }
