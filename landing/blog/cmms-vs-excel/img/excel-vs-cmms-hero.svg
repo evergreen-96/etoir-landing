@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Excel или CMMS-система ТОиР для производственного предприятия">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFBFF"/>
+      <stop offset="100%" stop-color="#EAF1FF"/>
+    </linearGradient>
+    <linearGradient id="excelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#21A366"/>
+      <stop offset="100%" stop-color="#107C41"/>
+    </linearGradient>
+    <linearGradient id="cmmsGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#1E293B" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Заголовок -->
+  <text x="600" y="80" font-family="Inter,-apple-system,Segoe UI,sans-serif" font-size="44" font-weight="800" fill="#0F172A" text-anchor="middle">Excel или CMMS для учёта оборудования?</text>
+  <text x="600" y="120" font-family="Inter,-apple-system,Segoe UI,sans-serif" font-size="22" font-weight="500" fill="#64748B" text-anchor="middle">Сравнение для промышленного предприятия — 2026</text>
+
+  <!-- Excel колонка -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="170" width="480" height="380" rx="24" fill="#FFFFFF"/>
+    <rect x="80" y="170" width="480" height="64" rx="24" fill="url(#excelGrad)"/>
+    <rect x="80" y="200" width="480" height="34" fill="url(#excelGrad)"/>
+    <text x="320" y="212" font-family="Inter,sans-serif" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">Excel-таблица</text>
+    <!-- Имитация ячеек -->
+    <g font-family="Consolas,monospace" font-size="14" fill="#1E293B">
+      <rect x="108" y="260" width="424" height="32" fill="#F1F5F9" rx="4"/>
+      <text x="120" y="280">A1: Компрессор К-2 | дата ТО: 14.05 ?</text>
+      <rect x="108" y="298" width="424" height="32" fill="#FFFFFF" rx="4" stroke="#E2E8F0"/>
+      <text x="120" y="318">A2: Насос Н-7 | исполнитель: Иванов??</text>
+      <rect x="108" y="336" width="424" height="32" fill="#FFFFFF" rx="4" stroke="#E2E8F0"/>
+      <text x="120" y="356">A3: #REF! — потеряна ссылка</text>
+      <rect x="108" y="374" width="424" height="32" fill="#FFFFFF" rx="4" stroke="#E2E8F0"/>
+      <text x="120" y="394">A4: ТОиР_финал_v3_правки.xlsx</text>
+    </g>
+    <text x="320" y="464" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#DC2626" text-anchor="middle">⚠ 3 версии файла, истории нет</text>
+    <text x="320" y="494" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#DC2626" text-anchor="middle">⚠ Мобильного доступа нет</text>
+    <text x="320" y="524" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#DC2626" text-anchor="middle">⚠ MTBF/MTTR не считаются</text>
+  </g>
+
+  <!-- Знак vs -->
+  <circle cx="600" cy="360" r="48" fill="#F59E0B"/>
+  <text x="600" y="372" font-family="Inter,sans-serif" font-size="28" font-weight="800" fill="#FFFFFF" text-anchor="middle">VS</text>
+
+  <!-- CMMS колонка -->
+  <g filter="url(#shadow)">
+    <rect x="640" y="170" width="480" height="380" rx="24" fill="#FFFFFF"/>
+    <rect x="640" y="170" width="480" height="64" rx="24" fill="url(#cmmsGrad)"/>
+    <rect x="640" y="200" width="480" height="34" fill="url(#cmmsGrad)"/>
+    <text x="880" y="212" font-family="Inter,sans-serif" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">CMMS-система эТОИР</text>
+    <!-- Имитация дашборда -->
+    <g>
+      <rect x="668" y="260" width="120" height="68" rx="10" fill="#EFF6FF"/>
+      <text x="728" y="284" font-family="Inter,sans-serif" font-size="11" fill="#64748B" text-anchor="middle">MTBF</text>
+      <text x="728" y="312" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#1D4ED8" text-anchor="middle">412 ч</text>
+      <rect x="800" y="260" width="120" height="68" rx="10" fill="#EFF6FF"/>
+      <text x="860" y="284" font-family="Inter,sans-serif" font-size="11" fill="#64748B" text-anchor="middle">MTTR</text>
+      <text x="860" y="312" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#1D4ED8" text-anchor="middle">2.4 ч</text>
+      <rect x="932" y="260" width="160" height="68" rx="10" fill="#ECFDF5"/>
+      <text x="1012" y="284" font-family="Inter,sans-serif" font-size="11" fill="#64748B" text-anchor="middle">Готовность</text>
+      <text x="1012" y="312" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#059669" text-anchor="middle">99.4%</text>
+
+      <rect x="668" y="344" width="424" height="32" fill="#F1F5F9" rx="6"/>
+      <text x="680" y="364" font-family="Inter,sans-serif" font-size="13" fill="#1E293B">📱 Слесарь принял наряд #487 → выполнено</text>
+      <rect x="668" y="382" width="424" height="32" fill="#FFFFFF" rx="6" stroke="#E2E8F0"/>
+      <text x="680" y="402" font-family="Inter,sans-serif" font-size="13" fill="#1E293B">🔔 ТО Компрессора К-2 через 6 дней</text>
+      <rect x="668" y="420" width="424" height="32" fill="#FFFFFF" rx="6" stroke="#E2E8F0"/>
+      <text x="680" y="440" font-family="Inter,sans-serif" font-size="13" fill="#1E293B">📊 1С: списано 4 ед. запчастей</text>
+    </g>
+    <text x="880" y="494" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#059669" text-anchor="middle">✓ Единый объект, история, мобильность</text>
+    <text x="880" y="524" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#059669" text-anchor="middle">✓ KPI в реальном времени, интеграции</text>
+  </g>
+
+  <!-- Подпись -->
+  <text x="600" y="600" font-family="Inter,sans-serif" font-size="14" fill="#64748B" text-anchor="middle">etoir.ru — система ТОиР для российских заводов в Реестре отечественного ПО</text>
+</svg>

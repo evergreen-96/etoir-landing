@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-label="Дашборд CMMS-системы эТОИР: KPI оборудования, наряд-заказы и расход запчастей в реальном времени">
+  <defs>
+    <linearGradient id="d-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0F172A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient>
+    <linearGradient id="d-card" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E293B"/><stop offset="100%" stop-color="#0F172A"/></linearGradient>
+    <linearGradient id="d-accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#d-bg)"/>
+
+  <!-- Sidebar -->
+  <rect width="220" height="720" fill="#0B1220"/>
+  <text x="40" y="60" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">эТОИР</text>
+  <g font-family="Inter,sans-serif" font-size="14" fill="#94A3B8">
+    <rect x="20" y="100" width="180" height="36" rx="8" fill="#1E40AF"/>
+    <text x="40" y="124" fill="#FFFFFF" font-weight="600">📊 Дашборд</text>
+    <text x="40" y="166">📦 Оборудование</text>
+    <text x="40" y="196">📝 Наряд-заказы</text>
+    <text x="40" y="226">📅 Плановое ТО</text>
+    <text x="40" y="256">🔧 Запчасти и склад</text>
+    <text x="40" y="286">👷 Исполнители</text>
+    <text x="40" y="316">📈 Аналитика</text>
+    <text x="40" y="346">🔗 Интеграции</text>
+    <text x="40" y="376">⚙️ Настройки</text>
+  </g>
+
+  <!-- Header -->
+  <text x="260" y="60" font-family="Inter,sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">Парк оборудования — 142 ед., 7 цехов</text>
+  <text x="260" y="86" font-family="Inter,sans-serif" font-size="14" fill="#94A3B8">Сегодня · 21 мая 2026 · обновлено только что</text>
+
+  <!-- 4 KPI карточки -->
+  <g font-family="Inter,sans-serif">
+    <rect x="260" y="120" width="220" height="120" rx="14" fill="url(#d-card)"/>
+    <text x="280" y="148" font-size="13" fill="#94A3B8">Доступность парка</text>
+    <text x="280" y="194" font-size="40" font-weight="800" fill="#60A5FA">99.4%</text>
+    <text x="280" y="222" font-size="12" fill="#10B981">▲ +0.6% к прошлой неделе</text>
+
+    <rect x="490" y="120" width="220" height="120" rx="14" fill="url(#d-card)"/>
+    <text x="510" y="148" font-size="13" fill="#94A3B8">MTBF (наработка на отказ)</text>
+    <text x="510" y="194" font-size="40" font-weight="800" fill="#60A5FA">412 ч</text>
+    <text x="510" y="222" font-size="12" fill="#10B981">▲ +38 ч за квартал</text>
+
+    <rect x="720" y="120" width="220" height="120" rx="14" fill="url(#d-card)"/>
+    <text x="740" y="148" font-size="13" fill="#94A3B8">MTTR (время восстановления)</text>
+    <text x="740" y="194" font-size="40" font-weight="800" fill="#60A5FA">2.4 ч</text>
+    <text x="740" y="222" font-size="12" fill="#10B981">▼ −18 мин</text>
+
+    <rect x="950" y="120" width="220" height="120" rx="14" fill="url(#d-card)"/>
+    <text x="970" y="148" font-size="13" fill="#94A3B8">Просроченных ТО</text>
+    <text x="970" y="194" font-size="40" font-weight="800" fill="#F59E0B">3</text>
+    <text x="970" y="222" font-size="12" fill="#F59E0B">⚠ требуют решения</text>
+  </g>
+
+  <!-- График простоев -->
+  <g font-family="Inter,sans-serif">
+    <rect x="260" y="260" width="600" height="280" rx="14" fill="url(#d-card)"/>
+    <text x="280" y="290" font-size="16" font-weight="700" fill="#FFFFFF">Простои оборудования, ч/неделя</text>
+    <text x="280" y="310" font-size="12" fill="#94A3B8">Плановые (зелёные) против аварийных (красные) · 12 недель</text>
+    <!-- Bar chart -->
+    <g>
+      <!-- Бары: x=290+i*48, ширина 32 -->
+      <rect x="290" y="430" width="32" height="60" fill="#DC2626"/>
+      <rect x="290" y="410" width="32" height="20" fill="#10B981"/>
+      <rect x="338" y="440" width="32" height="50" fill="#DC2626"/>
+      <rect x="338" y="420" width="32" height="20" fill="#10B981"/>
+      <rect x="386" y="450" width="32" height="40" fill="#DC2626"/>
+      <rect x="386" y="430" width="32" height="20" fill="#10B981"/>
+      <rect x="434" y="455" width="32" height="35" fill="#DC2626"/>
+      <rect x="434" y="430" width="32" height="25" fill="#10B981"/>
+      <rect x="482" y="460" width="32" height="30" fill="#DC2626"/>
+      <rect x="482" y="430" width="32" height="30" fill="#10B981"/>
+      <rect x="530" y="465" width="32" height="25" fill="#DC2626"/>
+      <rect x="530" y="425" width="32" height="40" fill="#10B981"/>
+      <rect x="578" y="470" width="32" height="20" fill="#DC2626"/>
+      <rect x="578" y="420" width="32" height="50" fill="#10B981"/>
+      <rect x="626" y="470" width="32" height="20" fill="#DC2626"/>
+      <rect x="626" y="415" width="32" height="55" fill="#10B981"/>
+      <rect x="674" y="472" width="32" height="18" fill="#DC2626"/>
+      <rect x="674" y="412" width="32" height="60" fill="#10B981"/>
+      <rect x="722" y="475" width="32" height="15" fill="#DC2626"/>
+      <rect x="722" y="408" width="32" height="67" fill="#10B981"/>
+      <rect x="770" y="478" width="32" height="12" fill="#DC2626"/>
+      <rect x="770" y="403" width="32" height="75" fill="#10B981"/>
+      <rect x="818" y="480" width="32" height="10" fill="#DC2626"/>
+      <rect x="818" y="398" width="32" height="82" fill="#10B981"/>
+    </g>
+    <line x1="290" y1="490" x2="850" y2="490" stroke="#334155" stroke-width="1"/>
+    <text x="295" y="510" font-size="11" fill="#94A3B8">10 нед. назад</text>
+    <text x="800" y="510" font-size="11" fill="#94A3B8">сейчас</text>
+
+    <text x="290" y="525" font-size="11" fill="#10B981">■ Плановые ТО</text>
+    <text x="380" y="525" font-size="11" fill="#DC2626">■ Аварийные простои</text>
+  </g>
+
+  <!-- Лента событий справа -->
+  <g font-family="Inter,sans-serif">
+    <rect x="880" y="260" width="290" height="280" rx="14" fill="url(#d-card)"/>
+    <text x="900" y="290" font-size="16" font-weight="700" fill="#FFFFFF">Лента событий</text>
+    <text x="900" y="320" font-size="12" fill="#94A3B8">только что</text>
+    <text x="900" y="340" font-size="13" fill="#FFFFFF">Слесарь принял наряд #487</text>
+    <text x="900" y="365" font-size="12" fill="#94A3B8">3 мин</text>
+    <text x="900" y="385" font-size="13" fill="#FFFFFF">ТО Компрессора К-2 через 6 дней</text>
+    <text x="900" y="410" font-size="12" fill="#94A3B8">12 мин</text>
+    <text x="900" y="430" font-size="13" fill="#FFFFFF">1С: списано 4 ед. подшипников</text>
+    <text x="900" y="455" font-size="12" fill="#94A3B8">28 мин</text>
+    <text x="900" y="475" font-size="13" fill="#FFFFFF">Наряд #486 закрыт исполнителем</text>
+    <text x="900" y="500" font-size="12" fill="#94A3B8">час назад</text>
+    <text x="900" y="520" font-size="13" fill="#FFFFFF">SCADA: рост вибрации Н-7</text>
+  </g>
+
+  <!-- Нижняя строка: предстоящее ТО -->
+  <g font-family="Inter,sans-serif">
+    <rect x="260" y="560" width="910" height="140" rx="14" fill="url(#d-card)"/>
+    <text x="280" y="590" font-size="16" font-weight="700" fill="#FFFFFF">Ближайшее плановое ТО — 5 единиц</text>
+    <text x="280" y="624" font-size="13" fill="#94A3B8">Завтра · Компрессор К-2 · ТО-2 · исполнитель А. Иванов</text>
+    <text x="280" y="648" font-size="13" fill="#94A3B8">+2 дня · Насос Н-7 · ТО-1 · исполнитель П. Сидоров</text>
+    <text x="280" y="672" font-size="13" fill="#94A3B8">+4 дня · Конвейер КЛ-3 · средний ремонт · бригада №2</text>
+  </g>
+
+  <text x="600" y="710" font-family="Inter,sans-serif" font-size="13" fill="#64748B" text-anchor="middle">эТОИР — все данные ТОиР в одном дашборде, в реальном времени</text>
+</svg>

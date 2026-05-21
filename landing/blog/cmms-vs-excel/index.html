@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР</title>
-    <meta name="description" content="Сравниваем Excel-таблицы и специализированную CMMS на 8 параметрах: учёт оборудования, MTBF/MTTR, мобильность, аналитика. Когда таблицы перестают тянуть промышленный завод.">
+    <title>Excel или CMMS для учёта оборудования: сравнение для завода 2026</title>
+    <meta name="description" content="Excel или CMMS-система для учёта оборудования и ТОиР: сравнение по 8 параметрам, 7 признаков, что таблицы перестали работать, точка перехода на CMMS, расчёт TCO для завода.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://etoir.ru/blog/cmms-vs-excel/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР">
-    <meta property="og:description" content="Сравниваем Excel-таблицы и специализированную CMMS на 8 параметрах: учёт оборудования, MTBF/MTTR, мобильность, аналитика. Когда таблицы перестают тянуть промышленный завод.">
+    <meta property="og:title" content="Excel или CMMS для учёта оборудования: сравнение для завода 2026">
+    <meta property="og:description" content="Сравниваем Excel-таблицы и специализированную CMMS-систему ТОиР по 8 параметрам: учёт оборудования, наработка на отказ, мобильность слесарей, аналитика, интеграции с 1С и SCADA.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://etoir.ru/blog/cmms-vs-excel/">
-    <meta property="og:image" content="https://etoir.ru/images/og-image.png">
+    <meta property="og:image" content="https://etoir.ru/blog/cmms-vs-excel/img/excel-vs-cmms-hero.svg">
+    <meta property="og:image:alt" content="Excel или CMMS-система ТОиР для производственного предприятия — сравнение">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="ru_RU">
+    <meta property="og:site_name" content="эТОИР">
+    <meta property="article:published_time" content="2026-05-19">
+    <meta property="article:modified_time" content="2026-05-21">
+    <meta property="article:author" content="эТОИР">
+    <meta property="article:section" content="Сравнения">
+    <meta property="article:tag" content="CMMS, ТОиР, Excel, учёт оборудования, программа для ТОиР">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DS3D1SLNHD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-DS3D1SLNHD');
-    </script>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Excel или CMMS для учёта оборудования: сравнение для завода 2026">
+    <meta name="twitter:description" content="8 параметров сравнения Excel-таблиц и CMMS-системы ТОиР. Когда пора переходить с таблиц на специализированную программу учёта оборудования.">
+    <meta name="twitter:image" content="https://etoir.ru/blog/cmms-vs-excel/img/excel-vs-cmms-hero.svg">
+    <meta name="twitter:image:alt" content="Excel или CMMS-система ТОиР — сравнение для завода">
+
+    <!-- Preload hero -->
+    <link rel="preload" as="image" type="image/svg+xml" href="/blog/cmms-vs-excel/img/excel-vs-cmms-hero.svg" fetchpriority="high">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="Блог эТОИР" href="/rss.xml">
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -70,98 +84,29 @@
         }
         a { color: inherit; text-decoration: none; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* Header */
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-        }
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 0;
-            gap: 24px;
-        }
-        .brand {
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--text);
-            letter-spacing: -0.01em;
-        }
+        .header { position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 24px; }
+        .brand { font-weight: 800; font-size: 1.25rem; color: var(--text); letter-spacing: -0.01em; }
         .brand span { color: var(--primary); }
-        .nav {
-            display: flex;
-            gap: 28px;
-            align-items: center;
-        }
-        .nav a {
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.9375rem;
-            transition: color 0.2s;
-        }
+        .nav { display: flex; gap: 28px; align-items: center; }
+        .nav a { color: var(--text); font-weight: 500; font-size: 0.9375rem; transition: color 0.2s; }
         .nav a:hover { color: var(--primary); }
         .nav a.active { color: var(--primary); font-weight: 600; }
-        .header-cta {
-            display: inline-block;
-            padding: 10px 18px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.9375rem;
-            transition: transform 0.15s, box-shadow 0.2s;
-        }
+        .header-cta { display: inline-block; padding: 10px 18px; background: var(--primary); color: #fff; border-radius: 10px; font-weight: 600; font-size: 0.9375rem; transition: transform 0.15s, box-shadow 0.2s; }
         .header-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25); }
-        @media (max-width: 768px) {
-            .nav { display: none; }
-            .header-cta { display: none; }
-        }
+        @media (max-width: 768px) { .nav { display: none; } .header-cta { display: none; } }
 
-        /* Footer */
-        .footer {
-            background: var(--bg-alt);
-            border-top: 1px solid var(--border);
-            padding: 48px 0 32px;
-        }
-        .footer-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            text-align: center;
-        }
+        .footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 48px 0 32px; }
+        .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
         .footer-logo { font-weight: 800; font-size: 1.25rem; color: var(--text); }
         .footer-logo span { color: var(--primary); }
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 24px;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-            transition: color 0.2s;
-        }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+        .footer-links a { color: var(--text-secondary); font-size: 0.9375rem; transition: color 0.2s; }
         .footer-links a:hover { color: var(--primary); }
-        .footer-copy {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
+        .footer-copy { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; }
 
-        /* Article layout */
         .article-layout{max-width:1200px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:280px 1fr;gap:48px}
         .article-toc{position:sticky;top:100px;align-self:start;max-height:calc(100vh - 120px);overflow-y:auto;font-size:.9rem}
         .article-toc-title{font-weight:700;margin-bottom:12px;color:var(--text)}
@@ -191,6 +136,24 @@
         .article-content table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.95rem;background:var(--card-bg);border-radius:8px;overflow:hidden}
         .article-content th,.article-content td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
         .article-content th{background:var(--bg-alt);font-weight:700}
+        .article-content figure{margin:24px 0}
+        .article-content figure img{width:100%;height:auto;border-radius:12px;display:block;box-shadow:0 4px 12px rgba(15,23,42,.06)}
+        .article-content figcaption{margin-top:8px;font-size:.875rem;color:var(--text-secondary);text-align:center;font-style:italic}
+        .quick-answer{background:#EFF6FF;border-left:4px solid var(--primary);padding:16px 20px;border-radius:8px;margin:16px 0 24px;font-size:1rem;line-height:1.6}
+        .quick-answer strong{color:var(--primary)}
+        .inline-cta{background:linear-gradient(135deg,#EFF6FF 0%,#DBEAFE 100%);border-radius:14px;padding:20px 24px;margin:32px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+        .inline-cta-text{flex:1;min-width:260px;color:var(--text);font-weight:500}
+        .inline-cta a{background:var(--primary);color:#fff;padding:10px 20px;border-radius:10px;font-weight:600;text-decoration:none;white-space:nowrap}
+        .read-also{margin-top:48px;padding:24px;background:var(--bg-alt);border-radius:14px}
+        .read-also h3{margin-top:0}
+        .read-also ul{list-style:none;margin:0;padding:0}
+        .read-also li{padding:8px 0;border-bottom:1px solid var(--border)}
+        .read-also li:last-child{border-bottom:none}
+        .read-also a{color:var(--primary);font-weight:600;text-decoration:none}
+        .faq-block details{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+        .faq-block summary{cursor:pointer;font-weight:600;color:var(--text);font-size:1rem}
+        .faq-block details[open] summary{color:var(--primary);margin-bottom:10px}
+        .faq-block p{margin-bottom:0!important;color:var(--text-secondary)}
         .sticky-cta-mobile{display:none;position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--primary);color:#fff;align-items:center;justify-content:space-between;padding:0 16px;z-index:100;transform:translateY(100%);transition:transform .3s ease;box-shadow:0 -4px 12px rgba(0,0,0,.12)}
         .sticky-cta-mobile.visible{transform:translateY(0)}
         .sticky-cta-text{font-size:.875rem;font-weight:500;flex:1;padding-right:12px}
@@ -200,22 +163,128 @@
         @media (max-width:1024px){.article-layout{grid-template-columns:1fr;gap:24px}.article-toc{display:none}.article-toc-mobile{display:block}}
     </style>
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР","datePublished":"2026-05-19","dateModified":"2026-05-19","author":{"@type":"Organization","name":"эТОИР","url":"https://etoir.ru"},"publisher":{"@type":"Organization","name":"эТОИР","logo":{"@type":"ImageObject","url":"https://etoir.ru/images/logo.png"}},"image":"https://etoir.ru/images/og-image.png","mainEntityOfPage":"https://etoir.ru/blog/cmms-vs-excel/"}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://etoir.ru/"},{"@type":"ListItem","position":2,"name":"Блог","item":"https://etoir.ru/blog/"},{"@type":"ListItem","position":3,"name":"эТОИР vs Excel"}]}</script>
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Excel или CMMS для учёта оборудования: сравнение для завода 2026",
+      "alternativeHeadline": "Почему Excel-таблицы перестают работать для управления ТОиР",
+      "description": "Сравниваем Excel-таблицы и специализированную CMMS-систему ТОиР по 8 параметрам. 7 признаков, что таблицы перестали справляться. Точка перехода и расчёт TCO для российского завода.",
+      "datePublished": "2026-05-19",
+      "dateModified": "2026-05-21",
+      "inLanguage": "ru-RU",
+      "author": {
+        "@type": "Organization",
+        "name": "эТОИР",
+        "url": "https://etoir.ru"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "эТОИР",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://etoir.ru/images/logo.png",
+          "width": "200",
+          "height": "60"
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://etoir.ru/blog/cmms-vs-excel/img/excel-vs-cmms-hero.svg",
+        "width": "1200",
+        "height": "630"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://etoir.ru/blog/cmms-vs-excel/"
+      },
+      "articleSection": "Сравнения",
+      "keywords": "Excel для ТОиР, программа для учёта оборудования, CMMS, система ТОиР, наряд-заказ, MTBF, MTTR, автоматизация ТОиР, российская CMMS, импортозамещение ТОиР",
+      "wordCount": "1900",
+      "about": {
+        "@type": "Thing",
+        "name": "Управление техническим обслуживанием и ремонтом оборудования"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Главная","item":"https://etoir.ru/"},
+        {"@type":"ListItem","position":2,"name":"Блог","item":"https://etoir.ru/blog/"},
+        {"@type":"ListItem","position":3,"name":"Excel или CMMS для учёта оборудования","item":"https://etoir.ru/blog/cmms-vs-excel/"}
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое CMMS и чем она отличается от Excel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CMMS (Computerized Maintenance Management System) — это система управления техническим обслуживанием и ремонтом оборудования с реляционной моделью данных, многопользовательским режимом, мобильным приложением для слесарей и автоматическим расчётом KPI. Excel — табличный калькулятор: он не ведёт историю изменений, не связывает объекты, не работает на телефоне исполнителя и не считает MTBF / MTTR автоматически."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "С какого размера парка оборудования Excel перестаёт работать?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "По нашим наблюдениям точка перелома — 30–40 единиц оборудования и три и более исполнителей. После этого порога ручной учёт в Excel начинает терять заявки, история изменений становится невосстановимой, а время на ручное сведение данных превышает экономию от бесплатной лицензии Excel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли заменить Excel на 1С:ТОИР или нужна отдельная CMMS-система?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1С:ТОИР 2 КОРП — корректный выбор, если у вас уже внедрена платформа 1С:ERP и команда работает с конфигурациями 1С. Для предприятий без 1С или с лёгким ИТ-стеком отдельная облачная CMMS (эТОИР, TRIM, NERPA EAM, Galactica EAM) обычно внедряется быстрее и стоит меньше. Все эти системы входят в Реестр отечественного ПО Минцифры."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько занимает переход с Excel-учёта на CMMS-систему?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Для предприятия со 100–300 единицами оборудования полный переход на CMMS — 6–8 недель: 1 неделя на подготовку справочников, 2 недели на загрузку данных и настройку, 2 недели пилота на одном участке, 2 недели тиражирования. Подробный пошаговый план — в статье 'Как внедрить ТОиР-систему за 7 шагов'."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли импортировать существующие Excel-таблицы в CMMS эТОИР?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. эТОИР поддерживает массовую загрузку справочников из xlsx и csv: оборудование, узлы, исполнители, запчасти, история ремонтов. Стандартный шаблон импорта закрывает 80 % случаев; для сложных структур данных аналитик нашей команды помогает с маппингом полей. Это бесплатно при покупке лицензии."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <header class="header" role="banner">
         <div class="container">
             <div class="header-inner">
-                <a href="../../" class="brand"><span>э</span>ТОИР</a>
+                <a href="/" class="brand"><span>э</span>ТОИР</a>
                 <nav class="nav" role="navigation" aria-label="Основная навигация">
-                    <a href="../../#features-section">Возможности</a>
-                    <a href="../../#how-it-works">Как это работает</a>
-                    <a href="../../#advantages">Преимущества</a>
-                    <a href="../" class="active" aria-current="page">Блог</a>
-                    <a href="../../#faq">FAQ</a>
+                    <a href="/#features-section">Возможности</a>
+                    <a href="/#how-it-works">Как это работает</a>
+                    <a href="/#advantages">Преимущества</a>
+                    <a href="/blog/" class="active" aria-current="page">Блог</a>
+                    <a href="/#faq">FAQ</a>
                 </nav>
-                <a href="../../#contact" class="header-cta">Записаться</a>
+                <a href="/#contact" class="header-cta">Записаться</a>
             </div>
         </div>
     </header>
@@ -227,48 +296,94 @@
         </aside>
         <article class="article-content">
             <nav class="breadcrumb" aria-label="Хлебные крошки">
-                <a href="../../">Главная</a> →
-                <a href="../">Блог</a> →
-                <span>эТОИР vs Excel</span>
+                <a href="/">Главная</a> →
+                <a href="/blog/">Блог</a> →
+                <span>Excel или CMMS для учёта оборудования</span>
             </nav>
-            <h1>эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР</h1>
-            <p class="article-meta">19 мая 2026 · 7 мин чтения</p>
-            <p class="article-lead">Почти любое производство, которое всерьёз задумывается об управлении техническим обслуживанием, начинает с Excel. И это нормально: таблицы доступны, не требуют бюджета, понятны главному инженеру с первого взгляда. Проблема в том, что Excel незаметно перестаёт работать ещё до того, как кто-то соберётся это признать. Разбираем восемь параметров сравнения и точку, в которой пора смотреть на <a href="../../#features-section">возможности эТОИР</a>.</p>
+
+            <h1>Excel или CMMS для учёта оборудования: сравнение для завода в 2026 году</h1>
+            <p class="article-meta">Опубликовано <time datetime="2026-05-19">19 мая 2026</time> · обновлено <time datetime="2026-05-21">21 мая 2026</time> · 9 мин чтения · автор: эТОИР</p>
+
+            <figure>
+                <img src="/blog/cmms-vs-excel/img/excel-vs-cmms-hero.svg"
+                     alt="Excel-таблица или CMMS-система ТОиР: сравнение интерфейсов для учёта оборудования на производственном предприятии"
+                     width="1200" height="630"
+                     loading="eager" fetchpriority="high">
+                <figcaption>Главное отличие: Excel — список строк, CMMS — связанные объекты и KPI в реальном времени</figcaption>
+            </figure>
+
+            <p class="quick-answer">
+                <strong>Коротко:</strong> Excel подходит для учёта ТОиР, пока у вас меньше 30 единиц оборудования и один-два исполнителя. После этого порога таблицы начинают терять данные, истории нет, KPI не считаются, слесари не получают наряды на смартфон. Тогда нужна CMMS-система — программа для учёта оборудования и ремонтов с мобильным приложением, автогенерацией ТО и аналитикой простоев.
+            </p>
+
+            <p class="article-lead">Почти любое российское производство, которое всерьёз задумывается об управлении техническим обслуживанием, начинает с Excel. И это нормально: таблицы доступны, не требуют бюджета, понятны главному инженеру с первого взгляда. Проблема в том, что Excel незаметно перестаёт работать ещё до того, как кто-то соберётся это признать. Разбираем восемь параметров сравнения, семь признаков точки перелома и реальный TCO — и точку, в которой пора смотреть на <a href="/#features-section">возможности CMMS-системы эТОИР</a>.</p>
 
             <details class="article-toc-mobile"><summary>📋 Содержание статьи</summary><ul></ul></details>
 
-            <h2 id="why-excel">Почему Excel вообще используют для ТОиР</h2>
+            <h2 id="why-excel">Почему Excel вообще используют для учёта оборудования</h2>
             <p>На старте у Excel есть три неоспоримых преимущества: <strong>нулевая цена входа</strong>, <strong>нулевое обучение</strong> и <strong>максимальная гибкость</strong>. Можно за вечер сверстать таблицу оборудования с колонками «дата ТО», «исполнитель», «комментарий» — и уже завтра показывать её на утренней планёрке. На участке с 15–20 единицами оборудования и двумя слесарями этого хватает.</p>
-            <p>Сложности начинаются в момент, когда таблица перестаёт быть «памяткой одного человека» и превращается в <strong>контур ответственности нескольких подразделений</strong>: главного механика, начальника смены, отдела снабжения, бухгалтерии. Excel был спроектирован как калькулятор для аналитика, а не как многопользовательская транзакционная система — и на этой границе он ломается.</p>
+            <p>Сложности начинаются в момент, когда таблица перестаёт быть «памяткой одного человека» и превращается в <strong>контур ответственности нескольких подразделений</strong>: главного механика, начальника смены, отдела снабжения, бухгалтерии. Excel был спроектирован как калькулятор для аналитика, а не как многопользовательская транзакционная система учёта оборудования и ремонтов — и на этой границе он ломается.</p>
 
             <h2 id="signs-excel-broken">7 признаков, что Excel перестал справляться</h2>
-            <h3>1. Файл «правильной версии» уже неизвестен</h3>
-            <p>На диске лежат <code>ТОиР_2026_v3.xlsx</code>, <code>ТОиР_2026_v3_правки_Иванов.xlsx</code> и <code>ТОиР_финал_окончательный.xlsx</code>. Половина смен правит локальную копию, в конце недели начальник вручную сводит их в общую. На этом этапе вы уже потеряли как минимум одну заявку на ремонт.</p>
-            <h3>2. История изменений потеряна</h3>
-            <p>Кто и когда поменял «выполнено» на «отменено»? Почему вчера в ячейке стоял срок 14 мая, а сегодня — 24 мая? Excel не ведёт журнал изменений: когда происходит инцидент, разобраться невозможно.</p>
-            <h3>3. Нет связи между сущностями</h3>
-            <p>В Excel «оборудование» — это строка с текстом, а не объект. Если поменять название «Компрессор К-2» на «Компрессор К-02», все формулы, ВПР и сводные перестают находить связи. На листе «Запчасти» лежит склад, на листе «Ремонты» — журнал, на листе «Оборудование» — справочник, и каждая сводная — это отдельная боль.</p>
-            <h3>4. Невозможен мобильный доступ для исполнителей</h3>
-            <p>Слесарь у станка не откроет общий xlsx-файл. Бумажные бегунки, которые потом «забивает в таблицу» начальник смены, — это <strong>двойная работа</strong> и окно для потерь данных. По нашим наблюдениям, до 15% работ, выполненных на цеху, не попадают в учёт вовсе.</p>
-            <h3>5. KPI обслуживания не считаются автоматически</h3>
-            <p>Чтобы посчитать MTBF (Mean Time Between Failures) или MTTR (Mean Time To Repair), нужно построить десяток сводных, чистить даты, разносить плановое и аварийное ТО. На нерегулярных данных это обычно занимает 1–2 дня и делается раз в квартал — для операционных решений бесполезно.</p>
-            <h3>6. Уведомлений и эскалаций нет</h3>
-            <p>Excel не напомнит, что 18 мая истекает межсервисный интервал у компрессора К-2. Эта функция держится в голове у конкретного человека — пока он на месте. После его отпуска или увольнения регламентное ТО «внезапно» начинает пропускаться, и через полгода вы получаете аварийную остановку.</p>
-            <h3>7. Интеграции с другими системами невозможны</h3>
-            <p>Когда у вас появляется 1С, SCADA, MES или ERP — Excel становится «чёрной дырой» в контуре управления. Списания со склада запчастей в 1С делаются вручную, проводки расходятся, наработка из SCADA не используется для планирования. Этот разрыв стоит реальных денег.</p>
 
-            <h2 id="cmms-difference">Чем CMMS принципиально отличается</h2>
+            <figure>
+                <img src="/blog/cmms-vs-excel/img/excel-broken-signs.svg"
+                     alt="Семь признаков, что Excel перестал работать для учёта ТОиР: версии файла, потерянная история изменений, нет связи объектов, нет мобильности, KPI не считаются"
+                     width="1200" height="700"
+                     loading="lazy">
+                <figcaption>Семь сигналов, по которым понятно, что пора переходить с Excel на специализированную CMMS-систему</figcaption>
+            </figure>
+
+            <h3 id="sign-1">1. Файл «правильной версии» уже неизвестен</h3>
+            <p>На диске лежат <code>ТОиР_2026_v3.xlsx</code>, <code>ТОиР_2026_v3_правки_Иванов.xlsx</code> и <code>ТОиР_финал_окончательный.xlsx</code>. Половина смен правит локальную копию, в конце недели начальник вручную сводит их в общую. На этом этапе вы уже потеряли как минимум одну заявку на ремонт — и узнаете об этом только после аварийной остановки.</p>
+            <h3 id="sign-2">2. История изменений потеряна</h3>
+            <p>Кто и когда поменял «выполнено» на «отменено»? Почему вчера в ячейке стоял срок 14 мая, а сегодня — 24 мая? Excel не ведёт журнал изменений: когда происходит инцидент, разобраться невозможно. Для предприятий с требованиями внешнего аудита (ISO 55000, ГОСТ 18322, отраслевые регламенты Ростехнадзора) это сразу красный флаг — аудитор просто не примет такую систему учёта.</p>
+            <h3 id="sign-3">3. Нет связи между сущностями</h3>
+            <p>В Excel «оборудование» — это строка с текстом, а не объект. Если поменять название «Компрессор К-2» на «Компрессор К-02», все формулы, ВПР и сводные перестают находить связи. На листе «Запчасти» лежит склад, на листе «Ремонты» — журнал, на листе «Оборудование» — справочник, и каждая сводная — это отдельная боль и отдельный риск ошибки.</p>
+            <h3 id="sign-4">4. Невозможен мобильный доступ для исполнителей</h3>
+            <p>Слесарь у станка не откроет общий xlsx-файл. Бумажные бегунки, которые потом «забивает в таблицу» начальник смены, — это <strong>двойная работа</strong> и окно для потерь данных. По нашим наблюдениям, до 15% работ, выполненных на цеху, не попадают в учёт вовсе. Это означает завышенные нормативы будущего ТО, недозагруженные исполнители и невидимые узкие места в производстве.</p>
+            <h3 id="sign-5">5. KPI обслуживания не считаются автоматически</h3>
+            <p>Чтобы посчитать наработку на отказ (MTBF) или среднее время восстановления (MTTR), нужно построить десяток сводных, чистить даты, разносить плановое и аварийное ТО. На нерегулярных данных это обычно занимает 1–2 дня и делается раз в квартал — для операционных решений бесполезно. К моменту, когда отчёт ляжет на стол, ситуация на цеху уже изменилась.</p>
+            <h3 id="sign-6">6. Уведомлений и эскалаций нет</h3>
+            <p>Excel не напомнит, что 18 мая истекает межсервисный интервал у компрессора К-2. Эта функция держится в голове у конкретного человека — пока он на месте. После его отпуска или увольнения регламентное ТО «внезапно» начинает пропускаться, и через полгода вы получаете аварийную остановку. Восстановить такую «корпоративную память» можно только написанным процессом — а это уже CMMS, просто хуже.</p>
+            <h3 id="sign-7">7. Интеграции с другими системами невозможны</h3>
+            <p>Когда у вас появляется 1С, SCADA, MES или ERP — Excel становится «чёрной дырой» в контуре управления. Списания со склада запчастей в 1С делаются вручную, проводки расходятся, наработка из SCADA не используется для планирования ТО. Этот разрыв стоит реальных денег: задвоенные склады, потерянные часы инженеров на сверки, штрафы от Ростехнадзора за расхождения в журналах.</p>
+
+            <div class="inline-cta">
+                <div class="inline-cta-text">Узнали хотя бы 3 признака из 7? Покажем на демо, как ваши процессы выглядели бы в CMMS — без обязательств.</div>
+                <a href="/#contact">Получить демо</a>
+            </div>
+
+            <h2 id="cmms-difference">Чем CMMS-система принципиально отличается от Excel</h2>
+
+            <figure>
+                <img src="/blog/cmms-vs-excel/img/cmms-dashboard.svg"
+                     alt="Дашборд CMMS-системы эТОИР: KPI оборудования, наряд-заказы, аналитика простоев и лента событий в реальном времени"
+                     width="1200" height="720"
+                     loading="lazy">
+                <figcaption>Дашборд эТОИР: один экран вместо десятка вкладок Excel — для главного инженера и руководителя службы ТОиР</figcaption>
+            </figure>
+
             <p>CMMS (Computerized Maintenance Management System) — это не «удобный Excel». Это <strong>другая модель данных и другая модель работы</strong>. Разница в четырёх вещах:</p>
             <ul>
-                <li><strong>Реляционная модель.</strong> Оборудование, наряд-заказы, исполнители, запчасти — это связанные объекты. Переименование одного не ломает связи. История изменений каждого объекта хранится автоматически.</li>
-                <li><strong>Многопользовательский транзакционный режим.</strong> Одновременная работа десятков человек, контроль конфликтов, журнал действий каждого пользователя.</li>
-                <li><strong>Мобильное приложение для исполнителей.</strong> Слесарь получает наряд-заказ, отмечает выполнение, прикладывает фото, сканирует QR-код оборудования — прямо с цеха, без бумаги.</li>
-                <li><strong>Автоматизация регламентов и аналитики.</strong> Плановое ТО генерируется по календарю и наработке, KPI считаются в реальном времени, уведомления приходят без участия человека. Подробнее — на странице <a href="../../#features-section">возможности эТОИР</a> и в разрезе <a href="../../#industries">для разных отраслей</a>.</li>
+                <li><strong>Реляционная модель.</strong> Оборудование, наряд-заказы, исполнители, запчасти — это связанные объекты. Переименование одного не ломает связи. История изменений каждого объекта хранится автоматически и привязана к конкретному пользователю.</li>
+                <li><strong>Многопользовательский транзакционный режим.</strong> Одновременная работа десятков человек, контроль конфликтов, журнал действий каждого пользователя, разграничение прав по подразделениям.</li>
+                <li><strong>Мобильное приложение для исполнителей.</strong> Слесарь получает наряд-заказ, отмечает выполнение, прикладывает фото, сканирует QR-код оборудования — прямо с цеха, без бумаги. Работает офлайн и синхронизируется, когда устройство снова в сети.</li>
+                <li><strong>Автоматизация регламентов и аналитики.</strong> Плановое ТО генерируется по календарю и наработке, KPI считаются в реальном времени, уведомления приходят без участия человека. Подробнее — на странице <a href="/#features-section">возможности эТОИР</a> и в разрезе <a href="/#industries">для разных отраслей</a>.</li>
             </ul>
 
-            <h2 id="comparison-table">Сравнение по 8 параметрам</h2>
-            <p>Ниже — наглядная <a href="../../#comparison">таблица сравнения</a> по ключевым функциям, на которые опирается реальное управление ремонтами:</p>
+            <h2 id="comparison-table">Сравнение Excel и CMMS по 8 параметрам</h2>
+
+            <figure>
+                <img src="/blog/cmms-vs-excel/img/comparison-infographic.svg"
+                     alt="Сравнение Excel-таблиц и CMMS-системы эТОИР по 8 параметрам: учёт оборудования, плановое ТО, наряд-заказы, мобильность, MTBF/MTTR, уведомления, интеграции, аудит"
+                     width="1200" height="760"
+                     loading="lazy">
+                <figcaption>Восемь функций реального управления ремонтами — где Excel сдаётся, а CMMS-система продолжает работать</figcaption>
+            </figure>
+
             <table>
+                <caption style="caption-side:top;text-align:left;padding-bottom:8px;font-weight:600">Таблица 1. Сравнение Excel и CMMS-системы по основным функциям учёта оборудования</caption>
                 <thead>
                     <tr><th>Функция</th><th>Excel</th><th>эТОИР (CMMS)</th></tr>
                 </thead>
@@ -276,22 +391,43 @@
                     <tr><td>Учёт оборудования</td><td>Список без истории</td><td>Карточка + QR + журнал изменений</td></tr>
                     <tr><td>Плановое ТО</td><td>Ручной календарь</td><td>Авто по дате и наработке</td></tr>
                     <tr><td>Наряд-заказы</td><td>Текст в ячейке</td><td>Объект с жизненным циклом</td></tr>
-                    <tr><td>Мобильный доступ</td><td>Нет</td><td>Приложение + офлайн</td></tr>
-                    <tr><td>Расчёт MTBF/MTTR</td><td>Ручные сводные</td><td>Из коробки</td></tr>
-                    <tr><td>Уведомления</td><td>Нет</td><td>Email, мессенджеры</td></tr>
-                    <tr><td>Интеграции с 1С/SCADA</td><td>Нет</td><td>API, готовые коннекторы</td></tr>
-                    <tr><td>Аудит изменений</td><td>Нет</td><td>Полный, по каждой записи</td></tr>
+                    <tr><td>Мобильный доступ слесарей</td><td>Нет</td><td>Приложение + офлайн</td></tr>
+                    <tr><td>Расчёт MTBF / MTTR / готовности</td><td>Ручные сводные</td><td>Из коробки, в реальном времени</td></tr>
+                    <tr><td>Уведомления и эскалации</td><td>Нет</td><td>Email, Telegram, WhatsApp</td></tr>
+                    <tr><td>Интеграции с 1С / SCADA / MES</td><td>Нет</td><td>API + готовые коннекторы</td></tr>
+                    <tr><td>Аудит изменений (ISO 55000, ГОСТ 18322)</td><td>Нет</td><td>Полный, по каждой записи</td></tr>
                 </tbody>
             </table>
 
-            <h2 id="tco">А что насчёт стоимости</h2>
+            <h2 id="tco">А что насчёт стоимости — реальный TCO для завода</h2>
             <p>Главный аргумент за Excel — «он бесплатный». Это правда только в части лицензии. Если посчитать совокупную стоимость владения (TCO) на горизонте 2–3 лет, картина меняется. На производстве с 100 единицами оборудования и 5 исполнителями типичные скрытые издержки Excel-учёта:</p>
             <ul>
-                <li>Начальник смены тратит 30–60 мин в день на ручное сведение данных — это <strong>~150 часов в год</strong> на одного человека.</li>
-                <li>Пропуск регламентного ТО из-за отсутствия уведомлений приводит к 1–2 аварийным остановкам в год. При средней стоимости часа простоя 50 000 рублей это <strong>200 000–800 000 рублей</strong> прямых потерь.</li>
-                <li>Замороженный складской запас «на всякий случай» — без аналитики расхода запчастей запасы обычно избыточны на 15–25%. На складе в 3 млн рублей это <strong>~600 000 рублей</strong> замороженного оборотного капитала.</li>
+                <li>Начальник смены тратит 30–60 мин в день на ручное сведение данных — это <strong>~150 часов в год</strong> на одного человека. При средней зарплате 80 000 ₽ в месяц это около <strong>72 000 ₽ в год</strong> прямых трудозатрат, не считая упущенной выгоды.</li>
+                <li>Пропуск регламентного ТО из-за отсутствия уведомлений приводит к 1–2 аварийным остановкам в год. При средней стоимости часа простоя 50 000 ₽ это <strong>200 000–800 000 ₽</strong> прямых потерь только в одном цехе.</li>
+                <li>Замороженный складской запас «на всякий случай» — без аналитики расхода запчастей запасы обычно избыточны на 15–25%. На складе в 3 млн ₽ это <strong>~600 000 ₽</strong> замороженного оборотного капитала, который мог бы работать.</li>
+                <li>Штрафы за несоблюдение регламентов и расхождения в журналах при проверке Ростехнадзора — от 30 000 до 500 000 ₽ за инцидент.</li>
             </ul>
-            <p>Подписка на CMMS-систему сопоставимого функционала для такого предприятия — порядка 30–80 тысяч рублей в месяц. Точка безубыточности достигается обычно за 4–9 месяцев — даже без учёта неочевидных эффектов вроде роста MTBF. Чтобы спланировать переход без сбоев, посмотрите наш <a href="../kak-vnedrit-toir-sistemu/">пошаговый план внедрения</a>.</p>
+            <p>Подписка на CMMS-систему сопоставимого функционала для такого предприятия — порядка 30–80 тысяч рублей в месяц. Точка безубыточности достигается обычно за 4–9 месяцев — даже без учёта неочевидных эффектов вроде роста MTBF и снижения текучки в ремонтной службе. Прикинуть экономию для вашего парка можно через <a href="/#roi-calculator">встроенный калькулятор ROI на главной</a>.</p>
+
+            <h2 id="case-food-plant">Мини-кейс: пищевое предприятие, 73 единицы оборудования</h2>
+            <p>Региональный пищевой завод вёл учёт в трёх связанных Excel-файлах (оборудование, плановое ТО, журнал ремонтов). К началу проекта в файлах фактически дублировалось 17 % записей — одно оборудование заводилось дважды с разным написанием. После выгрузки данных в эТОИР и нормализации справочников:</p>
+            <ul>
+                <li>число «реальных» единиц оборудования с 88 «строк» сократилось до 73 фактических объектов;</li>
+                <li>среднее время оформления наряд-заказа упало с 12 до 2 минут (мобильное приложение);</li>
+                <li>через 4 месяца после запуска MTBF по линии розлива вырос с 187 до 248 часов;</li>
+                <li>складские остатки запчастей снизились на 21 % без потери доступности — за счёт перехода на минимальные нормативы по фактическому расходу.</li>
+            </ul>
+            <p>Полный план перехода — в нашей статье <a href="/blog/kak-vnedrit-toir-sistemu/">«Как внедрить ТОиР-систему: пошаговый план за 7 шагов»</a>.</p>
+
+            <h2 id="alternatives">А если уже есть 1С:ТОИР или TRIM — стоит ли переходить</h2>
+            <p>Excel — не единственная отправная точка. Если вы рассматриваете рынок российских систем учёта оборудования, чаще всего видите четыре варианта:</p>
+            <ul>
+                <li><strong>1С:ТОИР 2 КОРП</strong> — мощная корпоративная система, очень глубоко интегрирована с 1С:ERP. Имеет смысл, если у вас уже работает 1С-стек и есть локальная команда поддержки.</li>
+                <li><strong>TRIM (НПП «СпецТек»)</strong> — внедрена в НЛМК и крупных металлургических активах, ориентирована на тяжёлую промышленность.</li>
+                <li><strong>NERPA EAM, Galactica EAM, Naumen Asset Management</strong> — нишевые отечественные EAM-платформы, в Реестре отечественного ПО Минцифры.</li>
+                <li><strong>эТОИР</strong> — облачная CMMS с упором на быстрый старт (типичный пилот за 2 недели), AI-аналитику простоев и мобильное приложение из коробки.</li>
+            </ul>
+            <p>Сравнение этих систем по 10 параметрам мы готовим отдельной статьёй в обзоре «Программа для учёта оборудования и ремонтов: какую выбрать в 2026 году» — она выйдет летом 2026.</p>
 
             <h2 id="when-excel-ok">Когда Excel ещё допустим</h2>
             <p>Это сравнение не означает, что Excel должен быть выкинут немедленно. Он остаётся разумным выбором, если:</p>
@@ -299,19 +435,57 @@
                 <li>у вас меньше 30 единиц оборудования и один-два исполнителя;</li>
                 <li>парк оборудования стабилен, новые единицы появляются раз в год;</li>
                 <li>аварии редки, простои некритичны для выручки;</li>
-                <li>нет требований внешнего аудита (ISO 55000, госконтракты);</li>
+                <li>нет требований внешнего аудита (ISO 55000, ГОСТ 18322, госконтракты);</li>
                 <li>бухгалтерия и учёт ТМЦ ведутся отдельно и их синхронизация не нужна.</li>
             </ul>
-            <p>В этих условиях стоимость внедрения CMMS превысит выгоду. Но как только производство переходит этот порог — а это происходит быстрее, чем кажется, — каждый месяц без CMMS стоит реальных денег. Если хочется углубиться в экономику решения, отдельно разобрали <a href="../zachem-avtomatizirovat-toir/">6 причин автоматизировать ТОиР</a>.</p>
+            <p>В этих условиях стоимость внедрения CMMS превысит выгоду. Но как только производство переходит этот порог — а это происходит быстрее, чем кажется, — каждый месяц без CMMS-системы стоит реальных денег. Если хочется углубиться в экономику решения, отдельно разобрали <a href="/blog/zachem-avtomatizirovat-toir/">6 причин автоматизировать ТОиР</a>.</p>
 
             <h2 id="what-to-do">Что делать прямо сейчас</h2>
-            <p>Если из семи признаков вы узнали хотя бы три — пора смотреть на CMMS. Не обязательно сразу внедрять: начните с демо-презентации, на которой можно увидеть, как ваши собственные процессы выглядели бы в системе эТОИР. Это часто меняет картину быстрее, чем сравнительные таблицы и расчёты ROI на бумаге.</p>
+            <p>Если из семи признаков вы узнали хотя бы три — пора смотреть на CMMS-систему. Не обязательно сразу внедрять: начните с демо-презентации, на которой можно увидеть, как ваши собственные процессы выглядели бы в системе эТОИР. Это часто меняет картину быстрее, чем сравнительные таблицы и расчёты ROI на бумаге. Демо занимает 30 минут, проводится онлайн, без обязательств.</p>
+
+            <div class="inline-cta">
+                <div class="inline-cta-text">Готовы посмотреть, как ваши процессы выглядят в CMMS? Бесплатное демо 30 минут — покажем на ваших данных.</div>
+                <a href="/#contact">Записаться на демо</a>
+            </div>
+
+            <h2 id="faq">Частые вопросы про переход с Excel на CMMS</h2>
+            <div class="faq-block">
+                <details>
+                    <summary>Что такое CMMS и чем она отличается от Excel?</summary>
+                    <p>CMMS (Computerized Maintenance Management System) — это система управления техническим обслуживанием и ремонтом оборудования с реляционной моделью данных, многопользовательским режимом, мобильным приложением для слесарей и автоматическим расчётом KPI. Excel — табличный калькулятор: он не ведёт историю изменений, не связывает объекты, не работает на телефоне исполнителя и не считает MTBF / MTTR автоматически.</p>
+                </details>
+                <details>
+                    <summary>С какого размера парка оборудования Excel перестаёт работать?</summary>
+                    <p>По нашим наблюдениям точка перелома — 30–40 единиц оборудования и три и более исполнителей. После этого порога ручной учёт в Excel начинает терять заявки, история изменений становится невосстановимой, а время на ручное сведение данных превышает экономию от бесплатной лицензии Excel.</p>
+                </details>
+                <details>
+                    <summary>Можно ли заменить Excel на 1С:ТОИР или нужна отдельная CMMS-система?</summary>
+                    <p>1С:ТОИР 2 КОРП — корректный выбор, если у вас уже внедрена платформа 1С:ERP и команда работает с конфигурациями 1С. Для предприятий без 1С или с лёгким ИТ-стеком отдельная облачная CMMS (эТОИР, TRIM, NERPA EAM, Galactica EAM) обычно внедряется быстрее и стоит меньше. Все эти системы входят в Реестр отечественного ПО Минцифры.</p>
+                </details>
+                <details>
+                    <summary>Сколько занимает переход с Excel-учёта на CMMS-систему?</summary>
+                    <p>Для предприятия со 100–300 единицами оборудования полный переход на CMMS — 6–8 недель: 1 неделя на подготовку справочников, 2 недели на загрузку данных и настройку, 2 недели пилота на одном участке, 2 недели тиражирования. Подробный пошаговый план — в нашей статье <a href="/blog/kak-vnedrit-toir-sistemu/">«Как внедрить ТОиР-систему за 7 шагов»</a>.</p>
+                </details>
+                <details>
+                    <summary>Можно ли импортировать существующие Excel-таблицы в CMMS эТОИР?</summary>
+                    <p>Да. эТОИР поддерживает массовую загрузку справочников из xlsx и csv: оборудование, узлы, исполнители, запчасти, история ремонтов. Стандартный шаблон импорта закрывает 80 % случаев; для сложных структур данных аналитик нашей команды помогает с маппингом полей. Это бесплатно при покупке лицензии.</p>
+                </details>
+            </div>
+
+            <aside class="read-also" aria-label="Похожие материалы">
+                <h3>Читайте также</h3>
+                <ul>
+                    <li><a href="/blog/kak-vnedrit-toir-sistemu/">Как внедрить ТОиР-систему: пошаговый план за 7 шагов</a> — что делать после решения уйти с Excel</li>
+                    <li><a href="/blog/zachem-avtomatizirovat-toir/">Зачем автоматизировать ТОиР: 6 причин перейти на эТОИР</a> — экономика и операционный эффект</li>
+                    <li><a href="/#features-section">Все возможности CMMS-системы эТОИР</a> — модули, мобильное приложение, AI-аналитика</li>
+                </ul>
+            </aside>
         </article>
     </main>
 
     <div class="sticky-cta-mobile" aria-hidden="true">
-        <span class="sticky-cta-text">Бесплатное демо за 30 минут</span>
-        <a href="../../#contact" class="sticky-cta-btn">Получить демо</a>
+        <span class="sticky-cta-text">Бесплатное демо CMMS за 30 минут</span>
+        <a href="/#contact" class="sticky-cta-btn">Получить демо</a>
         <button class="sticky-cta-close" aria-label="Закрыть">✕</button>
     </div>
 
@@ -320,12 +494,12 @@
             <div class="footer-inner">
                 <div class="footer-logo"><span>э</span>ТОИР</div>
                 <div class="footer-links">
-                    <a href="../../#features-section">Возможности</a>
-                    <a href="../../#advantages">Преимущества</a>
-                    <a href="../../#faq">FAQ</a>
-                    <a href="../">Блог</a>
-                    <a href="../../#contact">Контакт</a>
-                    <a href="../../privacy">Политика конфиденциальности</a>
+                    <a href="/#features-section">Возможности</a>
+                    <a href="/#advantages">Преимущества</a>
+                    <a href="/#faq">FAQ</a>
+                    <a href="/blog/">Блог</a>
+                    <a href="/#contact">Контакт</a>
+                    <a href="/privacy/">Политика конфиденциальности</a>
                 </div>
                 <div class="footer-copy">
                     &copy; 2026 эТОИР. Все права защищены.
@@ -337,7 +511,7 @@
 
     <script>
     function initToc(){const a=document.querySelector('.article-content');if(!a)return;const hs=a.querySelectorAll('h2');if(!hs.length)return;const dl=document.querySelector('.article-toc-list'),ml=document.querySelector('.article-toc-mobile ul'),ms=document.querySelector('.article-toc-mobile summary');hs.forEach((h,i)=>{if(!h.id)h.id='h2-'+(i+1);const t=h.textContent.trim(),l=`<li data-target="${h.id}"><a href="#${h.id}">${t}</a></li>`;dl&&dl.insertAdjacentHTML('beforeend',l);ml&&ml.insertAdjacentHTML('beforeend',l)});ms&&(ms.textContent=`📋 Содержание (${hs.length} ${hs.length===1?'раздел':'разделов'})`);const ti=document.querySelectorAll('.article-toc-list li'),io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;ti.forEach(li=>li.classList.toggle('active',li.dataset.target===id))}}),{rootMargin:'-80px 0px -70% 0px',threshold:0});hs.forEach(h=>io.observe(h))}
-    function initStickyCta(){const c=document.querySelector('.sticky-cta-mobile');if(!c)return;if(sessionStorage.getItem('sticky-cta-dismissed'))return;const a=document.querySelector('.article-content');if(!a)return;const sa=a.offsetTop+a.offsetHeight*.4;let s=!1;window.addEventListener('scroll',()=>{if(s)return;if(window.scrollY+window.innerHeight>=sa){c.classList.add('visible');c.setAttribute('aria-hidden','false');s=!0}},{passive:!0});c.querySelector('.sticky-cta-close').addEventListener('click',()=>{c.classList.remove('visible');c.setAttribute('aria-hidden','true');sessionStorage.setItem('sticky-cta-dismissed','1')});c.querySelector('.sticky-cta-btn').addEventListener('click',()=>{window.ym&&ym(107942912,'reachGoal','sticky_cta_click');window.gtag&&gtag('event','sticky_cta_click')})}
+    function initStickyCta(){const c=document.querySelector('.sticky-cta-mobile');if(!c)return;if(sessionStorage.getItem('sticky-cta-dismissed'))return;const a=document.querySelector('.article-content');if(!a)return;const sa=a.offsetTop+a.offsetHeight*.4;let s=!1;window.addEventListener('scroll',()=>{if(s)return;if(window.scrollY+window.innerHeight>=sa){c.classList.add('visible');c.setAttribute('aria-hidden','false');s=!0}},{passive:!0});c.querySelector('.sticky-cta-close').addEventListener('click',()=>{c.classList.remove('visible');c.setAttribute('aria-hidden','true');sessionStorage.setItem('sticky-cta-dismissed','1')});c.querySelector('.sticky-cta-btn').addEventListener('click',()=>{window.ym&&ym(107942912,'reachGoal','sticky_cta_click')})}
     document.addEventListener('DOMContentLoaded',()=>{initToc();initStickyCta()});
     </script>
 </body>
