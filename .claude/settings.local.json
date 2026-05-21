@@ -3,7 +3,28 @@
     "allow": [
       "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git -C \"D:/prod_projects/etoir-landing\" status --short)",
+      "Bash(git -C \"D:/prod_projects/etoir-landing\" branch --show-current)",
+      "mcp__plugin_context-mode_context-mode__ctx_execute",
+      "Bash(git commit *)",
+      "PowerShell(New-Item *)",
+      "Bash(python *)",
+      "Bash(git -C D:\\\\prod_projects\\\\etoir-landing add landing/blog/index.html)",
+      "Bash(git -C D:\\\\prod_projects\\\\etoir-landing commit -m \"feat\\(blog\\): create blog index page with 3 article cards\")",
+      "Bash(git -C \"/d/prod_projects/etoir-landing\" add landing/blog/index.html)",
+      "Bash(git -C \"/d/prod_projects/etoir-landing\" commit -m \"feat\\(blog\\): create blog index page with 3 article cards\")",
+      "Bash(git -C \"/d/prod_projects/etoir-landing\" add landing/index.html)",
+      "Bash(git -C \"/d/prod_projects/etoir-landing\" commit -m \"feat\\(blog\\): add blog link to header and footer\")",
+      "Bash(git -C \"D:/prod_projects/etoir-landing\" log --oneline -10)",
+      "Bash(git -C \"D:/prod_projects/etoir-landing\" log --oneline -15)",
+      "mcp__plugin_context-mode_context-mode__ctx_execute_file",
+      "Bash(mkdir -p tools/img-convert)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(git -C \"D:/prod_projects/etoir-landing\" add .gitignore landing/blog/cmms-vs-excel/index.html landing/blog/index.html landing/blog/kak-vnedrit-toir-sistemu/index.html landing/blog/zachem-avtomatizirovat-toir/index.html landing/index.html landing/sitemap.xml nginx/etoir.conf docs/SEO-TODO.md landing/images/AI.webp landing/images/assets.webp landing/images/dash.webp landing/images/og-image.webp landing/images/orders.webp landing/images/top-dash.webp landing/rss.xml landing/styles.css)",
+      "Bash(git diff *)",
+      "Read(//tmp/**)"
     ]
   }
 }
