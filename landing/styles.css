@@ -3039,3 +3039,141 @@
 .blog-preview-all { text-align: center; }
 .blog-preview-all a { color: var(--primary); font-weight: 600; font-size: 1.0625rem; }
 .blog-preview-all a:hover { text-decoration: underline; }
+
+
+/* ===== Inline CTA banners (added 2026-05-19) ===== */
+.inline-cta { padding: 32px 0; }
+.inline-cta-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px 36px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+.inline-cta-banner--accent {
+  background: linear-gradient(135deg, var(--primary), #1e40af);
+  border-color: transparent;
+  color: #fff;
+}
+.inline-cta-banner--accent .inline-cta-text strong { color: #fff; }
+.inline-cta-banner--accent .inline-cta-text span { color: rgba(255,255,255,0.85); }
+.inline-cta-text { display: flex; flex-direction: column; gap: 4px; }
+.inline-cta-text strong { font-size: 1.125rem; color: var(--text); font-weight: 700; }
+.inline-cta-text span { color: var(--text-secondary); font-size: 0.9375rem; }
+.inline-cta-banner .btn { flex-shrink: 0; white-space: nowrap; }
+.btn-light {
+  background: #fff;
+  color: var(--primary);
+  border: none;
+}
+.btn-light:hover { background: #f8fafc; }
+
+@media (max-width: 720px) {
+  .inline-cta-banner { flex-direction: column; align-items: flex-start; padding: 24px; gap: 16px; }
+  .inline-cta-banner .btn { width: 100%; text-align: center; }
+}
+
+
+/* ===== Industries accordion (refactor 2026-05-19) ===== */
+.industries-list {
+  display: grid;
+  gap: 12px;
+  max-width: 880px;
+  margin: 48px auto 0;
+}
+.industry-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.industry-item[open] { box-shadow: var(--card-shadow); }
+.industry-item summary {
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--text);
+  list-style: none;
+  user-select: none;
+}
+.industry-item summary::-webkit-details-marker { display: none; }
+.industry-item summary::after {
+  content: '+';
+  margin-left: auto;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+  line-height: 1;
+}
+.industry-item[open] summary::after { transform: rotate(45deg); }
+.industry-item .industry-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.industry-item p {
+  padding: 0 24px 22px;
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+@media (max-width: 640px) {
+  .industry-item summary { padding: 16px 18px; font-size: 1rem; }
+  .industry-item p { padding: 0 18px 18px; }
+}
+
+
+/* ===== Icon overrides for SVG sprite (2026-05-19) ===== */
+.industry-item .industry-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 0;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.industry-item .industry-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+.int-node-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 0;
+  color: #60a5fa;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.int-node-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.comparison-table .etoir-mark {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 0;
+  margin-bottom: 4px;
+}
+.comparison-table .etoir-mark svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}

@@ -246,6 +246,49 @@
 </head>
 <body>
 
+    <!-- ===== SVG ICON SPRITE ===== -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="icon-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+            </symbol>
+            <symbol id="icon-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
+            </symbol>
+            <symbol id="icon-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+            </symbol>
+            <symbol id="icon-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3"/>
+                <path d="M7 14h10"/>
+            </symbol>
+            <symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </symbol>
+            <symbol id="icon-pickaxe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 13L4 23M16 6l4 4M9 11L6.5 8.5a4.95 4.95 0 0 1 7-7l-7 7zM14 16l2.5 2.5a4.95 4.95 0 0 0 7-7l-7 7z"/>
+            </symbol>
+            <symbol id="icon-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+            </symbol>
+            <symbol id="icon-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </symbol>
+            <symbol id="icon-satellite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                <line x1="12" y1="20" x2="12.01" y2="20"/>
+            </symbol>
+            <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+            </symbol>
+        </defs>
+    </svg>
+
     <!-- Yandex.Metrika noscript (без JS трекинг не работает, согласие не требуется) -->
     <noscript><div><img src="https://mc.yandex.ru/watch/107942912" style="position:absolute; left:-9999px;" alt=""></div></noscript>
 
@@ -432,52 +475,65 @@
                                 <th scope="row">Учёт оборудования</th>
                                 <td>Ручной, без&nbsp;истории</td>
                                 <td>Есть</td>
-                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Карточки + QR-коды + история изменений</span></td>
+                                <td class="col-etoir"><span class="etoir-mark"><svg><use href="#icon-check"/></svg></span><span class="etoir-sub">Карточки + QR-коды + история изменений</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Планирование ТО</th>
                                 <td>—</td>
                                 <td>По&nbsp;календарю</td>
-                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">По&nbsp;календарю + наработке + состоянию</span></td>
+                                <td class="col-etoir"><span class="etoir-mark"><svg><use href="#icon-check"/></svg></span><span class="etoir-sub">По&nbsp;календарю + наработке + состоянию</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Мобильное приложение для слесарей</th>
                                 <td>—</td>
                                 <td>Ограничено</td>
-                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Полноценное приложение + офлайн-режим</span></td>
+                                <td class="col-etoir"><span class="etoir-mark"><svg><use href="#icon-check"/></svg></span><span class="etoir-sub">Полноценное приложение + офлайн-режим</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Аналитика MTBF/MTTR</th>
                                 <td>—</td>
                                 <td>Требует доработок</td>
-                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Из&nbsp;коробки + дашборды</span></td>
+                                <td class="col-etoir"><span class="etoir-mark"><svg><use href="#icon-check"/></svg></span><span class="etoir-sub">Из&nbsp;коробки + дашборды</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Интеграция с&nbsp;1С / ERP</th>
                                 <td>—</td>
                                 <td>Только 1С</td>
-                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">REST&nbsp;API + готовые коннекторы 1С / SCADA / MES</span></td>
+                                <td class="col-etoir"><span class="etoir-mark"><svg><use href="#icon-check"/></svg></span><span class="etoir-sub">REST&nbsp;API + готовые коннекторы 1С / SCADA / MES</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Стоимость владения</th>
                                 <td>«Бесплатно», но&nbsp;дорого в&nbsp;поддержке</td>
                                 <td>Высокая (лицензии&nbsp;1С + услуги)</td>
-                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Подписка по&nbsp;числу единиц оборудования</span></td>
+                                <td class="col-etoir"><span class="etoir-mark"><svg><use href="#icon-check"/></svg></span><span class="etoir-sub">Подписка по&nbsp;числу единиц оборудования</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Скорость внедрения</th>
                                 <td>Дни на&nbsp;шаблоны</td>
                                 <td>3–6&nbsp;месяцев</td>
-                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Первые наряд-заказы в&nbsp;день&nbsp;внедрения</span></td>
+                                <td class="col-etoir"><span class="etoir-mark"><svg><use href="#icon-check"/></svg></span><span class="etoir-sub">Первые наряд-заказы в&nbsp;день&nbsp;внедрения</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Поддержка из Реестра Минцифры</th>
                                 <td>—</td>
                                 <td>Да</td>
-                                <td class="col-etoir"><span class="etoir-mark">✓</span><span class="etoir-sub">Российское ПО, соответствие ПП&nbsp;РФ&nbsp;№1236</span></td>
+                                <td class="col-etoir"><span class="etoir-mark"><svg><use href="#icon-check"/></svg></span><span class="etoir-sub">Российское ПО, соответствие ПП&nbsp;РФ&nbsp;№1236</span></td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== INLINE CTA #1 ===== -->
+        <section class="inline-cta" aria-label="Демо после сравнения">
+            <div class="container">
+                <div class="inline-cta-banner">
+                    <div class="inline-cta-text">
+                        <strong>Хотите проверить эТОИР на ваших данных?</strong>
+                        <span>Покажем за 30 минут на бесплатной презентации, как система впишется в ваш процесс.</span>
+                    </div>
+                    <a href="#contact" class="btn btn-accent btn-lg">Получить демо</a>
                 </div>
             </div>
         </section>
@@ -1160,6 +1216,19 @@
             </div>
         </section>
 
+        <!-- ===== INLINE CTA #2 ===== -->
+        <section class="inline-cta" aria-label="Демо после слайдшоу">
+            <div class="container">
+                <div class="inline-cta-banner inline-cta-banner--accent">
+                    <div class="inline-cta-text">
+                        <strong>Понравилось то, что увидели?</strong>
+                        <span>Запишитесь на живое демо — покажем эТОИР на примере вашего парка оборудования.</span>
+                    </div>
+                    <a href="#contact" class="btn btn-light btn-lg">Записаться на демо</a>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== HOW IT WORKS ===== -->
         <section class="how-it-works" id="how-it-works" aria-label="Как это работает">
             <div class="container">
@@ -1260,54 +1329,66 @@
                     </p>
                 </div>
 
-                <div class="industries-grid">
-                    <div class="industry-card fade-up">
-                        <div class="industry-icon" aria-hidden="true">🔩</div>
-                        <h3>Машиностроение и&nbsp;металлообработка</h3>
+                <div class="industries-list">
+                    <details class="industry-item">
+                        <summary>
+                            <span class="industry-icon" aria-hidden="true"><svg><use href="#icon-cog"/></svg></span>
+                            <span>Машиностроение и&nbsp;металлообработка</span>
+                        </summary>
                         <p>
-                            Учёт станков с&nbsp;ЧПУ, прессов, обрабатывающих центров. Планирование ТО&nbsp;по&nbsp;наработке (часы шпинделя), отслеживание ресурса режущего инструмента, журнал ремонтов с&nbsp;фиксацией причин отказов. Интеграция с&nbsp;MES для автоматического съёма наработки.
+                            Учёт станков, прессов и&nbsp;обрабатывающих центров с&nbsp;паспортами оборудования и&nbsp;историей ремонтов. Плановое ТО по&nbsp;графику и&nbsp;периодичности, журнал отказов с&nbsp;фиксацией причин. AI-анализ PDF-мануалов: загружаете документацию станка — система предлагает список регламентных работ, которые в&nbsp;один клик становятся плановыми задачами.
                         </p>
-                    </div>
+                    </details>
 
-                    <div class="industry-card fade-up">
-                        <div class="industry-icon" aria-hidden="true">🥫</div>
-                        <h3>Пищевая промышленность</h3>
+                    <details class="industry-item">
+                        <summary>
+                            <span class="industry-icon" aria-hidden="true"><svg><use href="#icon-package"/></svg></span>
+                            <span>Пищевая промышленность</span>
+                        </summary>
                         <p>
-                            ТОиР линий розлива, упаковки, термической обработки. Контроль соблюдения санитарных регламентов CIP/SIP, учёт критичных запчастей (уплотнения, фильтры), плановые остановы на&nbsp;санобработку. Поддержка требований HACCP и&nbsp;ТР&nbsp;ТС.
+                            ТОиР линий розлива, упаковки и&nbsp;тепловой обработки. Планирование регламентных остановов и&nbsp;обслуживания по&nbsp;расписанию, журнал выполненных работ для внутреннего контроля качества. Учёт критичных запчастей (уплотнения, фильтры, ножи) и&nbsp;расхода материалов на&nbsp;каждой операции.
                         </p>
-                    </div>
+                    </details>
 
-                    <div class="industry-card fade-up">
-                        <div class="industry-icon" aria-hidden="true">🏗️</div>
-                        <h3>Металлургия и&nbsp;прокат</h3>
+                    <details class="industry-item">
+                        <summary>
+                            <span class="industry-icon" aria-hidden="true"><svg><use href="#icon-flame"/></svg></span>
+                            <span>Металлургия и&nbsp;прокат</span>
+                        </summary>
                         <p>
-                            Управление обслуживанием прокатных станов, печей, кранового хозяйства. Учёт ресурса валков, футеровки, электродов. Аналитика причин аварийных простоев и&nbsp;расчёт MTBF по&nbsp;каждому переделу. Поддержка многосменного графика и&nbsp;круглосуточного производства.
+                            Управление обслуживанием прокатных станов, печей и&nbsp;кранового хозяйства в&nbsp;круглосуточном режиме. Карта цеха со&nbsp;статусами оборудования в&nbsp;реальном времени, ИИ-отчёты с&nbsp;анализом простоев и&nbsp;причин отказов за&nbsp;период, журнал ремонтов с&nbsp;привязкой к&nbsp;каждой единице активов.
                         </p>
-                    </div>
+                    </details>
 
-                    <div class="industry-card fade-up">
-                        <div class="industry-icon" aria-hidden="true">⚗️</div>
-                        <h3>Химия и&nbsp;нефтехимия</h3>
+                    <details class="industry-item">
+                        <summary>
+                            <span class="industry-icon" aria-hidden="true"><svg><use href="#icon-flask"/></svg></span>
+                            <span>Химия и&nbsp;нефтехимия</span>
+                        </summary>
                         <p>
-                            ТОиР реакторов, насосного и&nbsp;компрессорного оборудования, теплообменников. Учёт регламентных ревизий сосудов под давлением, графики капремонтов, наряд-допуски на&nbsp;опасные работы. Интеграция со&nbsp;SCADA для предиктивного обслуживания по&nbsp;вибрации и&nbsp;температуре.
+                            Учёт реакторного, насосного и&nbsp;компрессорного парка. Графики плановых ремонтов, периодическое обслуживание теплообменников по&nbsp;регламенту, история всех работ по&nbsp;каждому активу. PWA для обходчиков с&nbsp;офлайн-режимом — чек-листы и&nbsp;фото-отчёты заполняются в&nbsp;цеху, синхронизация при возвращении в&nbsp;сеть.
                         </p>
-                    </div>
+                    </details>
 
-                    <div class="industry-card fade-up">
-                        <div class="industry-icon" aria-hidden="true">⚡</div>
-                        <h3>Энергетика и&nbsp;ЖКХ</h3>
+                    <details class="industry-item">
+                        <summary>
+                            <span class="industry-icon" aria-hidden="true"><svg><use href="#icon-bolt"/></svg></span>
+                            <span>Энергетика и&nbsp;ЖКХ</span>
+                        </summary>
                         <p>
-                            Управление обслуживанием котельных, ЦТП, насосных станций, трансформаторных подстанций. Планирование сезонных ТО, учёт нормативного ресурса оборудования, журнал нарядов на&nbsp;работы под напряжением. Поддержка территориально-распределённой инфраструктуры.
+                            Управление котельными, ЦТП, насосными станциями и&nbsp;подстанциями. Сезонное планирование ТО, генерация задач по&nbsp;нормативному графику, учёт оборудования на&nbsp;территориально-распределённых объектах. Telegram-уведомления о&nbsp;новых заданиях, просрочках и&nbsp;закрытии работ для диспетчеров и&nbsp;руководителей.
                         </p>
-                    </div>
+                    </details>
 
-                    <div class="industry-card fade-up">
-                        <div class="industry-icon" aria-hidden="true">⛏️</div>
-                        <h3>Добыча и&nbsp;горно-обогатительные комбинаты</h3>
+                    <details class="industry-item">
+                        <summary>
+                            <span class="industry-icon" aria-hidden="true"><svg><use href="#icon-pickaxe"/></svg></span>
+                            <span>Добыча и&nbsp;горно-обогатительные комбинаты</span>
+                        </summary>
                         <p>
-                            ТОиР карьерной техники, дробильно-сортировочного и&nbsp;конвейерного оборудования. Мобильное приложение для исполнителей в&nbsp;условиях слабой связи, офлайн-режим, привязка работ к&nbsp;геолокации участка. Учёт расходных материалов и&nbsp;запчастей с&nbsp;длинным сроком поставки.
+                            ТОиР карьерной техники, дробильно-сортировочного и&nbsp;конвейерного оборудования. PWA с&nbsp;офлайн-режимом для исполнителей в&nbsp;условиях слабой связи: задания, чек-листы и&nbsp;фото-отчёты сохраняются на&nbsp;устройстве и&nbsp;синхронизируются позже. Учёт расходных материалов с&nbsp;длинными сроками поставки.
                         </p>
-                    </div>
+                    </details>
                 </div>
             </div>
         </section>
@@ -1327,21 +1408,21 @@
                     <!-- Left: data types эТОИР exports -->
                     <div class="int-col">
                         <div class="int-node int-node--out">
-                            <span class="int-node-icon">🔴</span>
+                            <span class="int-node-icon"><svg><use href="#icon-server"/></svg></span>
                             <div>
                                 <div class="int-node-label" style="color:#2563eb;">Поломки и аварии</div>
                                 <div class="int-node-sub">события, причины, время</div>
                             </div>
                         </div>
                         <div class="int-node int-node--out">
-                            <span class="int-node-icon">🔧</span>
+                            <span class="int-node-icon"><svg><use href="#icon-wrench"/></svg></span>
                             <div>
                                 <div class="int-node-label" style="color:#2563eb;">Выполненные работы</div>
                                 <div class="int-node-sub">ремонты, ТО, исполнитель</div>
                             </div>
                         </div>
                         <div class="int-node int-node--out">
-                            <span class="int-node-icon">📡</span>
+                            <span class="int-node-icon"><svg><use href="#icon-satellite"/></svg></span>
                             <div>
                                 <div class="int-node-label" style="color:#2563eb;">Состояние оборудования</div>
                                 <div class="int-node-sub">статус, доступность, ресурс</div>
