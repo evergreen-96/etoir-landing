@@ -2970,9 +2970,11 @@
 .roi-breakdown li{padding:6px 0;color:var(--text-secondary)}
 .roi-payback{padding:16px;background:#f0fdf4;border-radius:12px;color:#166534;margin-bottom:24px}
 .roi-payback strong{color:#15803d}
-.roi-cta{display:inline-block;margin-bottom:16px;background:var(--primary);color:#fff;padding:14px 28px;border-radius:var(--radius-sm);font-weight:600;text-decoration:none;transition:background .2s}
-.roi-cta:hover{background:var(--primary-dark)}
-.roi-methodology-link{background:none;border:none;color:var(--primary);cursor:pointer;text-decoration:underline;font-size:.875rem;padding:0;display:block}
+.roi-cta{display:inline-block;margin-bottom:16px;background:var(--primary);color:#fff;padding:14px 28px;border-radius:var(--radius-sm);font-weight:600;text-decoration:none;transition:background .2s,box-shadow .2s,transform .2s;box-shadow:0 4px 12px rgba(37,99,235,.25)}
+.roi-cta:hover,.roi-cta:focus-visible{background:var(--primary-dark);color:#fff;box-shadow:0 6px 18px rgba(30,64,175,.35);transform:translateY(-1px)}
+.roi-methodology-link{display:inline-flex;align-items:center;gap:6px;margin-top:4px;background:transparent;border:1px solid rgba(37,99,235,.25);color:var(--primary);cursor:pointer;text-decoration:none;font-size:.875rem;font-weight:500;padding:8px 14px;border-radius:999px;transition:background .2s,border-color .2s,color .2s}
+.roi-methodology-link::before{content:"?";display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(37,99,235,.12);font-size:.75rem;font-weight:700;line-height:1}
+.roi-methodology-link:hover,.roi-methodology-link:focus-visible{background:rgba(37,99,235,.08);border-color:var(--primary);color:var(--primary-dark)}
 @media (max-width:768px){.roi-grid{grid-template-columns:1fr;gap:32px}.roi-result{padding:28px}.roi-result-total{font-size:2rem}}
 
 /* Methodology accordion */
