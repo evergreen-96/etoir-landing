@@ -29,6 +29,7 @@ LANDING_DIR = os.environ.get("LANDING_DIR", "/landing")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     db.init_db()
+    _ensure_indexnow_keyfile()
     yield
 
 
@@ -47,6 +48,9 @@ ADMIN_USER = os.environ["ADMIN_USER"]
 ADMIN_PASSWORD = os.environ["ADMIN_PASSWORD"]
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "")
+# IndexNow (Yandex/Bing fast recrawl). Disabled if no key is configured.
+INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "")
+INDEXNOW_HOST = os.environ.get("SITE_HOST", "etoir.ru")
 
 
 class ResponseIn(BaseModel):
@@ -225,6 +229,41 @@ def _regen_shared() -> None:
     blog.regenerate_shared(LANDING_DIR, db.list_published())
 
 
+def _ensure_indexnow_keyfile() -> None:
+    """Publish the IndexNow key file at the site root so engines can verify it."""
+    if not INDEXNOW_KEY:
+        return
+    try:
+        path = os.path.join(LANDING_DIR, f"{INDEXNOW_KEY}.txt")
+        if not os.path.exists(path):
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(INDEXNOW_KEY)
+    except Exception as e:
+        logger.error("IndexNow keyfile error: %s", e)
+
+
+def _ping_indexnow(urls: list[str]) -> None:
+    """Notify Yandex/Bing (IndexNow) about new or updated URLs. No-op without a key."""
+    if not INDEXNOW_KEY or not urls:
+        return
+    payload = {
+        "host": INDEXNOW_HOST,
+        "key": INDEXNOW_KEY,
+        "keyLocation": f"https://{INDEXNOW_HOST}/{INDEXNOW_KEY}.txt",
+        "urlList": urls,
+    }
+    try:
+        with httpx.Client(timeout=10) as client:
+            client.post("https://yandex.com/indexnow", json=payload,
+                        headers={"Content-Type": "application/json; charset=utf-8"})
+    except Exception as e:
+        logger.error("IndexNow ping failed: %s", e)
+
+
+def _article_url(slug: str) -> str:
+    return f"https://{INDEXNOW_HOST}/blog/{slug}/"
+
+
 def _require_article(article_id: int) -> dict:
     a = db.get_article(article_id)
     if not a:
@@ -257,7 +296,8 @@ def blog_create(data: ArticleIn, _=Depends(_verify_admin)):
 
 
 @app.put("/admin/blog/api/articles/{article_id}")
-def blog_update(article_id: int, data: ArticleIn, _=Depends(_verify_admin)):
+def blog_update(article_id: int, data: ArticleIn, background_tasks: BackgroundTasks,
+                _=Depends(_verify_admin)):
     existing = _require_article(article_id)
     if existing.get("kind") == "legacy":
         raise HTTPException(status_code=400, detail="legacy articles are file-managed")
@@ -270,11 +310,13 @@ def blog_update(article_id: int, data: ArticleIn, _=Depends(_verify_admin)):
             shutil.rmtree(_article_dir(existing["slug"]), ignore_errors=True)
         _write_article_file(updated)
         _regen_shared()
+        background_tasks.add_task(_ping_indexnow, [_article_url(updated["slug"])])
     return {"id": article_id, "slug": updated["slug"]}
 
 
 @app.post("/admin/blog/api/articles/{article_id}/publish")
-def blog_publish(article_id: int, _=Depends(_verify_admin)):
+def blog_publish(article_id: int, background_tasks: BackgroundTasks,
+                 _=Depends(_verify_admin)):
     a = _require_article(article_id)
     if a.get("kind") == "legacy":
         raise HTTPException(status_code=400, detail="legacy articles are file-managed")
@@ -282,6 +324,7 @@ def blog_publish(article_id: int, _=Depends(_verify_admin)):
     a = db.get_article(article_id)
     _write_article_file(a)
     _regen_shared()
+    background_tasks.add_task(_ping_indexnow, [_article_url(a["slug"])])
     return {"ok": True, "url": f"/blog/{a['slug']}/"}
 
 

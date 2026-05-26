@@ -231,3 +231,34 @@ def test_content_is_sanitized(client):
     stored = client.get(f"/admin/blog/api/articles/{cid}", auth=AUTH).json()
     assert "<script>" not in stored["content_html"]
     assert "ok" in stored["content_html"]
+
+
+# ── IndexNow (Yandex) ─────────────────────────────────────────────────────
+def test_indexnow_keyfile_created(app):
+    main_mod, landing = app
+    main_mod.INDEXNOW_KEY = "testkey123"
+    try:
+        main_mod._ensure_indexnow_keyfile()
+        p = os.path.join(landing, "testkey123.txt")
+        assert os.path.exists(p)
+        assert open(p, encoding="utf-8").read() == "testkey123"
+    finally:
+        main_mod.INDEXNOW_KEY = ""
+
+
+def test_ping_indexnow_noop_without_key(app):
+    main_mod, _ = app
+    main_mod.INDEXNOW_KEY = ""
+    # returns immediately without any network attempt
+    main_mod._ping_indexnow(["https://etoir.ru/blog/x/"])
+
+
+def test_publish_pings_indexnow(client, app, monkeypatch):
+    main_mod, _ = app
+    calls = []
+    monkeypatch.setattr(main_mod, "_ping_indexnow", lambda urls: calls.append(urls))
+    cid = client.post("/admin/blog/api/articles", auth=AUTH, json={
+        "title": "Пинг тест", "content_html": "<p>x</p>",
+    }).json()["id"]
+    client.post(f"/admin/blog/api/articles/{cid}/publish", auth=AUTH)
+    assert calls == [["https://etoir.ru/blog/ping-test/"]]
