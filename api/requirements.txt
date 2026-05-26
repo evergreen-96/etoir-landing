@@ -1,3 +1,7 @@
 fastapi
 uvicorn
 httpx
+python-multipart
+Jinja2
+bleach
+Pillow

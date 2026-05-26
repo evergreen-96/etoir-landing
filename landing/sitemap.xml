@@ -12,6 +12,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- BLOG:SITEMAP:START -->
   <url>
     <loc>https://etoir.ru/blog/cmms-vs-excel/</loc>
     <lastmod>2026-05-19</lastmod>
@@ -30,6 +31,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- BLOG:SITEMAP:END -->
   <url>
     <loc>https://etoir.ru/rss.xml</loc>
     <lastmod>2026-05-19</lastmod>

@@ -16,6 +16,7 @@
       <link>https://etoir.ru/</link>
     </image>
 
+    <!-- BLOG:RSS:START -->
     <item>
       <title>эТОИР vs Excel: почему таблицы больше не работают для управления ТОиР</title>
       <link>https://etoir.ru/blog/cmms-vs-excel/</link>
@@ -37,6 +38,7 @@
       <description><![CDATA[Простои, аварийные ремонты, потерянные запчасти, выгорание слесарей — шесть причин, почему ручной учёт ТОиР обходится дороже, чем специализированная CMMS.]]></description>
       <enclosure url="https://etoir.ru/images/og-image.png" type="image/png" length="112761"/>
     </item>
+    <!-- BLOG:RSS:END -->
 
   </channel>
 </rss>

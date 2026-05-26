@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог-редактор · эТОИР</title>
+<script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js"></script>
+<style>
+  :root{--primary:#2563EB;--text:#1E293B;--muted:#64748B;--border:#E2E8F0;--bg:#F8FAFC;--ok:#16A34A;--danger:#DC2626}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--bg)}
+  header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  header .brand{font-weight:800;font-size:1.1rem}
+  header .brand span{color:var(--primary)}
+  .layout{display:grid;grid-template-columns:300px 1fr;gap:0;min-height:calc(100vh - 53px)}
+  .sidebar{border-right:1px solid var(--border);background:#fff;padding:16px;overflow-y:auto}
+  .sidebar h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 10px}
+  .post-item{padding:10px 12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:.15s}
+  .post-item:hover{border-color:var(--primary)}
+  .post-item.active{border-color:var(--primary);background:#EFF6FF}
+  .post-item .t{font-weight:600;font-size:.9rem;line-height:1.3}
+  .post-item .m{font-size:.75rem;color:var(--muted);margin-top:4px}
+  .badge{display:inline-block;font-size:.7rem;padding:1px 7px;border-radius:99px;font-weight:600}
+  .badge.draft{background:#FEF3C7;color:#92400E}
+  .badge.published{background:#DCFCE7;color:#166534}
+  .badge.legacy{background:#E2E8F0;color:#475569}
+  .main{padding:24px 28px;max-width:900px}
+  .field{margin-bottom:16px}
+  label{display:block;font-weight:600;font-size:.85rem;margin-bottom:5px}
+  label .hint{font-weight:400;color:var(--muted)}
+  input[type=text],textarea,select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:8px;font-size:.9rem;font-family:inherit}
+  textarea{resize:vertical;line-height:1.5}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  details.seo{border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:16px;background:#fff}
+  details.seo summary{cursor:pointer;font-weight:600}
+  .btnbar{position:sticky;bottom:0;background:var(--bg);padding:14px 0;display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid var(--border);margin-top:8px}
+  button{padding:9px 16px;border-radius:8px;border:1px solid var(--border);background:#fff;font-weight:600;cursor:pointer;font-size:.9rem}
+  button.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+  button.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+  button.danger{color:var(--danger);border-color:#FECACA}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .faq-item{border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:8px;background:#fff}
+  .faq-item input{margin-bottom:6px}
+  .hero-preview{max-width:240px;border-radius:8px;margin-top:8px;display:none}
+  #toast{position:fixed;bottom:20px;right:20px;background:#111827;color:#fff;padding:12px 18px;border-radius:8px;opacity:0;transform:translateY(10px);transition:.25s;z-index:9999}
+  #toast.show{opacity:1;transform:translateY(0)}
+  .muted{color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span>э</span>ТОИР · блог-редактор</div>
+  <div><a href="/admin/" class="muted">← Заявки</a></div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <button class="primary" style="width:100%;margin-bottom:14px" onclick="newArticle()">+ Новая статья</button>
+    <h2>Статьи</h2>
+    <div id="list"></div>
+  </aside>
+
+  <main class="main">
+    <div id="editor">
+      <div class="field">
+        <label>Заголовок (H1)</label>
+        <input type="text" id="title" oninput="onTitle()" placeholder="Как внедрить ТОиР-систему за 7 шагов">
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Категория <span class="hint">метка карточки</span></label>
+          <input type="text" id="category" placeholder="Внедрение">
+        </div>
+        <div class="field">
+          <label>URL-адрес (slug)</label>
+          <input type="text" id="slug" placeholder="генерируется автоматически">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Краткое описание <span class="hint">карточка в блоге + RSS</span></label>
+        <textarea id="excerpt" rows="2" placeholder="1–2 предложения о статье"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Hero-изображение</label>
+        <input type="file" id="heroFile" accept="image/*" onchange="uploadHero()">
+        <img id="heroPreview" class="hero-preview">
+        <div class="row" style="margin-top:8px">
+          <input type="text" id="hero_alt" placeholder="alt-текст (для SEO, обязательно)">
+          <input type="text" id="hero_caption" placeholder="подпись под изображением (необязательно)">
+        </div>
+        <input type="hidden" id="hero_image">
+      </div>
+
+      <div class="field">
+        <label>Врезка «Коротко» <span class="hint">быстрый ответ вверху статьи, необязательно</span></label>
+        <textarea id="quick_answer" rows="2"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Вступление (lead) <span class="hint">вводный абзац, необязательно</span></label>
+        <textarea id="lead" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Текст статьи</label>
+        <textarea id="content"></textarea>
+      </div>
+
+      <div class="field">
+        <label>FAQ <span class="hint">вопросы-ответы → блок на странице + FAQ-схема для Google</span></label>
+        <div id="faqList"></div>
+        <button onclick="addFaq()">+ Вопрос</button>
+      </div>
+
+      <details class="seo">
+        <summary>SEO (необязательно — заполняется автоматически)</summary>
+        <div class="field" style="margin-top:12px">
+          <label>SEO-заголовок <span class="hint">&lt;title&gt;, по умолчанию = заголовок</span></label>
+          <input type="text" id="seo_title">
+        </div>
+        <div class="field">
+          <label>Meta description <span class="hint">по умолчанию = краткое описание</span></label>
+          <textarea id="meta_description" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label>Ключевые слова <span class="hint">через запятую</span></label>
+          <input type="text" id="keywords">
+        </div>
+      </details>
+
+      <div class="btnbar">
+        <button class="primary" id="btnSave" onclick="save(false)">💾 Сохранить черновик</button>
+        <button id="btnPreview" onclick="preview()">👁 Превью</button>
+        <button class="ok" id="btnPublish" onclick="publish()">🚀 Опубликовать</button>
+        <button id="btnUnpublish" onclick="unpublish()">Снять с публикации</button>
+        <button class="danger" id="btnDelete" onclick="del()">Удалить</button>
+        <span class="muted" id="statusLabel" style="align-self:center"></span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="toast"></div>
+
+<script>
+let currentId = null;
+let currentKind = "post";
+let currentStatus = null;
+let slugTouched = false;
+
+const $ = id => document.getElementById(id);
+
+tinymce.init({
+  selector: '#content',
+  license_key: 'gpl',
+  height: 480,
+  menubar: false,
+  branding: false,
+  language: 'ru',
+  language_url: 'https://cdn.jsdelivr.net/npm/tinymce-i18n@latest/langs7/ru.js',
+  plugins: 'lists link image table code autoresize',
+  toolbar: 'undo redo | blocks | bold italic | bullist numlist | link image table blockquote | ctaBtn | removeformat code',
+  block_formats: 'Абзац=p; Заголовок 2=h2; Подзаголовок 3=h3',
+  autoresize_bottom_margin: 30,
+  images_upload_handler: uploadInlineImage,
+  setup: (ed) => {
+    ed.ui.registry.addButton('ctaBtn', {
+      text: 'CTA',
+      tooltip: 'Вставить призыв к действию',
+      onAction: () => ed.insertContent(
+        '<div class="inline-cta"><div class="inline-cta-text">Готовы посмотреть, как это работает в эТОИР? Бесплатное демо 30 минут.</div><a href="/#contact">Записаться на демо</a></div><p></p>'
+      )
+    });
+  }
+});
+
+function toast(msg, ok = true) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.style.background = ok ? '#111827' : '#DC2626';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+async function api(path, opts = {}) {
+  const r = await fetch(path, opts);
+  if (!r.ok) {
+    let detail = r.status;
+    try { detail = (await r.json()).detail || detail; } catch (e) {}
+    throw new Error(detail);
+  }
+  return r.status === 204 ? null : r.json();
+}
+
+function onTitle() {
+  if (!slugTouched && !currentId) {
+    // live slug hint handled server-side; leave blank to auto-generate
+  }
+}
+$('slug').addEventListener('input', () => { slugTouched = true; });
+
+// ---- list ----
+async function loadList() {
+  const items = await api('api/articles');
+  const el = $('list');
+  el.innerHTML = '';
+  items.forEach(a => {
+    const div = document.createElement('div');
+    div.className = 'post-item' + (a.id === currentId ? ' active' : '');
+    const badge = a.kind === 'legacy' ? '<span class="badge legacy">файл</span>'
+      : (a.status === 'published' ? '<span class="badge published">опубликовано</span>'
+        : '<span class="badge draft">черновик</span>');
+    div.innerHTML = `<div class="t">${escapeHtml(a.title) || '(без заголовка)'}</div>
+      <div class="m">${badge} · ${a.category || '—'}</div>`;
+    div.onclick = () => loadArticle(a.id);
+    el.appendChild(div);
+  });
+}
+
+function escapeHtml(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+// ---- load / new ----
+function clearForm() {
+  ['title','category','slug','excerpt','hero_alt','hero_caption','hero_image',
+   'quick_answer','lead','seo_title','meta_description','keywords'].forEach(id => $(id).value = '');
+  tinymce.get('content').setContent('');
+  $('faqList').innerHTML = '';
+  $('heroPreview').style.display = 'none';
+  slugTouched = false;
+}
+
+function newArticle() {
+  currentId = null; currentKind = 'post'; currentStatus = null;
+  clearForm();
+  updateButtons();
+  loadList();
+  $('statusLabel').textContent = 'Новый черновик (не сохранён)';
+}
+
+async function loadArticle(id) {
+  const a = await api('api/articles/' + id);
+  currentId = a.id; currentKind = a.kind; currentStatus = a.status;
+  clearForm();
+  $('title').value = a.title || '';
+  $('category').value = a.category || '';
+  $('slug').value = a.slug || '';
+  $('excerpt').value = a.excerpt || '';
+  $('hero_image').value = a.hero_image || '';
+  $('hero_alt').value = a.hero_alt || '';
+  $('hero_caption').value = a.hero_caption || '';
+  $('quick_answer').value = a.quick_answer || '';
+  $('lead').value = a.lead || '';
+  $('seo_title').value = a.seo_title || '';
+  $('meta_description').value = a.meta_description || '';
+  $('keywords').value = a.keywords || '';
+  tinymce.get('content').setContent(a.content_html || '');
+  if (a.hero_image) { $('heroPreview').src = a.hero_image; $('heroPreview').style.display = 'block'; }
+  (parseJson(a.faq_json) || []).forEach(f => addFaq(f.q, f.a));
+  updateButtons();
+  loadList();
+  $('statusLabel').textContent = a.kind === 'legacy'
+    ? 'Это старая статья — редактируется как файл, здесь только просмотр.' : '';
+}
+
+function parseJson(s) { try { return JSON.parse(s); } catch (e) { return null; } }
+
+function updateButtons() {
+  const legacy = currentKind === 'legacy';
+  const saved = !!currentId;
+  $('btnSave').disabled = legacy;
+  $('btnPreview').disabled = !saved;
+  $('btnPublish').disabled = legacy || !saved;
+  $('btnUnpublish').disabled = legacy || currentStatus !== 'published';
+  $('btnDelete').disabled = !saved || legacy;
+}
+
+// ---- FAQ ----
+function addFaq(q = '', a = '') {
+  const div = document.createElement('div');
+  div.className = 'faq-item';
+  div.innerHTML = `<input type="text" class="faq-q" placeholder="Вопрос" value="${escapeAttr(q)}">
+    <textarea class="faq-a" rows="2" placeholder="Ответ">${escapeHtml(a)}</textarea>
+    <button onclick="this.parentElement.remove()">Удалить вопрос</button>`;
+  $('faqList').appendChild(div);
+}
+function escapeAttr(s) { return (s || '').replace(/"/g, '&quot;'); }
+
+function collectFaqs() {
+  return [...document.querySelectorAll('.faq-item')].map(d => ({
+    q: d.querySelector('.faq-q').value.trim(),
+    a: d.querySelector('.faq-a').value.trim()
+  })).filter(f => f.q && f.a);
+}
+
+// ---- payload ----
+function payload() {
+  return {
+    title: $('title').value.trim(),
+    slug: $('slug').value.trim() || null,
+    category: $('category').value.trim() || null,
+    excerpt: $('excerpt').value.trim() || null,
+    hero_image: $('hero_image').value || null,
+    hero_alt: $('hero_alt').value.trim() || null,
+    hero_caption: $('hero_caption').value.trim() || null,
+    quick_answer: $('quick_answer').value.trim() || null,
+    lead: $('lead').value.trim() || null,
+    seo_title: $('seo_title').value.trim() || null,
+    meta_description: $('meta_description').value.trim() || null,
+    keywords: $('keywords').value.trim() || null,
+    content_html: tinymce.get('content').getContent(),
+    faqs: collectFaqs()
+  };
+}
+
+async function save(silent) {
+  if (!$('title').value.trim()) { toast('Введите заголовок', false); return; }
+  const body = JSON.stringify(payload());
+  try {
+    if (currentId) {
+      const r = await api('api/articles/' + currentId, {
+        method: 'PUT', headers: { 'Content-Type': 'application/json' }, body
+      });
+      $('slug').value = r.slug;
+    } else {
+      const r = await api('api/articles', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body
+      });
+      currentId = r.id; $('slug').value = r.slug; currentStatus = 'draft';
+    }
+    updateButtons();
+    if (!silent) toast('Сохранено');
+    loadList();
+    return true;
+  } catch (e) { toast('Ошибка: ' + e.message, false); return false; }
+}
+
+async function publish() {
+  if (!(await save(true))) return;
+  try {
+    const r = await api('api/articles/' + currentId + '/publish', { method: 'POST' });
+    currentStatus = 'published';
+    updateButtons(); loadList();
+    toast('Опубликовано: ' + r.url);
+  } catch (e) { toast('Ошибка: ' + e.message, false); }
+}
+
+async function unpublish() {
+  if (!confirm('Снять статью с публикации?')) return;
+  await api('api/articles/' + currentId + '/unpublish', { method: 'POST' });
+  currentStatus = 'draft'; updateButtons(); loadList();
+  toast('Снято с публикации');
+}
+
+async function del() {
+  if (!confirm('Удалить статью безвозвратно?')) return;
+  await api('api/articles/' + currentId, { method: 'DELETE' });
+  toast('Удалено'); newArticle();
+}
+
+async function preview() {
+  if (!(await save(true))) return;
+  window.open('preview/' + currentId, '_blank');
+}
+
+// ---- image upload ----
+async function ensureSaved() {
+  if (currentId) return true;
+  toast('Сохраняю черновик для загрузки изображений…');
+  return await save(true);
+}
+
+async function uploadHero() {
+  if (!(await ensureSaved())) return;
+  const f = $('heroFile').files[0];
+  if (!f) return;
+  const fd = new FormData();
+  fd.append('article_id', currentId);
+  fd.append('file', f);
+  try {
+    const r = await api('api/upload', { method: 'POST', body: fd });
+    $('hero_image').value = r.location;
+    $('heroPreview').src = r.location;
+    $('heroPreview').style.display = 'block';
+    toast('Изображение загружено');
+  } catch (e) { toast('Ошибка загрузки: ' + e.message, false); }
+}
+
+function uploadInlineImage(blobInfo) {
+  return new Promise(async (resolve, reject) => {
+    if (!(await ensureSaved())) { reject('Сначала сохраните черновик'); return; }
+    const fd = new FormData();
+    fd.append('article_id', currentId);
+    fd.append('file', blobInfo.blob(), blobInfo.filename());
+    try {
+      const r = await api('api/upload', { method: 'POST', body: fd });
+      resolve(r.location);
+    } catch (e) { reject(e.message); }
+  });
+}
+
+// ---- init ----
+loadList();
+newArticle();
+</script>
+</body>
+</html>

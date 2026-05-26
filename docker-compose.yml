@@ -28,8 +28,11 @@ services:
     build: ./api
     container_name: etoir-landing-api
     env_file: .env
+    environment:
+      - LANDING_DIR=/landing
     volumes:
       - responses-data:/data
+      - ./landing:/landing
     expose:
       - "8000"
     restart: unless-stopped
