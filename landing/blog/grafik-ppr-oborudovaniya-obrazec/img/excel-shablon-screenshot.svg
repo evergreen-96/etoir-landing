@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="Inter, 'Segoe UI', Arial, sans-serif" role="img" aria-label="Образец годового графика ППР в Excel — шаблон для скачивания">
+  <defs>
+    <filter id="win" x="-3%" y="-3%" width="106%" height="108%">
+      <feDropShadow dx="0" dy="10" stdDeviation="20" flood-color="#1E293B" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" fill="#F1F5F9"/>
+
+  <!-- window -->
+  <g filter="url(#win)">
+    <rect x="60" y="50" width="1080" height="660" rx="14" fill="#FFFFFF"/>
+    <!-- title bar -->
+    <rect x="60" y="50" width="1080" height="48" rx="14" fill="#107C41"/>
+    <rect x="60" y="78" width="1080" height="20" fill="#107C41"/>
+    <circle cx="92" cy="74" r="7" fill="#FF5F57"/><circle cx="116" cy="74" r="7" fill="#FEBC2E"/><circle cx="140" cy="74" r="7" fill="#28C840"/>
+    <text x="600" y="80" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">grafik-ppr-shablon.xlsx — Microsoft Excel</text>
+  </g>
+
+  <!-- toolbar -->
+  <rect x="60" y="98" width="1080" height="36" fill="#F3F4F6"/>
+  <text x="84" y="121" font-size="13" font-weight="600" fill="#374151">Файл   Главная   Вставка   Формулы   Данные</text>
+  <rect x="980" y="105" width="140" height="22" rx="11" fill="#DCFCE7"/>
+  <text x="1050" y="120" font-size="12" font-weight="700" fill="#15803D" text-anchor="middle">Лист: График ППР</text>
+
+  <!-- column header (months) -->
+  <g font-size="13" font-weight="700" fill="#374151" text-anchor="middle">
+    <rect x="60" y="150" width="300" height="34" fill="#E5E7EB"/><text x="80" y="172" text-anchor="start">Оборудование (инв. №)</text>
+    <g>
+      <rect x="360" y="150" width="780" height="34" fill="#E5E7EB"/>
+      <text x="392" y="172">Янв</text><text x="457" y="172">Фев</text><text x="522" y="172">Мар</text><text x="587" y="172">Апр</text><text x="652" y="172">Май</text><text x="717" y="172">Июн</text><text x="782" y="172">Июл</text><text x="847" y="172">Авг</text><text x="912" y="172">Сен</text><text x="977" y="172">Окт</text><text x="1042" y="172">Ноя</text><text x="1107" y="172">Дек</text>
+    </g>
+  </g>
+
+  <!-- grid lines -->
+  <g stroke="#E5E7EB" stroke-width="1">
+    <line x1="360" y1="184" x2="360" y2="560"/>
+    <line x1="425" y1="150" x2="425" y2="560"/><line x1="490" y1="150" x2="490" y2="560"/><line x1="555" y1="150" x2="555" y2="560"/><line x1="620" y1="150" x2="620" y2="560"/><line x1="685" y1="150" x2="685" y2="560"/><line x1="750" y1="150" x2="750" y2="560"/><line x1="815" y1="150" x2="815" y2="560"/><line x1="880" y1="150" x2="880" y2="560"/><line x1="945" y1="150" x2="945" y2="560"/><line x1="1010" y1="150" x2="1010" y2="560"/><line x1="1075" y1="150" x2="1075" y2="560"/>
+    <line x1="60" y1="226" x2="1140" y2="226"/><line x1="60" y1="268" x2="1140" y2="268"/><line x1="60" y1="310" x2="1140" y2="310"/><line x1="60" y1="352" x2="1140" y2="352"/><line x1="60" y1="394" x2="1140" y2="394"/>
+  </g>
+
+  <!-- rows -->
+  <g font-size="13" font-weight="700" text-anchor="middle">
+    <!-- helper: each cell rect + letter; columns x start 360 step 65, width 63 -->
+    <!-- Row labels -->
+    <g font-size="13" font-weight="600" fill="#1E293B" text-anchor="start">
+      <text x="80" y="210">Токарный 16К20 (1012)</text>
+      <text x="80" y="252">Фрезерный 6Р13 (1018)</text>
+      <text x="80" y="294">Сверлильный 2Н135 (1024)</text>
+      <text x="80" y="336">Шлифовальный 3М151 (1031)</text>
+      <text x="80" y="378">Компрессор ВП-20 (1042)</text>
+    </g>
+
+    <!-- Row1 y 186 -->
+    <g transform="translate(362,186)">
+      <rect width="61" height="38" fill="#DBEAFE"/><text x="31" y="25" fill="#1D4ED8">О</text>
+      <rect x="65" width="61" height="38" fill="#BBF7D0"/><text x="96" y="25" fill="#15803D">Т</text>
+      <rect x="130" width="61" height="38" fill="#DBEAFE"/><text x="161" y="25" fill="#1D4ED8">О</text>
+      <rect x="195" width="61" height="38" fill="#DBEAFE"/><text x="226" y="25" fill="#1D4ED8">О</text>
+      <rect x="260" width="61" height="38" fill="#BBF7D0"/><text x="291" y="25" fill="#15803D">Т</text>
+      <rect x="325" width="61" height="38" fill="#DBEAFE"/><text x="356" y="25" fill="#1D4ED8">О</text>
+      <rect x="390" width="61" height="38" fill="#FDE68A"/><text x="421" y="25" fill="#B45309">С</text>
+      <rect x="455" width="61" height="38" fill="#DBEAFE"/><text x="486" y="25" fill="#1D4ED8">О</text>
+      <rect x="520" width="61" height="38" fill="#BBF7D0"/><text x="551" y="25" fill="#15803D">Т</text>
+      <rect x="585" width="61" height="38" fill="#DBEAFE"/><text x="616" y="25" fill="#1D4ED8">О</text>
+      <rect x="650" width="61" height="38" fill="#BBF7D0"/><text x="681" y="25" fill="#15803D">Т</text>
+      <rect x="715" width="61" height="38" fill="#DBEAFE"/><text x="746" y="25" fill="#1D4ED8">О</text>
+    </g>
+    <!-- Row2 y 228 -->
+    <g transform="translate(362,228)">
+      <rect width="61" height="38" fill="#BBF7D0"/><text x="31" y="25" fill="#15803D">Т</text>
+      <rect x="65" width="61" height="38" fill="#DBEAFE"/><text x="96" y="25" fill="#1D4ED8">О</text>
+      <rect x="130" width="61" height="38" fill="#DBEAFE"/><text x="161" y="25" fill="#1D4ED8">О</text>
+      <rect x="195" width="61" height="38" fill="#BBF7D0"/><text x="226" y="25" fill="#15803D">Т</text>
+      <rect x="260" width="61" height="38" fill="#DBEAFE"/><text x="291" y="25" fill="#1D4ED8">О</text>
+      <rect x="325" width="61" height="38" fill="#DBEAFE"/><text x="356" y="25" fill="#1D4ED8">О</text>
+      <rect x="390" width="61" height="38" fill="#BBF7D0"/><text x="421" y="25" fill="#15803D">Т</text>
+      <rect x="455" width="61" height="38" fill="#DBEAFE"/><text x="486" y="25" fill="#1D4ED8">О</text>
+      <rect x="520" width="61" height="38" fill="#DBEAFE"/><text x="551" y="25" fill="#1D4ED8">О</text>
+      <rect x="585" width="61" height="38" fill="#FDE68A"/><text x="616" y="25" fill="#B45309">С</text>
+      <rect x="650" width="61" height="38" fill="#DBEAFE"/><text x="681" y="25" fill="#1D4ED8">О</text>
+      <rect x="715" width="61" height="38" fill="#DBEAFE"/><text x="746" y="25" fill="#1D4ED8">О</text>
+    </g>
+    <!-- Row3 y 270 -->
+    <g transform="translate(362,270)">
+      <rect width="61" height="38" fill="#DBEAFE"/><text x="31" y="25" fill="#1D4ED8">О</text>
+      <rect x="65" width="61" height="38" fill="#DBEAFE"/><text x="96" y="25" fill="#1D4ED8">О</text>
+      <rect x="130" width="61" height="38" fill="#BBF7D0"/><text x="161" y="25" fill="#15803D">Т</text>
+      <rect x="195" width="61" height="38" fill="#DBEAFE"/><text x="226" y="25" fill="#1D4ED8">О</text>
+      <rect x="260" width="61" height="38" fill="#DBEAFE"/><text x="291" y="25" fill="#1D4ED8">О</text>
+      <rect x="325" width="61" height="38" fill="#BBF7D0"/><text x="356" y="25" fill="#15803D">Т</text>
+      <rect x="390" width="61" height="38" fill="#DBEAFE"/><text x="421" y="25" fill="#1D4ED8">О</text>
+      <rect x="455" width="61" height="38" fill="#DBEAFE"/><text x="486" y="25" fill="#1D4ED8">О</text>
+      <rect x="520" width="61" height="38" fill="#BBF7D0"/><text x="551" y="25" fill="#15803D">Т</text>
+      <rect x="585" width="61" height="38" fill="#DBEAFE"/><text x="616" y="25" fill="#1D4ED8">О</text>
+      <rect x="650" width="61" height="38" fill="#DBEAFE"/><text x="681" y="25" fill="#1D4ED8">О</text>
+      <rect x="715" width="61" height="38" fill="#BBF7D0"/><text x="746" y="25" fill="#15803D">Т</text>
+    </g>
+    <!-- Row4 y 312 -->
+    <g transform="translate(362,312)">
+      <rect width="61" height="38" fill="#DBEAFE"/><text x="31" y="25" fill="#1D4ED8">О</text>
+      <rect x="65" width="61" height="38" fill="#BBF7D0"/><text x="96" y="25" fill="#15803D">Т</text>
+      <rect x="130" width="61" height="38" fill="#DBEAFE"/><text x="161" y="25" fill="#1D4ED8">О</text>
+      <rect x="195" width="61" height="38" fill="#FDE68A"/><text x="226" y="25" fill="#B45309">С</text>
+      <rect x="260" width="61" height="38" fill="#DBEAFE"/><text x="291" y="25" fill="#1D4ED8">О</text>
+      <rect x="325" width="61" height="38" fill="#BBF7D0"/><text x="356" y="25" fill="#15803D">Т</text>
+      <rect x="390" width="61" height="38" fill="#DBEAFE"/><text x="421" y="25" fill="#1D4ED8">О</text>
+      <rect x="455" width="61" height="38" fill="#DBEAFE"/><text x="486" y="25" fill="#1D4ED8">О</text>
+      <rect x="520" width="61" height="38" fill="#BBF7D0"/><text x="551" y="25" fill="#15803D">Т</text>
+      <rect x="585" width="61" height="38" fill="#DBEAFE"/><text x="616" y="25" fill="#1D4ED8">О</text>
+      <rect x="650" width="61" height="38" fill="#FECACA"/><text x="681" y="25" fill="#B91C1C">К</text>
+      <rect x="715" width="61" height="38" fill="#DBEAFE"/><text x="746" y="25" fill="#1D4ED8">О</text>
+    </g>
+    <!-- Row5 y 354 -->
+    <g transform="translate(362,354)">
+      <rect width="61" height="38" fill="#BBF7D0"/><text x="31" y="25" fill="#15803D">Т</text>
+      <rect x="65" width="61" height="38" fill="#DBEAFE"/><text x="96" y="25" fill="#1D4ED8">О</text>
+      <rect x="130" width="61" height="38" fill="#BBF7D0"/><text x="161" y="25" fill="#15803D">Т</text>
+      <rect x="195" width="61" height="38" fill="#DBEAFE"/><text x="226" y="25" fill="#1D4ED8">О</text>
+      <rect x="260" width="61" height="38" fill="#BBF7D0"/><text x="291" y="25" fill="#15803D">Т</text>
+      <rect x="325" width="61" height="38" fill="#DBEAFE"/><text x="356" y="25" fill="#1D4ED8">О</text>
+      <rect x="390" width="61" height="38" fill="#BBF7D0"/><text x="421" y="25" fill="#15803D">Т</text>
+      <rect x="455" width="61" height="38" fill="#DBEAFE"/><text x="486" y="25" fill="#1D4ED8">О</text>
+      <rect x="520" width="61" height="38" fill="#BBF7D0"/><text x="551" y="25" fill="#15803D">Т</text>
+      <rect x="585" width="61" height="38" fill="#DBEAFE"/><text x="616" y="25" fill="#1D4ED8">О</text>
+      <rect x="650" width="61" height="38" fill="#BBF7D0"/><text x="681" y="25" fill="#15803D">Т</text>
+      <rect x="715" width="61" height="38" fill="#DBEAFE"/><text x="746" y="25" fill="#1D4ED8">О</text>
+    </g>
+  </g>
+
+  <!-- legend strip -->
+  <g font-size="14" font-weight="600" fill="#1E293B">
+    <rect x="80" y="600" width="1040" height="70" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="104" y="630" font-size="14" font-weight="700" fill="#334155">Условные обозначения:</text>
+    <rect x="104" y="642" width="26" height="22" rx="5" fill="#DBEAFE"/><text x="138" y="659">О — осмотр / ТО</text>
+    <rect x="290" y="642" width="26" height="22" rx="5" fill="#BBF7D0"/><text x="324" y="659">Т — текущий ремонт</text>
+    <rect x="520" y="642" width="26" height="22" rx="5" fill="#FDE68A"/><text x="554" y="659">С — средний ремонт</text>
+    <rect x="760" y="642" width="26" height="22" rx="5" fill="#FECACA"/><text x="794" y="659">К — капитальный ремонт</text>
+  </g>
+</svg>

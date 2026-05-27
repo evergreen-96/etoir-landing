@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График ППР оборудования: образец и как составить в 2026</title>
+    <meta name="description" content="Что такое график планово-предупредительного ремонта, как составить годовой план-график ППР по шагам, скачать готовый шаблон в Excel и автоматизировать его в системе ТОиР. Калькулятор межремонтного цикла внутри.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://etoir.ru/blog/grafik-ppr-oborudovaniya-obrazec/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="График ППР оборудования: образец и как составить в 2026">
+    <meta property="og:description" content="Что такое ППР, как составить годовой график планово-предупредительного ремонта, скачать шаблон в Excel и автоматизировать в CMMS-системе ТОиР. С калькулятором межремонтного цикла.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://etoir.ru/blog/grafik-ppr-oborudovaniya-obrazec/">
+    <meta property="og:image" content="https://etoir.ru/images/og-image.png">
+    <meta property="og:image:alt" content="График ППР оборудования: образец и пример составления 2026">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:site_name" content="эТОИР">
+    <meta property="article:published_time" content="2026-05-27">
+    <meta property="article:modified_time" content="2026-05-27">
+    <meta property="article:author" content="эТОИР">
+    <meta property="article:section" content="Документы">
+    <meta property="article:tag" content="график ППР, планово-предупредительный ремонт, образец, ППР оборудования, межремонтный цикл, ТОиР, автоматизация">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="График ППР оборудования: образец и как составить в 2026">
+    <meta name="twitter:description" content="Как составить годовой график планово-предупредительного ремонта, скачать шаблон Excel и автоматизировать ППР в системе ТОиР. Калькулятор межремонтного цикла внутри.">
+    <meta name="twitter:image" content="https://etoir.ru/images/og-image.png">
+    <meta name="twitter:image:alt" content="График ППР оборудования: образец и пример составления">
+
+    <!-- Preload hero -->
+    <link rel="preload" as="image" type="image/svg+xml" href="/blog/grafik-ppr-oborudovaniya-obrazec/img/grafik-ppr-hero.svg" fetchpriority="high">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="Блог эТОИР" href="/rss.xml">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107942912', 'ym');
+        ym(107942912, 'init', {
+            ssr: true, webvisor: true, clickmap: true,
+            ecommerce: 'dataLayer', referrer: document.referrer,
+            url: location.href, accurateTrackBounce: true, trackLinks: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107942912" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563EB;
+            --accent: #F59E0B;
+            --text: #1E293B;
+            --text-secondary: #64748B;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+            --bg: #FAFBFF;
+            --bg-alt: #F1F5F9;
+            --radius: 16px;
+            --card-shadow-hover: 0 12px 32px rgba(37, 99, 235, 0.12);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .header { position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 24px; }
+        .brand { font-weight: 800; font-size: 1.25rem; color: var(--text); letter-spacing: -0.01em; }
+        .brand span { color: var(--primary); }
+        .nav { display: flex; gap: 28px; align-items: center; }
+        .nav a { color: var(--text); font-weight: 500; font-size: 0.9375rem; transition: color 0.2s; }
+        .nav a:hover { color: var(--primary); }
+        .nav a.active { color: var(--primary); font-weight: 600; }
+        .header-cta { display: inline-block; padding: 10px 18px; background: var(--primary); color: #fff; border-radius: 10px; font-weight: 600; font-size: 0.9375rem; transition: transform 0.15s, box-shadow 0.2s; }
+        .header-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25); }
+        @media (max-width: 768px) { .nav { display: none; } .header-cta { display: none; } }
+        .footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 48px 0 32px; }
+        .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+        .footer-logo { font-weight: 800; font-size: 1.25rem; color: var(--text); }
+        .footer-logo span { color: var(--primary); }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+        .footer-links a { color: var(--text-secondary); font-size: 0.9375rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-copy { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; }
+
+        .article-layout{max-width:1200px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:280px 1fr;gap:48px}
+        .article-toc{position:sticky;top:100px;align-self:start;max-height:calc(100vh - 120px);overflow-y:auto;font-size:.9rem}
+        .article-toc-title{font-weight:700;margin-bottom:12px;color:var(--text)}
+        .article-toc-list{list-style:none;padding:0;margin:0;border-left:2px solid var(--border)}
+        .article-toc-list li{padding:6px 0 6px 16px}
+        .article-toc-list a{color:var(--text-secondary);text-decoration:none;display:block;transition:color .2s}
+        .article-toc-list a:hover{color:var(--primary)}
+        .article-toc-list li.active{border-left:2px solid var(--primary);margin-left:-2px}
+        .article-toc-list li.active a{color:var(--primary);font-weight:600}
+        .article-toc-mobile{display:none;margin:24px 0;padding:16px;background:var(--bg-alt);border-radius:12px}
+        .article-toc-mobile summary{cursor:pointer;font-weight:600;color:var(--text)}
+        .article-toc-mobile ul{list-style:none;padding:12px 0 0;margin:0}
+        .article-toc-mobile li{padding:6px 0}
+        .article-toc-mobile a{color:var(--primary);text-decoration:none}
+        .breadcrumb{font-size:.875rem;color:var(--text-secondary);margin-bottom:16px}
+        .breadcrumb a{color:var(--primary);text-decoration:none}
+        .article-content h1{font-size:2.25rem;line-height:1.2;margin:8px 0 12px;color:var(--text)}
+        .article-meta{color:var(--text-secondary);font-size:.9rem;margin:0 0 24px}
+        .article-lead{font-size:1.125rem;line-height:1.6;color:var(--text);margin-bottom:24px}
+        .article-content h2{margin-top:48px;scroll-margin-top:100px;color:var(--text)}
+        .article-content h3{margin-top:28px;color:var(--text);font-size:1.125rem}
+        .article-content p,.article-content li{line-height:1.7;color:var(--text)}
+        .article-content p{margin-bottom:16px}
+        .article-content ul,.article-content ol{margin:0 0 20px 24px}
+        .article-content li{margin-bottom:8px}
+        .article-content a{color:var(--primary)}
+        .article-content table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.95rem;background:var(--card-bg);border-radius:8px;overflow:hidden}
+        .article-content th,.article-content td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+        .article-content th{background:var(--bg-alt);font-weight:700}
+        .article-content figure{margin:24px 0}
+        .article-content figure img{width:100%;height:auto;border-radius:12px;display:block;box-shadow:0 4px 12px rgba(15,23,42,.06)}
+        .article-content figcaption{margin-top:8px;font-size:.875rem;color:var(--text-secondary);text-align:center;font-style:italic}
+        .img-placeholder{width:100%;min-height:220px;background:linear-gradient(135deg,#F1F5F9 0%,#E2E8F0 100%);border:2px dashed var(--primary);border-radius:12px;display:flex;flex-direction:column;justify-content:center;padding:24px;gap:6px}
+        .img-placeholder strong{color:var(--primary);font-size:1rem;display:block;margin-bottom:6px}
+        .img-placeholder span{display:block;color:var(--text);font-size:.875rem;line-height:1.5}
+        .img-placeholder span.muted{color:var(--text-secondary);font-size:.8125rem;font-style:italic}
+        .quick-answer{background:#EFF6FF;border-left:4px solid var(--primary);padding:16px 20px;border-radius:8px;margin:16px 0 24px;font-size:1rem;line-height:1.6}
+        .quick-answer strong{color:var(--primary)}
+        .inline-cta{background:linear-gradient(135deg,#EFF6FF 0%,#DBEAFE 100%);border-radius:14px;padding:20px 24px;margin:32px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+        .inline-cta-text{flex:1;min-width:260px;color:var(--text);font-weight:500}
+        .inline-cta a{background:var(--primary);color:#fff;padding:10px 20px;border-radius:10px;font-weight:600;text-decoration:none;white-space:nowrap}
+        .download-block{background:#FFFBEB;border:1px solid #FDE68A;border-radius:14px;padding:20px 24px;margin:24px 0}
+        .download-block h3{margin-top:0!important;color:#92400E;font-size:1.0625rem}
+        .download-block ul{margin:12px 0 0 0;list-style:none;padding:0}
+        .download-block li{padding:8px 0;border-bottom:1px solid #FDE68A}
+        .download-block li:last-child{border-bottom:none}
+        .download-block a{color:#B45309;font-weight:600}
+        .download-block .disclaimer{margin-top:12px;font-size:.8125rem;color:#92400E;font-style:italic}
+        .read-also{margin-top:48px;padding:24px;background:var(--bg-alt);border-radius:14px}
+        .read-also h3{margin-top:0}
+        .read-also ul{list-style:none;margin:0;padding:0}
+        .read-also li{padding:8px 0;border-bottom:1px solid var(--border)}
+        .read-also li:last-child{border-bottom:none}
+        .read-also a{color:var(--primary);font-weight:600;text-decoration:none}
+        .faq-block details{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+        .faq-block summary{cursor:pointer;font-weight:600;color:var(--text);font-size:1rem}
+        .faq-block details[open] summary{color:var(--primary);margin-bottom:10px}
+        .faq-block p{margin-bottom:0!important;color:var(--text-secondary)}
+        /* PPR calculator */
+        .ppr-calc{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:24px;margin:24px 0;box-shadow:0 4px 12px rgba(15,23,42,.05)}
+        .ppr-calc h3{margin-top:0!important}
+        .ppr-calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+        .ppr-calc-field{display:flex;flex-direction:column;gap:6px}
+        .ppr-calc-field label{font-size:.875rem;font-weight:600;color:var(--text)}
+        .ppr-calc-field input{padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:1rem;color:var(--text)}
+        .ppr-calc-field input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+        .ppr-calc-result{background:#EFF6FF;border-radius:10px;padding:16px 20px;margin-top:8px}
+        .ppr-calc-result .row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid #DBEAFE}
+        .ppr-calc-result .row:last-child{border-bottom:none}
+        .ppr-calc-result .row span:last-child{font-weight:700;color:var(--primary)}
+        .ppr-calc-hint{color:var(--text-secondary);font-size:.8125rem;font-style:italic;margin-top:12px}
+        @media (max-width:560px){.ppr-calc-grid{grid-template-columns:1fr}}
+        .sticky-cta-mobile{display:none;position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--primary);color:#fff;align-items:center;justify-content:space-between;padding:0 16px;z-index:100;transform:translateY(100%);transition:transform .3s ease;box-shadow:0 -4px 12px rgba(0,0,0,.12)}
+        .sticky-cta-mobile.visible{transform:translateY(0)}
+        .sticky-cta-text{font-size:.875rem;font-weight:500;flex:1;padding-right:12px}
+        .sticky-cta-btn{background:var(--accent);color:var(--text);padding:8px 16px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.875rem;white-space:nowrap}
+        .sticky-cta-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;padding:0 8px;cursor:pointer}
+        @media (max-width:768px){.sticky-cta-mobile{display:flex}}
+        @media (max-width:1024px){.article-layout{grid-template-columns:1fr;gap:24px}.article-toc{display:none}.article-toc-mobile{display:block}}
+    </style>
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "График ППР оборудования: образец и пример составления",
+      "alternativeHeadline": "Как составить годовой график планово-предупредительного ремонта и автоматизировать его в системе ТОиР",
+      "description": "Что такое график планово-предупредительного ремонта, как составить годовой план-график ППР по шагам, скачать готовый шаблон в Excel и автоматизировать его в системе ТОиР.",
+      "datePublished": "2026-05-27",
+      "dateModified": "2026-05-27",
+      "inLanguage": "ru-RU",
+      "author": {"@type":"Organization","name":"эТОИР","url":"https://etoir.ru"},
+      "publisher": {"@type":"Organization","name":"эТОИР","logo":{"@type":"ImageObject","url":"https://etoir.ru/images/logo.png","width":"200","height":"60"}},
+      "image": {"@type":"ImageObject","url":"https://etoir.ru/images/og-image.png","width":"1200","height":"630"},
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://etoir.ru/blog/grafik-ppr-oborudovaniya-obrazec/"},
+      "articleSection": "Документы",
+      "keywords": "график ППР, график ППР оборудования, планово-предупредительный ремонт, план-график ППР, график ППР образец, график ППР скачать, как составить график ППР, межремонтный цикл, график ППР электрооборудования, автоматизация ППР, система ТОиР",
+      "wordCount": "2100",
+      "about": {"@type":"Thing","name":"График планово-предупредительного ремонта оборудования"}
+    }
+    </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Главная","item":"https://etoir.ru/"},
+        {"@type":"ListItem","position":2,"name":"Блог","item":"https://etoir.ru/blog/"},
+        {"@type":"ListItem","position":3,"name":"График ППР оборудования","item":"https://etoir.ru/blog/grafik-ppr-oborudovaniya-obrazec/"}
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: HowTo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Как составить годовой график ППР оборудования",
+      "description": "Пошаговая инструкция по составлению годового план-графика планово-предупредительного ремонта оборудования на предприятии.",
+      "totalTime": "P3D",
+      "step": [
+        {"@type":"HowToStep","position":1,"name":"Собрать перечень оборудования","text":"Составьте полный реестр оборудования с инвентарными номерами, паспортными данными и фактической наработкой. Без актуального перечня график ППР неполон."},
+        {"@type":"HowToStep","position":2,"name":"Определить межремонтный цикл и периодичность","text":"Для каждой единицы определите межремонтный цикл и периодичность ТО, текущего, среднего и капитального ремонта по паспорту и нормативам."},
+        {"@type":"HowToStep","position":3,"name":"Рассчитать трудоёмкость и ресурсы","text":"Оцените трудоёмкость работ в нормо-часах, потребность в персонале, запчастях и материалах на год."},
+        {"@type":"HowToStep","position":4,"name":"Распределить ремонты по месяцам","text":"Разнесите виды ремонтов по месяцам года буквенной кодировкой (О, Т, С, К), выравнивая нагрузку ремонтной службы."},
+        {"@type":"HowToStep","position":5,"name":"Согласовать с производством","text":"Согласуйте окна остановов оборудования с производственным планом, чтобы ремонт не срывал выпуск продукции."},
+        {"@type":"HowToStep","position":6,"name":"Утвердить и контролировать исполнение","text":"Утвердите график у главного инженера, доведите до исполнителей и ведите контроль факта против плана, корректируя по ходу года."}
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Чем ППР отличается от технического обслуживания (ТО)?",
+          "acceptedAnswer": {"@type":"Answer","text":"Техническое обслуживание (ТО) — это регулярные профилактические операции для поддержания работоспособности оборудования: осмотр, чистка, смазка, регулировка. Планово-предупредительный ремонт (ППР) — более широкое понятие: это система, которая включает и ТО, и плановые ремонты (текущий, средний, капитальный), проводимые по заранее составленному графику до того, как оборудование выйдет из строя. То есть ТО — это часть системы ППР."}
+        },
+        {
+          "@type": "Question",
+          "name": "Какими нормативами регламентируется график ППР в 2026 году?",
+          "acceptedAnswer": {"@type":"Answer","text":"Базовая терминология задана ГОСТ 18322-2016 «Система технического обслуживания и ремонта техники». Методологическая основа — Единая система планово-предупредительного ремонта (ЕСППР). Для электрооборудования действуют Правила технической эксплуатации электроустановок потребителей (ПТЭЭП) и отраслевые стандарты. Единой обязательной формы графика ППР нет — предприятие разрабатывает её самостоятельно с опорой на паспорта оборудования и эти нормативы."}
+        },
+        {
+          "@type": "Question",
+          "name": "Как часто нужно пересматривать график ППР?",
+          "acceptedAnswer": {"@type":"Answer","text":"Годовой график ППР составляется один раз в год, обычно в ноябре-декабре на следующий год. Но в течение года он корректируется: при вводе нового оборудования, изменении режима работы (новая смена), после внеплановых ремонтов, которые сбивают межремонтный цикл. На практике актуальный график пересматривают ежемесячно по факту выполнения."}
+        },
+        {
+          "@type": "Question",
+          "name": "Что делать, если оборудование вышло из строя раньше планового срока?",
+          "acceptedAnswer": {"@type":"Answer","text":"Проводится внеплановый (аварийный) ремонт, который фиксируется отдельно. После него межремонтный цикл нужно пересчитать от даты фактического ремонта, а график ППР скорректировать. Если поломки повторяются раньше срока систематически — это сигнал пересмотреть периодичность ТО для этой единицы или перейти на обслуживание по состоянию."}
+        },
+        {
+          "@type": "Question",
+          "name": "Нужно ли согласовывать график ППР с Ростехнадзором?",
+          "acceptedAnswer": {"@type":"Answer","text":"Для обычного оборудования график ППР — внутренний документ предприятия, согласование с Ростехнадзором не требуется. Но для опасных производственных объектов (сосуды под давлением, грузоподъёмные механизмы, объекты котлонадзора) сроки и виды ремонтов регламентируются федеральными нормами и правилами, а сам график должен быть готов предъявить при проверке как доказательство соблюдения регламента."}
+        },
+        {
+          "@type": "Question",
+          "name": "Как вести график ППР для оборудования, работающего в несколько смен?",
+          "acceptedAnswer": {"@type":"Answer","text":"Межремонтный цикл считается не в календарных днях, а в наработке (моточасах или часах работы). Чем больше смен — тем быстрее набирается наработка и тем чаще наступает срок ремонта. Поэтому для двух- и трёхсменного оборудования периодичность ремонтов в календаре будет плотнее. Удобнее всего считать срок следующего ремонта от фактической наработки — это и делает калькулятор межремонтного цикла в этой статье."}
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="brand"><span>э</span>ТОИР</a>
+                <nav class="nav" role="navigation" aria-label="Основная навигация">
+                    <a href="/#features-section">Возможности</a>
+                    <a href="/#how-it-works">Как это работает</a>
+                    <a href="/#advantages">Преимущества</a>
+                    <a href="/blog/" class="active" aria-current="page">Блог</a>
+                    <a href="/#faq">FAQ</a>
+                </nav>
+                <a href="/#contact" class="header-cta">Записаться</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-layout" role="main">
+        <aside class="article-toc" aria-label="Содержание статьи">
+            <div class="article-toc-title">Содержание</div>
+            <ul class="article-toc-list"></ul>
+        </aside>
+        <article class="article-content">
+            <nav class="breadcrumb" aria-label="Хлебные крошки">
+                <a href="/">Главная</a> →
+                <a href="/blog/">Блог</a> →
+                <span>График ППР оборудования</span>
+            </nav>
+
+            <h1>График планово-предупредительного ремонта оборудования: образец и пример составления</h1>
+            <p class="article-meta">Опубликовано <time datetime="2026-05-27">27 мая 2026</time> · обновлено <time datetime="2026-05-27">27 мая 2026</time> · 9 мин чтения · автор: эТОИР</p>
+
+            <figure>
+                <img src="/blog/grafik-ppr-oborudovaniya-obrazec/img/grafik-ppr-hero.svg"
+                     alt="График ППР оборудования: образец и пример составления 2026"
+                     width="1200" height="630" fetchpriority="high" decoding="async">
+                <figcaption>Годовой график ППР — основа планирования всей ремонтной службы завода</figcaption>
+            </figure>
+
+            <p class="quick-answer">
+                <strong>Коротко:</strong> График ППР оборудования — это годовой план-график планово-предупредительного ремонта, в котором по месяцам расписано, когда и какой вид ремонта (ТО, текущий, средний, капитальный) проходит каждая единица оборудования. Составляется на основе межремонтного цикла и наработки. Ниже — как составить график ППР по шагам, готовый образец для скачивания в Excel, калькулятор межремонтного цикла и сравнение ручного графика с автоматическим в системе ТОиР.
+            </p>
+
+            <p class="article-lead">Пока оборудование работает, график ППР кажется формальностью «для галочки». Но именно планово-предупредительный ремонт по графику отличает предприятие, где простои редки и предсказуемы, от предприятия, где ремонтная служба тушит пожары. Разберём, что такое график ППР оборудования, как его составить с нуля, где скачать готовый образец в Excel — и почему средние и крупные заводы РФ переводят план-график ППР из таблиц в <a href="/#features-section">систему ТОиР</a>.</p>
+
+            <details class="article-toc-mobile"><summary>📋 Содержание статьи</summary><ul></ul></details>
+
+            <h2 id="what-is">Что такое планово-предупредительный ремонт (ППР) простыми словами</h2>
+            <p class="quick-answer">
+                <strong>Определение:</strong> Планово-предупредительный ремонт (ППР) — это система организационно-технических мероприятий по обслуживанию и ремонту оборудования, которые проводятся <strong>планово, по заранее составленному графику</strong>, до того как оборудование выйдет из строя. Цель ППР — предупредить аварийный износ, а не устранять последствия поломки.
+            </p>
+            <p>Аббревиатура ППР расшифровывается как «планово-предупредительный ремонт». Ключевое слово здесь — <strong>«предупредительный»</strong>: ремонт делается заранее, по плану, а не по факту аварии. Это противоположность реактивному подходу «работает — не трогай», при котором оборудование чинят только после остановки, а вместе с ним встаёт и производство.</p>
+            <p>Систему ППР в отечественной практике задаёт <strong>ГОСТ 18322-2016</strong> «Система технического обслуживания и ремонта техники. Термины и определения», а исторической методологической основой служит Единая система планово-предупредительного ремонта (ЕСППР). Главный рабочий документ всей системы — <strong>годовой график ППР оборудования</strong>, на основе которого планируются персонал, бюджет, закупка запчастей и окна остановов.</p>
+
+            <h2 id="vidy-remontov">Виды планово-предупредительного ремонта: ТО, текущий, средний, капитальный</h2>
+            <p>Чтобы составить корректный график ППР, сначала нужно понимать, какие виды работ в нём планируются. Система планово-предупредительного ремонта включает техническое обслуживание и три вида ремонтов, которые отличаются глубиной вмешательства, периодичностью и трудоёмкостью.</p>
+
+            <table>
+                <caption style="caption-side:top;text-align:left;padding-bottom:8px;font-weight:600">Таблица 1. Виды работ в системе ППР оборудования</caption>
+                <thead>
+                    <tr><th>Вид работ</th><th>Периодичность</th><th>Что входит</th><th>Кто выполняет</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Техническое обслуживание (ТО, осмотр) — «О»</td><td>Ежесменно / еженедельно / ежемесячно</td><td>Осмотр, чистка, смазка, регулировка, замена расходников, контроль параметров</td><td>Оператор, дежурный слесарь</td></tr>
+                    <tr><td>Текущий ремонт — «Т»</td><td>1–12 месяцев</td><td>Замена быстроизнашиваемых деталей, устранение мелких дефектов без полной разборки</td><td>Ремонтная бригада цеха</td></tr>
+                    <tr><td>Средний ремонт — «С»</td><td>1–3 года</td><td>Частичная разборка, замена основных узлов, восстановление точности и характеристик</td><td>Ремонтная служба, иногда подрядчик</td></tr>
+                    <tr><td>Капитальный ремонт — «К»</td><td>3–8 лет</td><td>Полная разборка, замена базовых деталей и узлов, восстановление ресурса до близкого к новому</td><td>Специализированный подрядчик или РМЦ</td></tr>
+                </tbody>
+            </table>
+
+            <p>Буквы <strong>О, Т, С, К</strong> из правого столбца — это и есть кодировка, которой заполняют ячейки годового графика ППР по месяцам. Конкретная периодичность зависит от типа оборудования, режима работы (число смен) и требований производителя — её берут из паспорта оборудования и нормативов.</p>
+
+            <h2 id="mezhremontnyy-cikl">Что такое межремонтный цикл и как его рассчитать</h2>
+            <p>Сердце любого графика ППР — <strong>межремонтный цикл</strong>. Это период работы оборудования между двумя капитальными ремонтами (или от ввода в эксплуатацию до первого капремонта), внутри которого по определённому порядку чередуются осмотры, текущие и средние ремонты. Типовая структура цикла записывается формулой, например: <strong>К — О — Т — О — Т — О — С — О — Т — О — Т — О — К</strong>.</p>
+            <p>Межремонтный период (интервал между двумя соседними ремонтами любого вида) измеряют не в календарных днях, а в <strong>наработке</strong> — моточасах, часах работы или единицах выпущенной продукции. Это принципиально: оборудование, работающее в три смены, наберёт ресурс втрое быстрее односменного, и его ремонты в календаре наступят чаще. Поэтому, чтобы понять, когда по календарю наступит следующий ремонт, наработку между ремонтами делят на среднесуточную наработку. Этот расчёт удобно сделать в калькуляторе ниже.</p>
+
+            <h2 id="calculator">Калькулятор межремонтного цикла</h2>
+            <p>Введите наработку между ремонтами одного вида (из паспорта оборудования или регламента) и среднюю суточную наработку — калькулятор покажет, через сколько дней наступит следующий ремонт и сколько таких ремонтов придётся на год.</p>
+
+            <div class="ppr-calc" id="ppr-calc">
+                <h3>🧮 Калькулятор межремонтного цикла оборудования</h3>
+                <div class="ppr-calc-grid">
+                    <div class="ppr-calc-field">
+                        <label for="ppr-mtbf">Наработка между ремонтами, моточасов</label>
+                        <input type="number" id="ppr-mtbf" min="1" step="1" placeholder="например, 4320" inputmode="numeric">
+                    </div>
+                    <div class="ppr-calc-field">
+                        <label for="ppr-daily">Средняя суточная наработка, ч/сутки</label>
+                        <input type="number" id="ppr-daily" min="0.1" step="0.1" placeholder="например, 16 (две смены)" inputmode="decimal">
+                    </div>
+                    <div class="ppr-calc-field">
+                        <label for="ppr-date">Дата последнего ремонта (необязательно)</label>
+                        <input type="date" id="ppr-date">
+                    </div>
+                </div>
+                <div class="ppr-calc-result" id="ppr-result" aria-live="polite">
+                    <div class="row"><span>Дней до следующего ремонта</span><span id="ppr-days">—</span></div>
+                    <div class="row"><span>Дата следующего ремонта</span><span id="ppr-next">—</span></div>
+                    <div class="row"><span>Ремонтов в год</span><span id="ppr-year">—</span></div>
+                </div>
+                <p class="ppr-calc-hint">Ориентировочный расчёт. Точную периодичность сверяйте с паспортом оборудования, регламентом производителя и нормативами вашего предприятия.</p>
+            </div>
+
+            <h2 id="how-to">Как составить годовой график ППР — пошаговая инструкция</h2>
+            <p>Составление графика ППР оборудования с нуля проходит шесть последовательных шагов. Ниже — порядок, который работает на любом производственном предприятии, от пищевого цеха до металлообработки.</p>
+
+            <h3 id="step-1">Шаг 1. Собрать перечень оборудования</h3>
+            <p>График ППР начинается с полного реестра оборудования: наименование, инвентарный номер, цех и участок, паспортные данные, дата ввода в эксплуатацию и фактическая наработка. Если перечень неполон или устарел — график ППР будет с «дырами», и именно неучтённое оборудование чаще всего и встаёт аварийно. На этом же шаге фиксируют, какое оборудование относится к опасным производственным объектам — для него периодичность ремонтов регламентирована жёстче.</p>
+
+            <h3 id="step-2">Шаг 2. Определить межремонтный цикл и периодичность</h3>
+            <p>Для каждой единицы определяют структуру межремонтного цикла и периодичность ТО, текущего, среднего и капитального ремонта. Источники — паспорт и руководство по эксплуатации производителя, нормативы ЕСППР, отраслевые регламенты. Срок следующего ремонта в календаре считают от наработки (см. <a href="#calculator">калькулятор межремонтного цикла</a> выше).</p>
+
+            <h3 id="step-3">Шаг 3. Рассчитать трудоёмкость и ресурсы</h3>
+            <p>Зная количество и виды ремонтов на год, оценивают трудоёмкость в нормо-часах, потребность в ремонтном персонале, запчастях и материалах. Это превращает график ППР из «календаря» в инструмент планирования бюджета: становится понятно, сколько слесарей нужно в каждый месяц и какие запчасти закупить заранее, чтобы ремонт не встал из-за отсутствия детали.</p>
+
+            <h3 id="step-4">Шаг 4. Распределить виды ремонтов по месяцам</h3>
+            <p>Виды работ разносят по 12 месяцам года буквенной кодировкой О / Т / С / К. Главная задача шага — <strong>выровнять нагрузку</strong>: нельзя ставить капитальные ремонты половины парка на один месяц, ремонтная служба не справится. Трудоёмкие средние и капитальные ремонты разносят равномерно и привязывают к периодам плановых остановов производства.</p>
+
+            <h3 id="step-5">Шаг 5. Согласовать с производством</h3>
+            <p>Готовый проект графика ППР согласуют с производственной службой: окна остановов оборудования должны попадать в технологические паузы, межсезонье или плановые остановы цеха, а не срывать выпуск продукции. Это самый конфликтный шаг — здесь интересы ремонтников (чинить вовремя) и производства (не останавливать линию) сталкиваются, и график становится результатом компромисса.</p>
+
+            <h3 id="step-6">Шаг 6. Утвердить, довести до исполнителей и контролировать</h3>
+            <p>Согласованный график ППР утверждает главный инженер или главный механик, после чего он доводится до исполнителей. Дальше начинается то, на чём «ломается» большинство бумажных графиков — <strong>контроль факта против плана</strong>. Нужно ежемесячно отмечать, какие ремонты выполнены в срок, какие сорваны и почему, и корректировать график. Без этого контроля график ППР превращается в красивую таблицу, которая не отражает реальность.</p>
+
+            <div class="inline-cta">
+                <div class="inline-cta-text">Устали вести график ППР в Excel и вручную сверять факт с планом? Покажем на демо за 30 минут, как система ТОиР делает это автоматически.</div>
+                <a href="/#contact">Получить демо</a>
+            </div>
+
+            <h2 id="download">Образец графика ППР в Excel — скачать и адаптировать</h2>
+            <p>Готовый шаблон годового графика ППР в Excel — отправная точка для составления собственного план-графика. В нём уже есть структура столбцов, буквенная кодировка видов ремонтов, лист расчёта межремонтного цикла с формулами и заполненный пример. Скачайте, удалите демо-строки и внесите своё оборудование.</p>
+
+            <div class="download-block">
+                <h3>📥 Бесплатный шаблон графика ППР</h3>
+                <ul>
+                    <li><a href="/blog/grafik-ppr-oborudovaniya-obrazec/files/grafik-ppr-shablon.xlsx" download>Скачать график ППР в Excel (.xlsx)</a> — годовой план-график на 12 месяцев, лист расчёта межремонтного цикла с формулами, легенда видов ремонтов и заполненный пример</li>
+                </ul>
+                <p class="disclaimer">Шаблон не имеет самостоятельной юридической силы и носит справочный характер — обязательно адаптируйте его под паспорта вашего оборудования, регламент ТОиР предприятия и действующие нормативы.</p>
+            </div>
+
+            <figure>
+                <img src="/blog/grafik-ppr-oborudovaniya-obrazec/img/excel-shablon-screenshot.svg"
+                     alt="Образец годового графика ППР в Excel — шаблон для скачивания"
+                     width="1200" height="760" loading="lazy" decoding="async">
+                <figcaption>Так выглядит образец графика ППР в Excel: оборудование по строкам, месяцы по столбцам, виды ремонтов в ячейках</figcaption>
+            </figure>
+
+            <h2 id="primer">Пример заполненного графика ППР для станочного парка</h2>
+            <p>Чтобы было понятно, как читать график ППР, разберём фрагмент годового план-графика для небольшого станочного парка. В ячейках — буквы видов ремонтов (О — осмотр/ТО, Т — текущий, С — средний, К — капитальный), которые ставят в месяц планового ремонта по результату расчёта межремонтного цикла.</p>
+
+            <table>
+                <caption style="caption-side:top;text-align:left;padding-bottom:8px;font-weight:600">Таблица 2. Пример графика ППР станочного парка (фрагмент годового плана)</caption>
+                <thead>
+                    <tr><th>Оборудование (инв. №)</th><th>Янв</th><th>Фев</th><th>Мар</th><th>Апр</th><th>Май</th><th>Июн</th><th>Июл</th><th>Авг</th><th>Сен</th><th>Окт</th><th>Ноя</th><th>Дек</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Токарный 16К20 (№ 1012)</td><td>О</td><td>Т</td><td>О</td><td>О</td><td>Т</td><td>О</td><td>С</td><td>О</td><td>Т</td><td>О</td><td>Т</td><td>О</td></tr>
+                    <tr><td>Фрезерный 6Р13 (№ 1018)</td><td>Т</td><td>О</td><td>О</td><td>Т</td><td>О</td><td>О</td><td>Т</td><td>О</td><td>О</td><td>С</td><td>О</td><td>О</td></tr>
+                    <tr><td>Сверлильный 2Н135 (№ 1024)</td><td>О</td><td>О</td><td>Т</td><td>О</td><td>О</td><td>Т</td><td>О</td><td>О</td><td>Т</td><td>О</td><td>О</td><td>Т</td></tr>
+                    <tr><td>Шлифовальный 3М151 (№ 1031)</td><td>О</td><td>Т</td><td>О</td><td>С</td><td>О</td><td>Т</td><td>О</td><td>О</td><td>Т</td><td>О</td><td>К</td><td>О</td></tr>
+                    <tr><td>Компрессор ВП-20 (№ 1042)</td><td>Т</td><td>О</td><td>Т</td><td>О</td><td>Т</td><td>О</td><td>Т</td><td>О</td><td>Т</td><td>О</td><td>Т</td><td>О</td></tr>
+                </tbody>
+            </table>
+
+            <p>Из такого графика сразу видно нагрузку по месяцам: например, в ноябре одновременно идут капитальный ремонт шлифовального станка и текущие ремонты — значит, на этот месяц нужно запланировать максимум ремонтного персонала и заранее закупить запчасти. В этом и смысл планово-предупредительного ремонта: проблемы видны за месяцы, а не в день аварии.</p>
+
+            <h2 id="elektrooborudovanie">Особенности графика ППР электрооборудования</h2>
+            <p>График ППР электрооборудования составляется по тем же принципам, но имеет специфику. Во-первых, периодичность и виды работ регламентируются отдельно — <strong>Правилами технической эксплуатации электроустановок потребителей (ПТЭЭП)</strong> и отраслевыми стандартами энергетики. Во-вторых, помимо ремонтов в график ППР электрооборудования включают <strong>профилактические испытания и измерения</strong>: замеры сопротивления изоляции, проверку заземления, испытания повышенным напряжением — у них своя периодичность.</p>
+            <p>Поэтому в графике ППР электрооборудования (трансформаторы, электродвигатели, распределительные устройства, кабельные линии) часто появляется дополнительный столбец или отдельная кодировка для испытаний. В остальном логика та же: межремонтный цикл, наработка, распределение по месяцам, согласование и контроль.</p>
+
+            <h2 id="excel-vs-toir">График ППР в Excel vs автоматическая генерация в системе ТОиР</h2>
+            <p>Excel-шаблон выше отлично работает, пока оборудования немного и им занят один человек. Когда парк переходит за 50–100 единиц, у каждой единицы свой межремонтный цикл и наработка, а ремонты идут в три смены — ручной график ППР начинает отставать от реальности: его забывают пересчитывать после внеплановых ремонтов, теряют актуальную версию, не успевают сверять факт с планом. Тогда график ППР переносят в <a href="/blog/cmms-vs-excel/">систему ТОиР (CMMS)</a>, где он формируется автоматически.</p>
+
+            <table>
+                <caption style="caption-side:top;text-align:left;padding-bottom:8px;font-weight:600">Таблица 3. Сравнение графика ППР в Excel и в системе ТОиР эТОИР</caption>
+                <thead>
+                    <tr><th>Параметр</th><th>График ППР в Excel</th><th>Автоматический график в эТОИР</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Формирование задания на ремонт</td><td>Вручную, по календарю</td><td>Автоматически по наработке и сроку, наряд-заказ создаётся сам</td></tr>
+                    <tr><td>Напоминания о ремонте</td><td>Нет, нужно помнить и смотреть в таблицу</td><td>Push-уведомление исполнителю и руководителю</td></tr>
+                    <tr><td>Пересчёт цикла после ремонта</td><td>Вручную, часто забывают</td><td>Автоматически от даты фактического ремонта</td></tr>
+                    <tr><td>Факт против плана</td><td>Сводят руками в конце месяца</td><td>В реальном времени: выполнено / просрочено / в работе</td></tr>
+                    <tr><td>История ремонтов единицы</td><td>Разбросана по файлам и бегункам</td><td>Полный журнал по каждой единице оборудования</td></tr>
+                    <tr><td>Риск «забыли / просрочили ТО»</td><td>Высокий — человеческий фактор</td><td>Низкий — система не даёт пропустить срок</td></tr>
+                </tbody>
+            </table>
+
+            <p>В системе ТОиР <strong>эТОИР</strong> график ППР перестаёт быть статичной таблицей. Система сама отслеживает наработку оборудования, формирует наряд-заказы к сроку планового ремонта, отправляет их в мобильное приложение исполнителю и пересчитывает следующий ремонт после закрытия предыдущего. Руководитель видит дашборд: что выполнено по графику, что просрочено, какая нагрузка на ремонтную службу в следующем месяце.</p>
+
+            <figure>
+                <img src="/blog/grafik-ppr-oborudovaniya-obrazec/img/etoir-avtogeneraciya.svg"
+                     alt="Автоматическая генерация графика ППР в системе ТОиР эТОИР"
+                     width="1200" height="760" loading="lazy" decoding="async">
+                <figcaption>Автоматическая генерация плана ремонтов по наработке в системе ТОиР эТОИР</figcaption>
+            </figure>
+
+            <div class="inline-cta">
+                <div class="inline-cta-text">Хотите, чтобы график ППР вёлся сам, а наряд-заказы создавались к сроку без напоминаний? Запишитесь на демо эТОИР — покажем за 30 минут.</div>
+                <a href="/#contact">Записаться на демо</a>
+            </div>
+
+            <h2 id="faq">Частые вопросы про график ППР оборудования</h2>
+            <div class="faq-block">
+                <details>
+                    <summary>Чем ППР отличается от технического обслуживания (ТО)?</summary>
+                    <p>Техническое обслуживание (ТО) — это регулярные профилактические операции для поддержания работоспособности оборудования: осмотр, чистка, смазка, регулировка. Планово-предупредительный ремонт (ППР) — более широкое понятие: это система, которая включает и ТО, и плановые ремонты (текущий, средний, капитальный), проводимые по заранее составленному графику до того, как оборудование выйдет из строя. То есть ТО — это часть системы ППР.</p>
+                </details>
+                <details>
+                    <summary>Какими нормативами регламентируется график ППР в 2026 году?</summary>
+                    <p>Базовая терминология задана ГОСТ 18322-2016 «Система технического обслуживания и ремонта техники». Методологическая основа — Единая система планово-предупредительного ремонта (ЕСППР). Для электрооборудования действуют Правила технической эксплуатации электроустановок потребителей (ПТЭЭП) и отраслевые стандарты. Единой обязательной формы графика ППР нет — предприятие разрабатывает её самостоятельно с опорой на паспорта оборудования и эти нормативы.</p>
+                </details>
+                <details>
+                    <summary>Как часто нужно пересматривать график ППР?</summary>
+                    <p>Годовой график ППР составляется один раз в год, обычно в ноябре-декабре на следующий год. Но в течение года он корректируется: при вводе нового оборудования, изменении режима работы (новая смена), после внеплановых ремонтов, которые сбивают межремонтный цикл. На практике актуальный график пересматривают ежемесячно по факту выполнения.</p>
+                </details>
+                <details>
+                    <summary>Что делать, если оборудование вышло из строя раньше планового срока?</summary>
+                    <p>Проводится внеплановый (аварийный) ремонт, который фиксируется отдельно. После него межремонтный цикл нужно пересчитать от даты фактического ремонта, а график ППР скорректировать. Если поломки повторяются раньше срока систематически — это сигнал пересмотреть периодичность ТО для этой единицы или перейти на обслуживание по состоянию.</p>
+                </details>
+                <details>
+                    <summary>Нужно ли согласовывать график ППР с Ростехнадзором?</summary>
+                    <p>Для обычного оборудования график ППР — внутренний документ предприятия, согласование с Ростехнадзором не требуется. Но для опасных производственных объектов (сосуды под давлением, грузоподъёмные механизмы, объекты котлонадзора) сроки и виды ремонтов регламентируются федеральными нормами и правилами, а сам график должен быть готов предъявить при проверке как доказательство соблюдения регламента.</p>
+                </details>
+                <details>
+                    <summary>Как вести график ППР для оборудования, работающего в несколько смен?</summary>
+                    <p>Межремонтный цикл считается не в календарных днях, а в наработке (моточасах или часах работы). Чем больше смен — тем быстрее набирается наработка и тем чаще наступает срок ремонта. Поэтому для двух- и трёхсменного оборудования периодичность ремонтов в календаре будет плотнее. Удобнее всего считать срок следующего ремонта от фактической наработки — это и делает калькулятор межремонтного цикла в этой статье.</p>
+                </details>
+            </div>
+
+            <aside class="read-also" aria-label="Похожие материалы">
+                <h3>Читайте также</h3>
+                <ul>
+                    <li><a href="/blog/naryad-zakaz-na-remont-oborudovaniya-obrazec/">Наряд-заказ на ремонт оборудования: образец 2026 и автоматизация</a> — документ, которым закрывается каждый плановый ремонт из графика ППР</li>
+                    <li><a href="/blog/cmms-vs-excel/">Excel или CMMS для учёта оборудования: сравнение для завода 2026</a> — где Excel-график ППР сдаётся и нужна система ТОиР</li>
+                    <li><a href="/#features-section">Возможности системы ТОиР эТОИР</a> — автогенерация графика ППР и наряд-заказов, мобильное приложение, AI-аналитика простоев</li>
+                </ul>
+            </aside>
+        </article>
+    </main>
+
+    <div class="sticky-cta-mobile" aria-hidden="true">
+        <span class="sticky-cta-text">Автоматизируйте график ППР — демо за 30 минут</span>
+        <a href="/#contact" class="sticky-cta-btn">Получить демо</a>
+        <button class="sticky-cta-close" aria-label="Закрыть">✕</button>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo"><span>э</span>ТОИР</div>
+                <div class="footer-links">
+                    <a href="/#features-section">Возможности</a>
+                    <a href="/#advantages">Преимущества</a>
+                    <a href="/#faq">FAQ</a>
+                    <a href="/blog/">Блог</a>
+                    <a href="/#contact">Контакт</a>
+                    <a href="/privacy/">Политика конфиденциальности</a>
+                </div>
+                <div class="footer-copy">
+                    &copy; 2026 эТОИР. Все права защищены.
+                    <br>Информация на сайте является справочной, не является публичной офертой.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    function initToc(){const a=document.querySelector('.article-content');if(!a)return;const hs=a.querySelectorAll('h2');if(!hs.length)return;const dl=document.querySelector('.article-toc-list'),ml=document.querySelector('.article-toc-mobile ul'),ms=document.querySelector('.article-toc-mobile summary');hs.forEach((h,i)=>{if(!h.id)h.id='h2-'+(i+1);const t=h.textContent.trim(),l=`<li data-target="${h.id}"><a href="#${h.id}">${t}</a></li>`;dl&&dl.insertAdjacentHTML('beforeend',l);ml&&ml.insertAdjacentHTML('beforeend',l)});ms&&(ms.textContent=`📋 Содержание (${hs.length} ${hs.length===1?'раздел':'разделов'})`);const ti=document.querySelectorAll('.article-toc-list li'),io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;ti.forEach(li=>li.classList.toggle('active',li.dataset.target===id))}}),{rootMargin:'-80px 0px -70% 0px',threshold:0});hs.forEach(h=>io.observe(h))}
+    function initStickyCta(){const c=document.querySelector('.sticky-cta-mobile');if(!c)return;if(sessionStorage.getItem('sticky-cta-dismissed'))return;const a=document.querySelector('.article-content');if(!a)return;const sa=a.offsetTop+a.offsetHeight*.4;let s=!1;window.addEventListener('scroll',()=>{if(s)return;if(window.scrollY+window.innerHeight>=sa){c.classList.add('visible');c.setAttribute('aria-hidden','false');s=!0}},{passive:!0});c.querySelector('.sticky-cta-close').addEventListener('click',()=>{c.classList.remove('visible');c.setAttribute('aria-hidden','true');sessionStorage.setItem('sticky-cta-dismissed','1')});c.querySelector('.sticky-cta-btn').addEventListener('click',()=>{window.ym&&ym(107942912,'reachGoal','sticky_cta_click')})}
+    function initPprCalc(){const mEl=document.getElementById('ppr-mtbf'),dEl=document.getElementById('ppr-daily'),dateEl=document.getElementById('ppr-date');if(!mEl||!dEl)return;const oDays=document.getElementById('ppr-days'),oNext=document.getElementById('ppr-next'),oYear=document.getElementById('ppr-year');let fired=!1;const months=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];function calc(){const m=parseFloat(mEl.value),d=parseFloat(dEl.value);if(!fired&&(mEl.value||dEl.value)){window.ym&&ym(107942912,'reachGoal','ppr_calc_used');fired=!0}if(!(m>0)||!(d>0)){oDays.textContent='—';oNext.textContent='—';oYear.textContent='—';return}const days=Math.ceil(m/d);oDays.textContent=days.toLocaleString('ru-RU')+' дн.';const perYear=Math.round(365*d/m*10)/10;oYear.textContent=perYear.toLocaleString('ru-RU');if(dateEl&&dateEl.value){const base=new Date(dateEl.value);if(!isNaN(base)){const next=new Date(base.getTime()+days*86400000);oNext.textContent=next.getDate()+' '+months[next.getMonth()]+' '+next.getFullYear()}else{oNext.textContent='—'}}else{oNext.textContent='задайте дату'}}
+    mEl.addEventListener('input',calc);dEl.addEventListener('input',calc);dateEl&&dateEl.addEventListener('input',calc)}
+    document.addEventListener('DOMContentLoaded',()=>{initToc();initStickyCta();initPprCalc()});
+    </script>
+</body>
+</html>

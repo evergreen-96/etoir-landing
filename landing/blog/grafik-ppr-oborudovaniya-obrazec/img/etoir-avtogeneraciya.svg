@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="Inter, 'Segoe UI', Arial, sans-serif" role="img" aria-label="Автоматическая генерация графика ППР в системе ТОиР эТОИР">
+  <defs>
+    <filter id="app" x="-3%" y="-3%" width="106%" height="108%">
+      <feDropShadow dx="0" dy="10" stdDeviation="22" flood-color="#1E293B" flood-opacity="0.14"/>
+    </filter>
+    <linearGradient id="side" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1E3A8A"/><stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="#EEF2F8"/>
+
+  <g filter="url(#app)">
+    <rect x="50" y="48" width="1100" height="664" rx="16" fill="#FFFFFF"/>
+  </g>
+
+  <!-- sidebar -->
+  <rect x="50" y="48" width="220" height="664" rx="16" fill="url(#side)"/>
+  <rect x="246" y="48" width="24" height="664" fill="#1D4ED8"/>
+  <text x="86" y="100" font-size="22" font-weight="800" fill="#FFFFFF">э<tspan fill="#BFDBFE">ТОИР</tspan></text>
+  <g font-size="14" fill="#BFDBFE" font-weight="500">
+    <rect x="74" y="150" width="160" height="38" rx="9" fill="#3B82F6"/>
+    <text x="98" y="174" fill="#FFFFFF" font-weight="700">📅 График ППР</text>
+    <text x="98" y="226">🔧 Наряд-заказы</text>
+    <text x="98" y="268">🏭 Оборудование</text>
+    <text x="98" y="310">📦 Склад запчастей</text>
+    <text x="98" y="352">📊 Аналитика</text>
+    <text x="98" y="394">⚙️ Настройки</text>
+  </g>
+
+  <!-- top bar -->
+  <text x="300" y="100" font-size="24" font-weight="800" fill="#1E293B">График ППР · 2026</text>
+  <rect x="820" y="78" width="300" height="36" rx="18" fill="#DCFCE7"/>
+  <circle cx="846" cy="96" r="6" fill="#16A34A"/>
+  <text x="862" y="101" font-size="13" font-weight="700" fill="#15803D">План сформирован автоматически</text>
+
+  <!-- KPI cards -->
+  <g>
+    <rect x="300" y="140" width="255" height="92" rx="14" fill="#EFF6FF"/>
+    <text x="322" y="172" font-size="13" font-weight="600" fill="#64748B">Запланировано на месяц</text>
+    <text x="322" y="208" font-size="30" font-weight="800" fill="#2563EB">48</text><text x="372" y="208" font-size="14" fill="#64748B">ремонтов</text>
+
+    <rect x="575" y="140" width="255" height="92" rx="14" fill="#ECFDF5"/>
+    <text x="597" y="172" font-size="13" font-weight="600" fill="#64748B">Выполнено в срок</text>
+    <text x="597" y="208" font-size="30" font-weight="800" fill="#16A34A">92%</text>
+
+    <rect x="850" y="140" width="270" height="92" rx="14" fill="#FEF2F2"/>
+    <text x="872" y="172" font-size="13" font-weight="600" fill="#64748B">Просрочено</text>
+    <text x="872" y="208" font-size="30" font-weight="800" fill="#DC2626">3</text><text x="908" y="208" font-size="14" fill="#64748B">наряд-заказа</text>
+  </g>
+
+  <!-- upcoming list -->
+  <text x="300" y="278" font-size="16" font-weight="700" fill="#1E293B">Ближайшие плановые ремонты (создаются автоматически по наработке)</text>
+
+  <g font-size="14">
+    <!-- item template -->
+    <g>
+      <rect x="300" y="296" width="820" height="58" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <rect x="316" y="312" width="26" height="26" rx="6" fill="#BBF7D0"/><text x="329" y="331" font-size="14" font-weight="700" fill="#15803D" text-anchor="middle">Т</text>
+      <text x="360" y="322" font-weight="700" fill="#1E293B">Токарный 16К20 · инв. 1012</text>
+      <text x="360" y="342" font-size="12" fill="#64748B">Текущий ремонт · наработка 4 280 / 4 320 ч</text>
+      <rect x="900" y="312" width="100" height="28" rx="14" fill="#DBEAFE"/><text x="950" y="331" font-size="12" font-weight="700" fill="#1D4ED8" text-anchor="middle">через 3 дня</text>
+      <text x="1024" y="331" font-size="20" fill="#94A3B8">›</text>
+    </g>
+    <g>
+      <rect x="300" y="364" width="820" height="58" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <rect x="316" y="380" width="26" height="26" rx="6" fill="#FDE68A"/><text x="329" y="399" font-size="14" font-weight="700" fill="#B45309" text-anchor="middle">С</text>
+      <text x="360" y="390" font-weight="700" fill="#1E293B">Шлифовальный 3М151 · инв. 1031</text>
+      <text x="360" y="410" font-size="12" fill="#64748B">Средний ремонт · согласовано с производством</text>
+      <rect x="900" y="380" width="100" height="28" rx="14" fill="#FEF3C7"/><text x="950" y="399" font-size="12" font-weight="700" fill="#B45309" text-anchor="middle">12 дней</text>
+      <text x="1024" y="399" font-size="20" fill="#94A3B8">›</text>
+    </g>
+    <g>
+      <rect x="300" y="432" width="820" height="58" rx="12" fill="#FEF2F2" stroke="#FECACA"/>
+      <rect x="316" y="448" width="26" height="26" rx="6" fill="#FECACA"/><text x="329" y="467" font-size="14" font-weight="700" fill="#B91C1C" text-anchor="middle">К</text>
+      <text x="360" y="458" font-weight="700" fill="#1E293B">Компрессор ВП-20 · инв. 1042</text>
+      <text x="360" y="478" font-size="12" fill="#DC2626">Капитальный ремонт · ПРОСРОЧЕНО на 2 дня</text>
+      <rect x="900" y="448" width="100" height="28" rx="14" fill="#FECACA"/><text x="950" y="467" font-size="12" font-weight="700" fill="#B91C1C" text-anchor="middle">просрочен</text>
+      <text x="1024" y="467" font-size="20" fill="#94A3B8">›</text>
+    </g>
+  </g>
+
+  <!-- mini gantt -->
+  <text x="300" y="528" font-size="16" font-weight="700" fill="#1E293B">Загрузка ремонтной службы по месяцам</text>
+  <g>
+    <rect x="300" y="544" width="820" height="120" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <g font-size="11" fill="#94A3B8" text-anchor="middle">
+      <text x="340" y="652">Я</text><text x="408" y="652">Ф</text><text x="476" y="652">М</text><text x="544" y="652">А</text><text x="612" y="652">М</text><text x="680" y="652">И</text><text x="748" y="652">И</text><text x="816" y="652">А</text><text x="884" y="652">С</text><text x="952" y="652">О</text><text x="1020" y="652">Н</text><text x="1088" y="652">Д</text>
+    </g>
+    <g fill="#3B82F6">
+      <rect x="326" y="608" width="28" height="28" rx="4"/>
+      <rect x="394" y="592" width="28" height="44" rx="4"/>
+      <rect x="462" y="600" width="28" height="36" rx="4"/>
+      <rect x="530" y="580" width="28" height="56" rx="4" fill="#F59E0B"/>
+      <rect x="598" y="604" width="28" height="32" rx="4"/>
+      <rect x="666" y="596" width="28" height="40" rx="4"/>
+      <rect x="734" y="588" width="28" height="48" rx="4"/>
+      <rect x="802" y="610" width="28" height="26" rx="4"/>
+      <rect x="870" y="598" width="28" height="38" rx="4"/>
+      <rect x="938" y="592" width="28" height="44" rx="4"/>
+      <rect x="1006" y="572" width="28" height="64" rx="4" fill="#DC2626"/>
+      <rect x="1074" y="606" width="28" height="30" rx="4"/>
+    </g>
+  </g>
+</svg>
