@@ -30,6 +30,12 @@ LANDING_DIR = os.environ.get("LANDING_DIR", "/landing")
 async def lifespan(app: FastAPI):
     db.init_db()
     _ensure_indexnow_keyfile()
+    # Rebuild static blog index/sitemap/rss so newly seeded legacy articles
+    # (added to db._LEGACY) are reflected without a manual CMS edit.
+    try:
+        _regen_shared()
+    except Exception:
+        logger.exception("startup regenerate_shared failed")
     yield
 
 
