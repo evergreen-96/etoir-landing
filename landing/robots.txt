@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Clean-param: etext&ybaip /
 Sitemap: https://etoir.ru/sitemap.xml

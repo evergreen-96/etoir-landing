@@ -196,9 +196,15 @@ def delete_article(article_id: int) -> None:
         conn.execute("DELETE FROM articles WHERE id = ?", (article_id,))
 
 
-# Metadata for the 3 hand-built articles currently public, so regenerated
+# Metadata for the hand-built articles currently public, so regenerated
 # index/sitemap/rss keep listing them. Their HTML files are left untouched.
 _LEGACY = [
+    {
+        "slug": "kak-vnedrit-toir-sistemu",
+        "title": "Как внедрить ТОиР-систему: пошаговый план за 7 шагов",
+        "excerpt": "Пошаговый план внедрения CMMS на промышленном предприятии: от аудита оборудования до KPI и обучения слесарей. 7 этапов, 6-8 недель, проверенная методология.",
+        "category": "Внедрение", "reading_minutes": 9, "published_at": "2026-05-19T10:00:00+00:00",
+    },
     {
         "slug": "grafik-ppr-oborudovaniya-obrazec",
         "title": "График ППР оборудования: образец и как составить в 2026",
